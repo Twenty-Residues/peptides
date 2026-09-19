@@ -2,9 +2,9 @@ export const site = {
   name: "Peptides.info",
   org: "Twenty Residues",
   url: "https://peptides.info",
-  tagline: "The frontier, mapped.",
+  tagline: "Peptides, straight.",
   description:
-    "A research-grade reference for peptides — mechanisms, evidence, and provenance, written plainly and cited carefully.",
+    "The peptide reference that reads like it wants you to understand — every entry hooked hard, then held to the evidence. Bullish on the science, honest about the frontier.",
 };
 
 export const nav = [

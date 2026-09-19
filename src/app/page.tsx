@@ -12,26 +12,35 @@ export default function Home() {
         {site.name}
       </h1>
       <p className="mt-6 max-w-prose text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-        {site.description} Every claim is tiered by the strength of its
-        evidence, so you can see where the science is settled and where the{" "}
+        {site.description} We sell nothing — so we can tell you where the science
+        is settled and where the{" "}
         <Link href="/methodology" className="underline underline-offset-4">
           frontier
         </Link>{" "}
-        begins.
+        starts.
       </p>
 
       <h2 className="mt-16 text-sm font-semibold tracking-widest text-neutral-500 uppercase">
-        Catalog
+        Featured
       </h2>
-      <ul className="mt-4 divide-y divide-neutral-200 dark:divide-neutral-800">
-        {peptides.map((p) => (
+      <ul className="mt-4 space-y-4">
+        {peptides.slice(0, 6).map((p) => (
           <li key={p.slug}>
             <Link
               href={`/peptides/${p.slug}`}
-              className="flex items-baseline justify-between gap-4 py-4 hover:opacity-70"
+              className="group block rounded-lg py-2"
             >
-              <span className="font-medium">{p.name}</span>
-              <span className="text-sm text-neutral-500">{p.class}</span>
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="font-medium group-hover:underline underline-offset-4">
+                  {p.name}
+                </span>
+                <span className="shrink-0 text-sm text-neutral-500">
+                  {p.class}
+                </span>
+              </div>
+              <p className="mt-0.5 text-sm text-neutral-600 dark:text-neutral-400">
+                {p.hook}
+              </p>
             </Link>
           </li>
         ))}
@@ -40,7 +49,7 @@ export default function Home() {
         href="/peptides"
         className="mt-6 inline-block text-sm underline underline-offset-4"
       >
-        Browse the full catalog →
+        Browse all {peptides.length} peptides →
       </Link>
     </main>
   );

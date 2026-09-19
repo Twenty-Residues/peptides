@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPeptide, peptides } from "@/lib/peptides";
+import { efficacyTiers, getPeptide, peptides } from "@/lib/peptides";
 import { evidenceFloor, TierBadge } from "@/lib/evidence";
 
 export function generateStaticParams() {
@@ -28,7 +28,7 @@ export default async function PeptidePage({
   const p = getPeptide(slug);
   if (!p) notFound();
 
-  const floor = evidenceFloor(p.claims.map((c) => c.tier));
+  const floor = evidenceFloor(efficacyTiers(p));
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
@@ -50,9 +50,25 @@ export default async function PeptidePage({
       )}
       <p className="mt-1 text-sm text-neutral-500">{p.class}</p>
 
-      <p className="mt-6 max-w-prose text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
+      <p className="mt-6 max-w-prose text-xl font-medium leading-snug text-neutral-900 dark:text-neutral-100">
+        {p.hook}
+      </p>
+      <p className="mt-4 max-w-prose text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
         {p.summary}
       </p>
+
+      {p.tags.length > 0 && (
+        <div className="mt-5 flex flex-wrap gap-2">
+          {p.tags.map((t) => (
+            <span
+              key={t}
+              className="rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
 
       {p.sequence && (
         <p className="mt-6 text-sm text-neutral-500">
