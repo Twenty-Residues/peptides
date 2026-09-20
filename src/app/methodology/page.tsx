@@ -42,6 +42,47 @@ export default function MethodologyPage() {
         ))}
       </dl>
 
+      <h2 className="mt-12 text-2xl font-medium text-plum">How we source</h2>
+      <p className="mt-3 max-w-prose text-ink/75">
+        Claims are drawn from primary and regulatory records — randomized
+        trials, drug labels, ClinicalTrials.gov registrations, sequence
+        databases, and peer-reviewed papers. Every citation points to a{" "}
+        <em>fixed record</em> (a PMID, PMCID, DOI, or label), never a search
+        query, so any reader can land on the exact source we read. Where a
+        finding rests on a single research group or is not independently
+        replicated, we say so in the claim itself.
+      </p>
+
+      <h2 className="mt-12 text-2xl font-medium text-plum">How we review</h2>
+      <p className="mt-3 max-w-prose text-ink/75">
+        Each entry is verified against those sources, tiered against the
+        Standard, and stamped with a review date and an update history. When the
+        evidence changes — a new approval, a pivotal trial, a corrected fact — we
+        revise the entry and log what changed and when.
+      </p>
+
+      <h2 className="mt-12 text-2xl font-medium text-plum">
+        No conflict of interest
+      </h2>
+      <p className="mt-3 max-w-prose text-ink/75">
+        We sell nothing — no products, no affiliate links, no commissions on any
+        sale. Nothing in a monograph is written to move a transaction, which is
+        precisely what lets us grade thin evidence as thin.
+      </p>
+
+      <h2 className="mt-12 text-2xl font-medium text-plum">Corrections</h2>
+      <p className="mt-3 max-w-prose text-ink/75">
+        A reference is only as good as its willingness to be corrected. If a
+        claim, tier, or source looks wrong, tell us at{" "}
+        <a
+          href="mailto:corrections@peptides.info"
+          className="font-medium text-plum-500 underline-offset-4 hover:underline"
+        >
+          corrections@peptides.info
+        </a>{" "}
+        and we&apos;ll review it and log any change.
+      </p>
+
       <h2 className="mt-12 text-2xl font-medium text-plum">
         What we don&apos;t do
       </h2>
