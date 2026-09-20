@@ -1,5 +1,9 @@
 import type { Tier } from "./evidence";
 
+/** A verifiable citation. `href` must point to a fixed record (PMID/PMCID/DOI/
+ *  label), never a search query. */
+export type Source = { label: string; href: string };
+
 export type Claim = {
   text: string;
   tier: Tier;
@@ -8,13 +12,67 @@ export type Claim = {
    * nothing about efficacy, so they are excluded from the evidence floor.
    */
   kind?: "efficacy" | "regulatory";
-  source?: { label: string; href: string };
+  source?: Source;
 };
+
+/** Regulatory posture — stated as fact, per VOICE.md (replaces "dosage"). */
+export type Regulatory = {
+  status: "approved" | "approved-abroad" | "research-only" | "withdrawn";
+  /** Plain-language detail: what/where it's approved, or why it isn't. */
+  detail: string;
+  source?: Source;
+};
+
+/** Amino-acid sequence, structured so modified / non-natural peptides are
+ *  represented honestly rather than as a misleading one-letter string. */
+export type Sequence = {
+  /** One-letter or three-letter representation, whichever is correct. */
+  residues: string;
+  /** Modifications / caveats (acylation, D-amino acids, undisclosed, etc.). */
+  note?: string;
+  source?: Source;
+};
+
+export type Safety = { text: string; source?: Source };
+export type FAQ = { q: string; a: string };
+export type ChangeLogEntry = { date: string; note: string };
 
 /** Tiers of the efficacy claims only — what the floor badge should reflect. */
 export function efficacyTiers(p: Peptide): Tier[] {
   const efficacy = p.claims.filter((c) => c.kind !== "regulatory");
   return (efficacy.length > 0 ? efficacy : p.claims).map((c) => c.tier);
+}
+
+/**
+ * Examine-style "research snapshot": quantities computed from the entry so the
+ * evidence base is legible at a glance and can never drift from the data.
+ */
+export type Snapshot = {
+  /** Distinct cited sources across claims + regulatory + safety. */
+  references: number;
+  /** Efficacy claims backed by human data (tier 1–2). */
+  humanClaims: number;
+  /** Total efficacy claims. */
+  totalClaims: number;
+  /** Strongest tier any efficacy claim reaches (the floor badge). */
+  floor: Tier | null;
+};
+
+export function snapshot(p: Peptide): Snapshot {
+  const hrefs = new Set<string>();
+  for (const c of p.claims) if (c.source) hrefs.add(c.source.href);
+  if (p.regulatory?.source) hrefs.add(p.regulatory.source.href);
+  for (const s of p.safety ?? []) if (s.source) hrefs.add(s.source.href);
+  if (p.sequence?.source) hrefs.add(p.sequence.source.href);
+
+  const efficacy = p.claims.filter((c) => c.kind !== "regulatory");
+  const tiers = efficacy.map((c) => c.tier);
+  return {
+    references: hrefs.size,
+    humanClaims: efficacy.filter((c) => c.tier <= 2).length,
+    totalClaims: efficacy.length,
+    floor: tiers.length ? (Math.min(...tiers) as Tier) : null,
+  };
 }
 
 export type Peptide = {
@@ -26,9 +84,19 @@ export type Peptide = {
   hook: string;
   /** 2–3 sentence honest summary: mechanism + what it's studied for + status. */
   summary: string;
-  sequence?: string;
+  /** Accessible "how it works" — one short paragraph. */
+  mechanism?: string;
+  sequence?: Sequence;
+  regulatory?: Regulatory;
+  safety?: Safety[];
+  faqs?: FAQ[];
   tags: string[];
   claims: Claim[];
+  /** Placeholder byline until the reviewer is named (user-owned). */
+  reviewedBy?: string;
+  /** ISO date of last substantive review — drives "Last updated" + schema. */
+  updated?: string;
+  changelog?: ChangeLogEntry[];
 };
 
 export const peptides: Peptide[] = [
@@ -210,7 +278,7 @@ export const peptides: Peptide[] = [
     hook: "The repair peptide the research world can't stop talking about.",
     summary:
       "A synthetic 15-amino-acid fragment derived from a gastric protein, studied extensively in animal models for tendon, muscle, and gut-lining repair. The preclinical signal is broad and consistent — controlled human data is the missing piece.",
-    sequence: "GEPPPGKPADDAGLV",
+    sequence: { residues: "GEPPPGKPADDAGLV" },
     tags: ["repair", "gut", "investigational"],
     claims: [
       {
@@ -256,7 +324,7 @@ export const peptides: Peptide[] = [
     hook: "The copper peptide that actually earned its place in skincare.",
     summary:
       "A naturally occurring copper-binding tripeptide (Gly-His-Lys) that upregulates collagen, elastin, and repair signaling. It has the strongest topical-skin evidence in the 'cosmeceutical peptide' category, plus a deep preclinical tissue-remodeling literature.",
-    sequence: "GHK",
+    sequence: { residues: "GHK" },
     tags: ["skin", "repair", "cosmetic"],
     claims: [
       {
@@ -285,7 +353,7 @@ export const peptides: Peptide[] = [
     hook: "The three-residue tail of α-MSH that calms inflammation.",
     summary:
       "A tripeptide fragment of alpha-MSH studied for anti-inflammatory activity in the gut and skin. The mechanism is intriguing and the preclinical data real; human trials are lacking.",
-    sequence: "KPV",
+    sequence: { residues: "KPV" },
     tags: ["anti-inflammatory", "gut", "investigational"],
     claims: [
       {
@@ -335,7 +403,7 @@ export const peptides: Peptide[] = [
     hook: "The telomerase peptide riding decades of Russian longevity claims.",
     summary:
       "A four-amino-acid peptide reported to activate telomerase and modulate melatonin rhythms. The longevity narrative is bold, but nearly all evidence comes from older, mostly single-group Russian studies — this is frontier territory.",
-    sequence: "AEDG",
+    sequence: { residues: "AEDG" },
     tags: ["longevity", "frontier"],
     claims: [
       {

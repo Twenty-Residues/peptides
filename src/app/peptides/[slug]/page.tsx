@@ -76,8 +76,11 @@ export default async function PeptidePage({
         <p className="mt-6 text-sm text-muted">
           Sequence:{" "}
           <code className="rounded bg-plum-050 px-1.5 py-0.5 font-mono text-plum">
-            {p.sequence}
+            {p.sequence.residues}
           </code>
+          {p.sequence.note && (
+            <span className="ml-2 text-muted">— {p.sequence.note}</span>
+          )}
         </p>
       )}
 
