@@ -1,25 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-}
+/*
+ * Examine-inspired aesthetic: deep plum + gold on a soft gray canvas.
+ * Light-only, to match the reference. `dark:` utilities are neutered so an
+ * OS in dark mode still gets the intended look.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* canvas */
+  --background: #f6f8fa;
+  --surface: #ffffff;
+  --foreground: #241539;
+
+  /* plum scale */
+  --plum: #2f1e4e; /* headings, primary text on light */
+  --plum-600: #4a2c5a;
+  --plum-500: #5e3a72; /* buttons, accents, links */
+  --plum-050: #f3eef8;
+
+  /* gold CTA */
+  --gold: #ffc107;
+  --gold-600: #e6ac00;
+
+  /* ink */
+  --ink: #33303a;
+  --muted: #6b6577;
+  --line: #e7e3ee;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
+  --color-plum: var(--plum);
+  --color-plum-600: var(--plum-600);
+  --color-plum-500: var(--plum-500);
+  --color-plum-050: var(--plum-050);
+  --color-gold: var(--gold);
+  --color-gold-600: var(--gold-600);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --font-serif: var(--font-lora), Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  color: var(--plum);
+  letter-spacing: -0.01em;
 }

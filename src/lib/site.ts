@@ -10,4 +10,15 @@ export const site = {
 export const nav = [
   { href: "/peptides", label: "Catalog" },
   { href: "/methodology", label: "Methodology" },
+  { href: "/about", label: "About" },
 ] as const;
+
+/**
+ * Editorial byline — a swappable placeholder until a named author/reviewer is
+ * assigned. Shown as "Written by" / "Reviewed by" on every monograph.
+ */
+export const editorial = {
+  writtenBy: "Twenty Residues editorial",
+  reviewedBy: "Pending named medical review",
+  contact: "corrections@peptides.info",
+} as const;

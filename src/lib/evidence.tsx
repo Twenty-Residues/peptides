@@ -17,18 +17,18 @@ type TierMeta = {
 
 export const TIERS: Record<Tier, TierMeta> = {
   1: {
-    label: "Tier 1 — Regulatory / RCT",
+    label: "Tier 1 — Regulatory / pivotal RCT",
     short: "Established",
     blurb:
-      "Approved-drug labeling or randomized controlled trials in humans. The strongest floor.",
+      "Regulatory approval or a pivotal (Phase 3 / confirmatory) randomized controlled trial in humans. The strongest floor.",
     className:
       "bg-emerald-50 text-emerald-800 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-400/20",
   },
   2: {
-    label: "Tier 2 — Clinical / cohort",
+    label: "Tier 2 — Clinical",
     short: "Clinical",
     blurb:
-      "Human clinical studies without full randomization: cohorts, open-label, or well-powered pilots.",
+      "Human clinical data short of a pivotal trial: Phase 2 RCTs, cohorts, open-label studies, or well-powered pilots.",
     className:
       "bg-sky-50 text-sky-800 ring-sky-600/20 dark:bg-sky-500/10 dark:text-sky-300 dark:ring-sky-400/20",
   },
