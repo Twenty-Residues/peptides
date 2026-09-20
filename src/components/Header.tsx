@@ -3,21 +3,30 @@ import { nav, site } from "@/lib/site";
 
 export function Header() {
   return (
-    <header className="border-b border-neutral-200 dark:border-neutral-800">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-semibold tracking-tight">
+    <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <Link
+          href="/"
+          className="font-serif text-xl font-semibold tracking-tight text-plum"
+        >
           {site.name}
         </Link>
-        <nav className="flex gap-6 text-sm text-neutral-600 dark:text-neutral-400">
+        <nav className="flex items-center gap-2 sm:gap-6">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-neutral-900 dark:hover:text-neutral-100"
+              className="hidden text-sm font-medium text-ink/70 transition-colors hover:text-plum sm:inline"
             >
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/peptides"
+            className="rounded-full bg-gold px-4 py-1.5 text-sm font-semibold text-plum-500 transition-colors hover:bg-gold-600"
+          >
+            Browse catalog
+          </Link>
         </nav>
       </div>
     </header>

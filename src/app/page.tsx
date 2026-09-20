@@ -4,53 +4,101 @@ import { site } from "@/lib/site";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-20">
-      <p className="text-sm font-medium tracking-widest text-neutral-500 uppercase">
-        {site.org}
-      </p>
-      <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-        {site.name}
-      </h1>
-      <p className="mt-6 max-w-prose text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-        {site.description} We sell nothing — so we can tell you where the science
-        is settled and where the{" "}
-        <Link href="/methodology" className="underline underline-offset-4">
-          frontier
-        </Link>{" "}
-        starts.
-      </p>
+    <main>
+      {/* Hero */}
+      <section className="px-6 pt-16 pb-12 text-center sm:pt-24">
+        <p className="text-xs font-semibold tracking-widest text-plum-500 uppercase">
+          {site.org}
+        </p>
+        <h1 className="mx-auto mt-5 max-w-3xl text-4xl leading-[1.1] font-medium text-plum sm:text-6xl">
+          Peptide information you can trust
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink/80">
+          {site.name} reads every study so you don&apos;t have to — mechanisms,
+          evidence, and provenance, written plainly and{" "}
+          <Link
+            href="/methodology"
+            className="font-semibold text-plum-500 underline-offset-4 hover:underline"
+          >
+            tiered by how well it&apos;s proven
+          </Link>
+          .
+        </p>
 
-      <h2 className="mt-16 text-sm font-semibold tracking-widest text-neutral-500 uppercase">
-        Featured
-      </h2>
-      <ul className="mt-4 space-y-4">
-        {peptides.slice(0, 6).map((p) => (
-          <li key={p.slug}>
-            <Link
-              href={`/peptides/${p.slug}`}
-              className="group block rounded-lg py-2"
+        {/* Search-styled entry into the catalog */}
+        <Link
+          href="/peptides"
+          className="group mx-auto mt-9 flex max-w-xl items-center justify-between gap-3 rounded-xl border border-line bg-surface py-3.5 pr-3 pl-5 text-left shadow-sm transition-shadow hover:shadow-md"
+        >
+          <span className="text-ink/50">What do you want to learn about?</span>
+          <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-plum-500 text-surface transition-colors group-hover:bg-plum-600">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              aria-hidden
             >
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-medium group-hover:underline underline-offset-4">
-                  {p.name}
-                </span>
-                <span className="shrink-0 text-sm text-neutral-500">
-                  {p.class}
-                </span>
-              </div>
-              <p className="mt-0.5 text-sm text-neutral-600 dark:text-neutral-400">
-                {p.hook}
-              </p>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Link
-        href="/peptides"
-        className="mt-6 inline-block text-sm underline underline-offset-4"
-      >
-        Browse all {peptides.length} peptides →
-      </Link>
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </span>
+        </Link>
+
+        {/* Promo card */}
+        <div className="mx-auto mt-8 max-w-xl rounded-2xl bg-plum px-6 py-6 text-surface">
+          <p className="text-[15px] leading-relaxed">
+            <span className="font-semibold">We sell nothing.</span> That&apos;s
+            why we can tell you where the science is settled and where the
+            frontier really starts.
+          </p>
+          <Link
+            href="/methodology"
+            className="mt-4 inline-block rounded-full bg-gold px-5 py-2 text-sm font-semibold text-plum-500 transition-colors hover:bg-gold-600"
+          >
+            How we grade the evidence
+          </Link>
+        </div>
+      </section>
+
+      {/* Featured */}
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-2xl font-medium text-plum">Featured peptides</h2>
+          <Link
+            href="/peptides"
+            className="text-sm font-semibold text-plum-500 underline-offset-4 hover:underline"
+          >
+            All {peptides.length} →
+          </Link>
+        </div>
+
+        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+          {peptides.slice(0, 6).map((p) => (
+            <li key={p.slug}>
+              <Link
+                href={`/peptides/${p.slug}`}
+                className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-serif text-lg font-semibold text-plum group-hover:text-plum-500">
+                    {p.name}
+                  </span>
+                  <span className="shrink-0 text-xs font-medium tracking-wide text-muted uppercase">
+                    {p.class}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-ink/75">
+                  {p.hook}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }

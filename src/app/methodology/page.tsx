@@ -11,15 +11,15 @@ export default function MethodologyPage() {
   const tiers = (Object.keys(TIERS) as unknown as Tier[]).map(Number) as Tier[];
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Methodology</h1>
-      <p className="mt-4 max-w-prose text-neutral-600 dark:text-neutral-400">
+      <h1 className="text-4xl font-medium text-plum">Methodology</h1>
+      <p className="mt-4 max-w-prose text-ink/75">
         Peptides.info is a reference, not a retailer and not a clinic. Our one
         job is to represent the evidence honestly — including where there is
         little of it.
       </p>
 
-      <h2 className="mt-12 text-xl font-semibold tracking-tight">The Standard</h2>
-      <p className="mt-3 max-w-prose text-neutral-600 dark:text-neutral-400">
+      <h2 className="mt-12 text-2xl font-medium text-plum">The Standard</h2>
+      <p className="mt-3 max-w-prose text-ink/75">
         We tier claims, not products. Every factual statement in a monograph
         carries a tier describing how well it is supported by independent,
         verifiable evidence. An entry&apos;s <em>evidence floor</em> is the
@@ -32,8 +32,8 @@ export default function MethodologyPage() {
             <dt className="sm:w-40 shrink-0">
               <TierBadge tier={t} />
             </dt>
-            <dd className="max-w-prose text-neutral-600 dark:text-neutral-400">
-              <span className="font-medium text-neutral-800 dark:text-neutral-200">
+            <dd className="max-w-prose text-ink/75">
+              <span className="font-semibold text-plum">
                 {TIERS[t].label}.
               </span>{" "}
               {TIERS[t].blurb}
@@ -42,10 +42,10 @@ export default function MethodologyPage() {
         ))}
       </dl>
 
-      <h2 className="mt-12 text-xl font-semibold tracking-tight">
+      <h2 className="mt-12 text-2xl font-medium text-plum">
         What we don&apos;t do
       </h2>
-      <ul className="mt-3 max-w-prose list-disc space-y-2 pl-5 text-neutral-600 dark:text-neutral-400">
+      <ul className="mt-3 max-w-prose list-disc space-y-2 pl-5 text-ink/75">
         <li>We don&apos;t give dosing protocols or medical advice.</li>
         <li>We don&apos;t sell peptides or take commissions on their sale.</li>
         <li>
