@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Methodology",
   description:
     "How Peptides.info sources, tiers, and presents claims — the Standard.",
+  alternates: { canonical: "/methodology" },
 };
 
 export default function MethodologyPage() {

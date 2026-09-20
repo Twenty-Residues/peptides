@@ -6,11 +6,28 @@ import { evidenceFloor, TierBadge } from "@/lib/evidence";
 export const metadata: Metadata = {
   title: "Catalog",
   description: "The peptide catalog — each entry tiered by evidence strength.",
+  alternates: { canonical: "/peptides" },
 };
 
 export default function CatalogPage() {
+  const datasetJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Peptides.info catalog",
+    description:
+      "A catalog of research peptides with claim-level, tiered, cited evidence (the Standard).",
+    url: "https://peptides.info/peptides",
+    creator: { "@type": "Organization", name: "Peptides.info" },
+    license: "https://peptides.info/methodology",
+    variableMeasured: "Evidence tier (1–4) per claim",
+  };
+
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }}
+      />
       <h1 className="text-4xl font-medium text-plum">Catalog</h1>
       <p className="mt-4 max-w-prose leading-relaxed text-ink/75">
         {peptides.length} peptides, each one hooked hard and then held to the

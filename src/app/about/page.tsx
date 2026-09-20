@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Who is behind Peptides.info, how we work, and why we sell nothing.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

@@ -9,7 +9,7 @@ import {
   type Source,
 } from "@/lib/peptides";
 import { evidenceFloor, TIERS, TierBadge } from "@/lib/evidence";
-import { editorial } from "@/lib/site";
+import { editorial, site } from "@/lib/site";
 
 export function generateStaticParams() {
   return peptides.map((p) => ({ slug: p.slug }));
@@ -26,6 +26,7 @@ export async function generateMetadata({
   return {
     title: p.name,
     description: p.summary,
+    alternates: { canonical: `/peptides/${p.slug}` },
     openGraph: { title: `${p.name} · Peptides.info`, description: p.summary },
   };
 }
@@ -73,6 +74,53 @@ export default async function PeptidePage({
   const refIndex = (href?: string) =>
     href ? refs.findIndex((r) => r.href === href) + 1 : 0;
 
+  const url = `${site.url}/peptides/${p.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      name: p.name,
+      alternateName: p.aka,
+      url,
+      description: p.summary,
+      lastReviewed: p.updated,
+      dateModified: p.updated,
+      author: { "@type": "Organization", name: editorial.writtenBy },
+      citation: refs.map((r) => ({
+        "@type": "CreativeWork",
+        name: r.label,
+        url: r.href,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Catalog",
+          item: `${site.url}/peptides`,
+        },
+        { "@type": "ListItem", position: 3, name: p.name, item: url },
+      ],
+    },
+    ...(p.faqs && p.faqs.length > 0
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: p.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]
+      : []),
+  ];
+
   const Section = ({
     id,
     title,
@@ -92,6 +140,10 @@ export default async function PeptidePage({
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link
         href="/peptides"
         className="text-sm font-medium text-plum-500 hover:underline"

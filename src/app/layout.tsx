@@ -26,6 +26,16 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: { index: true, follow: true },
+  alternates: { canonical: "/" },
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Peptides.info",
+  url: siteUrl,
+  description:
+    "A research-grade reference for peptides: mechanisms, evidence, and provenance — cited and tiered.",
 };
 
 export default function RootLayout({
@@ -34,6 +44,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body className="flex min-h-screen flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
