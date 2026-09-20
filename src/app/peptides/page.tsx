@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { efficacyTiers, peptides } from "@/lib/peptides";
+import { efficacyTiers, peptides, snapshot } from "@/lib/peptides";
 import { evidenceFloor, TierBadge } from "@/lib/evidence";
 
 export const metadata: Metadata = {
@@ -41,6 +41,9 @@ export default function CatalogPage() {
                 </p>
                 <p className="mt-1 max-w-prose text-sm leading-relaxed text-ink/70">
                   {p.summary}
+                </p>
+                <p className="mt-2 text-xs text-muted">
+                  {snapshot(p).references} cited references
                 </p>
               </Link>
             </li>
