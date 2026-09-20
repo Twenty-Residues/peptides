@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "check:sources": "node scripts/check-sources.mjs",
+    "build": "node scripts/check-sources.mjs && next build",
     "start": "next start",
     "lint": "next lint"
   },
