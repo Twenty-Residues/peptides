@@ -1,10 +1,19 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
+/** Bundled so the OG image uses the site's own type pairing. */
+const font = (file: string) =>
+  readFile(join(process.cwd(), "src", "app", "fonts", file));
+const lora = font("Lora-Medium.ttf");
+const inter = font("Inter-Regular.ttf");
 
 export const alt = "Peptides.info — every peptide, graded by how well it's proven";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const [loraData, interData] = await Promise.all([lora, inter]);
   return new ImageResponse(
     (
       <div
@@ -17,7 +26,7 @@ export default function OpengraphImage() {
           background: "linear-gradient(135deg, #2f1e4e 0%, #241539 100%)",
           color: "#ffffff",
           padding: "72px 80px",
-          fontFamily: "Georgia, serif",
+          fontFamily: "Lora, Georgia, serif",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
@@ -62,7 +71,7 @@ export default function OpengraphImage() {
               fontSize: 30,
               marginTop: 32,
               color: "#d9cfe6",
-              fontFamily: "Arial, sans-serif",
+              fontFamily: "Inter, Arial, sans-serif",
             }}
           >
             Every claim tiered and cited to a fixed record. We sell nothing.
@@ -73,7 +82,7 @@ export default function OpengraphImage() {
           style={{
             display: "flex",
             gap: 14,
-            fontFamily: "Arial, sans-serif",
+            fontFamily: "Inter, Arial, sans-serif",
             fontSize: 22,
           }}
         >
@@ -109,6 +118,12 @@ export default function OpengraphImage() {
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [
+        { name: "Lora", data: loraData, weight: 500, style: "normal" },
+        { name: "Inter", data: interData, weight: 400, style: "normal" },
+      ],
+    },
   );
 }
