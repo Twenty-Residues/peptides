@@ -13,11 +13,11 @@ const siteUrl = "https://peptides.info";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Peptides.info — the reference for research peptides",
+    default: "Peptides.info — every peptide, graded by how well it's proven",
     template: "%s · Peptides.info",
   },
   description:
-    "A research-grade reference for peptides: mechanisms, evidence, and provenance — written plainly, cited carefully.",
+    "Plain-language monographs on research peptides. Every claim carries an evidence tier and a citation to a fixed record. We sell nothing.",
   openGraph: {
     title: "Peptides.info",
     description:
@@ -50,7 +50,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <Header />
-        <div className="flex-1">{children}</div>
+        <div id="main" className="flex-1">{children}</div>
         <Footer />
         <Analytics />
       </body>
