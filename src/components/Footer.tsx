@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { editorial, nav, site } from "@/lib/site";
 import { categories } from "@/lib/categories";
+import { LogoMark, Wordmark } from "./Logo";
 
 export function Footer() {
   return (
@@ -8,8 +9,9 @@ export function Footer() {
       <div className="mx-auto max-w-5xl px-6 py-12 text-sm text-muted">
         <div className="grid gap-10 sm:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="font-serif text-lg font-semibold text-plum">
-              {site.name}
+            <p className="flex items-center gap-2">
+              <LogoMark size={24} />
+              <Wordmark className="text-lg" />
             </p>
             <p className="mt-2 max-w-sm leading-relaxed">{site.tagline}</p>
             <p className="mt-4 max-w-sm leading-relaxed">

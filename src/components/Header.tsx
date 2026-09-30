@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
 import { NavLinks } from "./NavLinks";
+import { LogoMark, Wordmark } from "./Logo";
 
 export function Header() {
   return (
@@ -11,9 +12,11 @@ export function Header() {
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="font-serif text-xl font-semibold tracking-tight text-plum"
+          aria-label={`${site.name} home`}
+          className="flex items-center gap-2.5"
         >
-          {site.name}
+          <LogoMark size={30} />
+          <Wordmark className="text-xl" />
         </Link>
 
         {/* Desktop */}
