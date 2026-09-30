@@ -10,6 +10,9 @@ import {
 } from "@/lib/peptides";
 import { evidenceFloor, TIERS, TierBadge } from "@/lib/evidence";
 import { editorial, site } from "@/lib/site";
+import { categoriesFor } from "@/lib/categories";
+import { relatedPeptides } from "@/lib/related";
+import { PeptideCard } from "@/components/PeptideCard";
 
 export function generateStaticParams() {
   return peptides.map((p) => ({ slug: p.slug }));
@@ -57,6 +60,8 @@ export default async function PeptidePage({
 
   const floor = evidenceFloor(efficacyTiers(p));
   const snap = snapshot(p);
+  const related = relatedPeptides(p);
+  const cats = categoriesFor(p);
 
   // Collect a de-duplicated, numbered reference list across the whole entry.
   const refs: Source[] = [];
@@ -130,30 +135,95 @@ export default async function PeptidePage({
     title: string;
     children: React.ReactNode;
   }) => (
-    <section id={id} className="mt-12 scroll-mt-24">
-      <h2 className="text-sm font-semibold tracking-widest text-plum-500 uppercase">
+    <section id={id} className="mt-14 scroll-mt-24">
+      <h2 className="border-b border-line pb-2 text-2xl font-medium text-plum">
         {title}
       </h2>
-      <div className="mt-4">{children}</div>
+      <div className="mt-5">{children}</div>
     </section>
   );
 
+  const Cite = ({ s, className = "" }: { s: Source; className?: string }) => (
+    <a
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-1 text-sm font-medium text-plum-500 underline underline-offset-4 hover:text-plum-600 ${className}`}
+    >
+      <span className="font-mono text-xs text-muted">[{refIndex(s.href)}]</span>
+      {s.label}
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+        className="shrink-0 opacity-60"
+      >
+        <path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" />
+      </svg>
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
+  );
+
+  const toc = [
+    p.mechanism && { id: "how-it-works", label: "How it works" },
+    { id: "evidence", label: "What it's studied for" },
+    p.safety?.length && { id: "safety", label: "Safety" },
+    p.regulatory && { id: "regulatory", label: "Status" },
+    p.faqs?.length && { id: "faq", label: "FAQ" },
+    refs.length && { id: "references", label: "References" },
+  ].filter(Boolean) as { id: string; label: string }[];
+
   return (
-    <main className="mx-auto max-w-3xl px-6 py-14">
+    <main className="mx-auto max-w-3xl px-6 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Link
-        href="/peptides"
-        className="text-sm font-medium text-plum-500 hover:underline"
-      >
-        ← Catalog
-      </Link>
+      <nav aria-label="Breadcrumb" className="text-sm text-muted">
+        <ol className="flex flex-wrap items-center gap-1.5">
+          <li>
+            <Link href="/" className="hover:text-plum hover:underline">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden>/</li>
+          <li>
+            <Link href="/peptides" className="hover:text-plum hover:underline">
+              Catalog
+            </Link>
+          </li>
+          {cats[0] && (
+            <>
+              <li aria-hidden>/</li>
+              <li>
+                <Link
+                  href={`/peptides?category=${cats[0].slug}`}
+                  className="hover:text-plum hover:underline"
+                >
+                  {cats[0].label}
+                </Link>
+              </li>
+            </>
+          )}
+          <li aria-hidden>/</li>
+          <li aria-current="page" className="text-ink">
+            {p.name}
+          </li>
+        </ol>
+      </nav>
 
       {/* Header */}
-      <div className="mt-6 flex flex-wrap items-center gap-3">
-        <h1 className="text-4xl font-medium text-plum">{p.name}</h1>
+      <p className="mt-8 text-xs font-medium tracking-wide text-plum-500 uppercase">
+        {p.class}
+      </p>
+      <div className="mt-2 flex flex-wrap items-center gap-3">
+        <h1 className="text-4xl font-medium text-plum sm:text-5xl">{p.name}</h1>
         {floor && <TierBadge tier={floor} />}
       </div>
       {p.aka && p.aka.length > 0 && (
@@ -161,9 +231,6 @@ export default async function PeptidePage({
           Also known as {p.aka.join(", ")}
         </p>
       )}
-      <p className="mt-1 text-xs font-medium tracking-wide text-plum-500 uppercase">
-        {p.class}
-      </p>
 
       {/* Verdict */}
       <p className="mt-6 max-w-prose font-serif text-2xl leading-snug font-medium text-plum">
@@ -173,14 +240,14 @@ export default async function PeptidePage({
       {/* Research snapshot */}
       <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
         {[
-          { k: "References", v: String(snap.references) },
+          { k: "Cited sources", v: String(snap.references) },
           {
-            k: "Human-grade claims",
+            k: "Human-tested claims",
             v: `${snap.humanClaims} of ${snap.totalClaims}`,
           },
           {
-            k: "Evidence floor",
-            v: floor ? TIERS[floor].short : "—",
+            k: "Best evidence",
+            v: floor ? `Tier ${floor} · ${TIERS[floor].short}` : "—",
           },
           {
             k: "Status",
@@ -214,6 +281,25 @@ export default async function PeptidePage({
         </div>
       )}
 
+      {/* On this page */}
+      <nav
+        aria-label="On this page"
+        className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-3 text-sm"
+      >
+        <span className="text-xs font-semibold tracking-widest text-muted uppercase">
+          On this page
+        </span>
+        {toc.map((t) => (
+          <a
+            key={t.id}
+            href={`#${t.id}`}
+            className="font-medium text-plum-500 underline-offset-4 hover:underline"
+          >
+            {t.label}
+          </a>
+        ))}
+      </nav>
+
       {/* How it works */}
       {p.mechanism && (
         <Section id="how-it-works" title="How it works">
@@ -236,6 +322,10 @@ export default async function PeptidePage({
 
       {/* Evidence matrix */}
       <Section id="evidence" title="What it's studied for">
+        <p className="mb-5 max-w-prose text-sm text-muted">
+          One claim per card, each with its own tier and source. Tiers 1 and 2
+          are human data. Tiers 3 and 4 are not yet.
+        </p>
         <ul className="space-y-4">
           {p.claims
             .filter((c) => c.kind !== "regulatory")
@@ -244,20 +334,13 @@ export default async function PeptidePage({
               key={i}
               className="rounded-2xl border border-line bg-surface p-5 shadow-sm"
             >
-              <div className="flex items-start justify-between gap-4">
-                <p className="text-ink">{c.text}</p>
-                <TierBadge tier={c.tier} />
+              <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                <p className="leading-relaxed text-ink">{c.text}</p>
+                <div className="shrink-0">
+                  <TierBadge tier={c.tier} />
+                </div>
               </div>
-              {c.source && (
-                <a
-                  href={c.source.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-block text-sm font-medium text-plum-500 underline underline-offset-4 hover:text-plum-600"
-                >
-                  [{refIndex(c.source.href)}] {c.source.label}
-                </a>
-              )}
+              {c.source && <Cite s={c.source} className="mt-3" />}
             </li>
           ))}
         </ul>
@@ -270,16 +353,7 @@ export default async function PeptidePage({
             {p.safety.map((s, i) => (
               <div key={i} className="max-w-prose">
                 <p className="leading-relaxed text-ink/85">{s.text}</p>
-                {s.source && (
-                  <a
-                    href={s.source.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-block text-sm font-medium text-plum-500 underline underline-offset-4 hover:text-plum-600"
-                  >
-                    [{refIndex(s.source.href)}] {s.source.label}
-                  </a>
-                )}
+                {s.source && <Cite s={s.source} className="mt-1" />}
               </div>
             ))}
           </div>
@@ -297,14 +371,7 @@ export default async function PeptidePage({
               {p.regulatory.detail}
             </p>
             {p.regulatory.source && (
-              <a
-                href={p.regulatory.source.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-block text-sm font-medium text-plum-500 underline underline-offset-4 hover:text-plum-600"
-              >
-                [{refIndex(p.regulatory.source.href)}] {p.regulatory.source.label}
-              </a>
+              <Cite s={p.regulatory.source} className="mt-3" />
             )}
           </div>
         </Section>
@@ -313,16 +380,24 @@ export default async function PeptidePage({
       {/* FAQ */}
       {p.faqs && p.faqs.length > 0 && (
         <Section id="faq" title="Frequently asked">
-          <dl className="space-y-5">
+          <div className="divide-y divide-line rounded-2xl border border-line bg-surface">
             {p.faqs.map((f, i) => (
-              <div key={i} className="max-w-prose">
-                <dt className="font-serif text-lg font-medium text-plum">
+              <details key={i} className="group px-5 py-4" open={i === 0}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-medium text-plum">
                   {f.q}
-                </dt>
-                <dd className="mt-1 leading-relaxed text-ink/85">{f.a}</dd>
-              </div>
+                  <span
+                    aria-hidden
+                    className="shrink-0 text-muted transition-transform group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-2 max-w-prose leading-relaxed text-ink/85">
+                  {f.a}
+                </p>
+              </details>
             ))}
-          </dl>
+          </div>
         </Section>
       )}
 
@@ -340,6 +415,7 @@ export default async function PeptidePage({
                   className="text-plum-500 underline underline-offset-4 hover:text-plum-600"
                 >
                   {r.label}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </li>
             ))}
@@ -347,12 +423,34 @@ export default async function PeptidePage({
         </Section>
       )}
 
+      {related.length > 0 && (
+        <Section id="related" title="Related entries">
+          <ul className="grid gap-4 sm:grid-cols-3">
+            {related.map((r) => (
+              <li key={r.slug}>
+                <PeptideCard p={r} compact />
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
       {/* Meta footer */}
-      <div className="mt-12 border-t border-line pt-6 text-sm text-muted">
+      <div className="mt-14 border-t border-line pt-6 text-sm text-muted">
         <p>
-          Written by {editorial.writtenBy}. Reviewed by {editorial.reviewedBy}.
+          Written by {editorial.writtenBy}. Medical review: {editorial.reviewStatus}.
         </p>
         {p.updated && <p className="mt-1">Last updated {fmtDate(p.updated)}.</p>}
+        <p className="mt-3">
+          Spot an error or a better source?{" "}
+          <a
+            href={`mailto:${editorial.contact}?subject=${encodeURIComponent(`Correction: ${p.name}`)}`}
+            className="font-medium text-plum-500 underline-offset-4 hover:underline"
+          >
+            Report a correction
+          </a>
+          . Every change is logged below.
+        </p>
         {p.changelog && p.changelog.length > 0 && (
           <details className="mt-2">
             <summary className="cursor-pointer text-plum-500">

@@ -13,18 +13,19 @@ export default function MethodologyPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-4xl font-medium text-plum">Methodology</h1>
-      <p className="mt-4 max-w-prose text-ink/75">
+      <p className="mt-4 max-w-prose text-lg leading-relaxed text-ink/85">
         Peptides.info is a reference, not a retailer and not a clinic. Our one
-        job is to represent the evidence honestly — including where there is
-        little of it.
+        job is to represent the evidence honestly, including where there is
+        little of it. This page is the whole rulebook.
       </p>
 
       <h2 className="mt-12 text-2xl font-medium text-plum">The Standard</h2>
       <p className="mt-3 max-w-prose text-ink/75">
         We tier claims, not products. Every factual statement in a monograph
         carries a tier describing how well it is supported by independent,
-        verifiable evidence. An entry&apos;s <em>evidence floor</em> is the
-        strongest tier any single claim in it reaches.
+        verifiable evidence. The badge on an entry shows its <em>best
+        evidence</em>: the strongest tier any single claim in it reaches. It
+        tells you the ceiling, not the average.
       </p>
 
       <dl className="mt-8 space-y-6">
@@ -38,10 +39,23 @@ export default function MethodologyPage() {
                 {TIERS[t].label}.
               </span>{" "}
               {TIERS[t].blurb}
+              <span className="mt-1 block text-sm text-muted">
+                In short: {TIERS[t].plain}
+              </span>
             </dd>
           </div>
         ))}
       </dl>
+
+      <div className="mt-8 max-w-prose rounded-2xl border border-line bg-surface p-5 text-sm leading-relaxed text-ink/75">
+        <p className="font-semibold text-plum">Worked example</p>
+        <p className="mt-1">
+          Semaglutide carries a Tier 1 badge because its weight-loss claim
+          rests on a pivotal trial and an FDA approval. Its Tier 4 claims, such
+          as early signals in addiction, sit in the same entry with their own
+          badge. The entry badge never upgrades a claim.
+        </p>
+      </div>
 
       <h2 className="mt-12 text-2xl font-medium text-plum">How we source</h2>
       <p className="mt-3 max-w-prose text-ink/75">
