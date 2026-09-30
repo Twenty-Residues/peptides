@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -28,6 +28,19 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "48x48" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#2f1e4e",
+  colorScheme: "light",
 };
 
 const orgJsonLd = {
@@ -35,6 +48,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Peptides.info",
   url: siteUrl,
+  logo: `${siteUrl}/icon-512.png`,
   description:
     "A research-grade reference for peptides: mechanisms, evidence, and provenance — cited and tiered.",
 };
