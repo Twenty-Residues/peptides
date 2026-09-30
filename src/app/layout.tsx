@@ -3,6 +3,7 @@ import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const lora = Lora({ subsets: ["latin"], variable: "--font-lora" });
@@ -51,6 +52,7 @@ export default function RootLayout({
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
