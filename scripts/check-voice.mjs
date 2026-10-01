@@ -126,7 +126,7 @@ const walk = (dir) =>
     return statSync(p).isDirectory() ? walk(p) : /\.(tsx?|mdx?)$/.test(f) && !p.endsWith("peptides.ts") ? [p] : [];
   });
 const siteText = [];
-for (const f of [...walk(join(root, "src", "app")), ...walk(join(root, "src", "components")), join(root, "src", "lib", "categories.ts"), join(root, "src", "lib", "site.ts")]) {
+for (const f of [...walk(join(root, "src", "app")), ...walk(join(root, "src", "components")), join(root, "src", "lib", "categories.ts"), join(root, "src", "lib", "site.ts"), join(root, "src", "lib", "comparisons.ts")]) {
   const t = readFileSync(f, "utf8");
   // String literals and JSX text nodes, with the file for the report.
   for (const x of t.matchAll(/"((?:[^"\\]|\\.)*)"|>([^<>{}]{12,})</g)) {

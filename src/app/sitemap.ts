@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { peptides } from "@/lib/peptides";
+import { comparisons } from "@/lib/comparisons";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,5 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...monographs];
+  const headToHead: MetadataRoute.Sitemap = comparisons.map((c) => ({
+    url: `${base}/compare/${c.slug}`,
+    lastModified: new Date(c.updated),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...monographs, ...headToHead];
 }

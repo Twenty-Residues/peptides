@@ -11,6 +11,11 @@ Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Node ≥ 22.6.
 - **Catalog** of peptides, each an Examine-style monograph: verdict → research
   snapshot → how it works → tiered evidence matrix → safety → regulatory status →
   FAQ → references, with a written-by / reviewed-by / last-updated footer.
+- **Compare** (`/compare`) — every entry on the same axes, grouped by category,
+  plus head-to-head pages (`/compare/a-vs-b`) whose every point of difference
+  cites a record. Pairs live in [`src/lib/comparisons.ts`](src/lib/comparisons.ts)
+  and look their sources up from the monographs by label, so they cannot cite
+  anything the monographs don't.
 - **The Standard** (`/methodology`) — claim-level evidence tiering:
   - **Tier 1** — regulatory approval or a pivotal / Phase 3 RCT
   - **Tier 2** — human clinical short of pivotal (Phase 2 RCT, cohort, open-label)

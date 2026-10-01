@@ -16,6 +16,7 @@ import {
   compareSort,
   headlineClaim,
 } from "./compare";
+import { comparisons, comparisonsFor, pairOf } from "./comparisons";
 
 const fixture: Peptide = {
   slug: "x",
@@ -149,4 +150,27 @@ test("every catalog entry appears in at least one compare group", () => {
     compareGroups().flatMap((g) => g.rows.map((r) => r.slug)),
   );
   for (const p of peptides) assert.ok(seen.has(p.slug), p.slug);
+});
+
+test("every comparison resolves to two distinct catalog entries and cites records", () => {
+  const seen = new Set<string>();
+  for (const c of comparisons) {
+    assert.ok(!seen.has(c.slug), `duplicate comparison ${c.slug}`);
+    seen.add(c.slug);
+    const [a, b] = pairOf(c);
+    assert.notEqual(a.slug, b.slug);
+    assert.equal(c.slug, `${a.slug}-vs-${b.slug}`);
+    assert.ok(c.differences.length >= 3, c.slug);
+    for (const d of c.differences) {
+      assert.ok(d.source, `${c.slug}: "${d.aspect}" has no source`);
+      assert.match(d.source!.href, /^https:\/\//);
+    }
+  }
+});
+
+test("a monograph can find the comparisons it appears in", () => {
+  const first = comparisons[0];
+  const [a] = pairOf(first);
+  assert.ok(comparisonsFor(a).some((c) => c.slug === first.slug));
+  assert.deepEqual(comparisonsFor({ slug: "no-such-peptide" }), []);
 });

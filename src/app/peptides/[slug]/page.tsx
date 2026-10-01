@@ -13,6 +13,7 @@ import { evidenceFloor, TIERS, TierBadge } from "@/lib/evidence";
 import { editorial, site } from "@/lib/site";
 import { categoriesFor } from "@/lib/categories";
 import { relatedPeptides } from "@/lib/related";
+import { comparisonsFor, pairOf } from "@/lib/comparisons";
 import { PeptideCard } from "@/components/PeptideCard";
 
 export function generateStaticParams() {
@@ -63,6 +64,7 @@ export default async function PeptidePage({
   const snap = snapshot(p);
   const related = relatedPeptides(p);
   const cats = categoriesFor(p);
+  const headToHead = comparisonsFor(p);
 
   // Collect a de-duplicated, numbered reference list across the whole entry.
   const refs: Source[] = [];
@@ -423,6 +425,33 @@ export default async function PeptidePage({
               </li>
             ))}
           </ol>
+        </Section>
+      )}
+
+      {headToHead.length > 0 && (
+        <Section id="head-to-head" title="Head to head">
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {headToHead.map((c) => {
+              const other = pairOf(c).find((x) => x.slug !== p.slug)!;
+              return (
+                <li key={c.slug}>
+                  <Link
+                    href={`/compare/${c.slug}`}
+                    className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 shadow-sm transition hover:-translate-y-px hover:border-plum-500/30 hover:shadow-md"
+                  >
+                    <span className="font-serif text-lg font-semibold text-plum group-hover:text-plum-500">
+                      {p.name}{" "}
+                      <span className="font-sans text-sm text-muted">vs</span>{" "}
+                      {other.name}
+                    </span>
+                    <span className="mt-2 text-sm leading-relaxed text-ink/75">
+                      {c.hook}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </Section>
       )}
 
