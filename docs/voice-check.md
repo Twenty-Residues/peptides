@@ -39,6 +39,16 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 | thymosin-alpha-1 | 8 | An immune-tuning peptide approved across dozens of countries. |
 | bremelanotide | 9 | The FDA-approved libido peptide that skips the vascular route. |
 | melanotan-ii | 9 | The tanning-and-libido peptide that never made it to approval. |
+| liraglutide | 9 | The daily GLP-1 that proved the class before semaglutide. |
+| cagrilintide | 8 | The amylin half of the next weight-loss combination. |
+| sermorelin | 9 | The once-approved GHRH analog that lives on in compounding. |
+| ghrp-2 | 10 | The GH-releasing peptide that became a diagnostic test in Japan. |
+| ghrp-6 | 8 | The unnatural peptide that led researchers to ghrelin. |
+| hexarelin | 12 | The potent secretagogue with a heart story that never left the lab. |
+| afamelanotide | 11 | The tanning peptide that became an orphan drug for light intolerance. |
+| ll-37 | 11 | Your own antimicrobial peptide, now tested on wounds that won’t close. |
+| thymosin-beta-4 | 10 | The full-length protein the recovery fragment borrows its name from. |
+| dihexa | 9 | A nootropic whose key mechanism paper has been retracted. |
 
 ## Worklist by entry
 

@@ -1501,6 +1501,818 @@ export const peptides: Peptide[] = [
     updated: REVIEWED,
     changelog: VERIFIED_LOG,
   },
+  // ── Added 2026-10-01: a deliberate widening, one batch per browse gap ──
+  {
+    slug: "liraglutide",
+    name: "Liraglutide",
+    aka: ["Saxenda", "Victoza"],
+    class: "GLP-1 receptor agonist",
+    hook: "The daily GLP-1 that proved the class before semaglutide.",
+    summary:
+      "A once-daily acylated GLP-1 analog, FDA-approved for type 2 diabetes (2010) and chronic weight management (2014). It delivers less weight loss than its weekly successors but carries a completed cardiovascular-outcomes trial and a long safety record. Now largely a generic-era benchmark.",
+    mechanism:
+      "Liraglutide is native GLP-1 with a fatty-acid chain attached, so it binds albumin and survives about a day instead of minutes. It slows gastric emptying, raises glucose-dependent insulin release, and acts on appetite circuits in the brain – the same mechanism semaglutide later stretched to a weekly schedule.",
+    sequence: {
+      residues: "HAEGTFTSDVSSYLEGQAAKEFIAWLVRGRG",
+      note: "GLP-1(7-37) with Lys34→Arg and a C16 palmitoyl chain on Lys26 via a γ-glutamyl spacer.",
+      source: {
+        label: "FDA label – Saxenda (accessdata)",
+        href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/206321Orig1s000lbl.pdf",
+      },
+    },
+    regulatory: {
+      status: "approved",
+      detail:
+        "FDA-approved as Victoza for type 2 diabetes (2010) and as Saxenda for chronic weight management (2014). Generic liraglutide is now available.",
+      source: {
+        label: "FDA label – Saxenda (accessdata)",
+        href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/206321Orig1s000lbl.pdf",
+      },
+    },
+    safety: [
+      {
+        text: "Nausea, diarrhea and constipation lead the adverse-event list and fade for most people. The label carries the class boxed warning for thyroid C-cell tumors seen in rodents, and contraindicates use with a personal or family history of medullary thyroid carcinoma or MEN 2.",
+        source: {
+          label: "FDA label – Saxenda (accessdata)",
+          href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/206321Orig1s000lbl.pdf",
+        },
+      },
+      {
+        text: "In the LEADER outcomes trial, serious adverse events were no more frequent than placebo over a median of nearly four years, the longest controlled exposure for any GLP-1 agonist at the time.",
+        source: {
+          label: "Marso et al., 2016 (NEJM, LEADER)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/27295427/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Why choose liraglutide over semaglutide?",
+        a: "Usually cost or availability: it is older and generic. On weight loss it is clearly weaker. On cardiovascular protection in type 2 diabetes it has its own positive outcomes trial, so it is not a lesser drug on every axis.",
+      },
+      {
+        q: "Is the daily injection a disadvantage?",
+        a: "For adherence, yes, compared with weekly agents. Pharmacologically the daily schedule just reflects a shorter half-life; the receptor and the effects are the same.",
+      },
+    ],
+    tags: ["metabolic", "GLP-1", "approved"],
+    claims: [
+      {
+        text: "Produced 8.0% mean body-weight loss vs 2.6% on placebo over 56 weeks in adults without diabetes (SCALE).",
+        tier: 1,
+        source: {
+          label: "Pi-Sunyer et al., 2015 (NEJM, SCALE)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/26132939/",
+        },
+      },
+      {
+        text: "Reduced major adverse cardiovascular events (hazard ratio 0.87) in type 2 diabetes at high cardiovascular risk (LEADER).",
+        tier: 1,
+        source: {
+          label: "Marso et al., 2016 (NEJM, LEADER)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/27295427/",
+        },
+      },
+      {
+        text: "FDA-approved for type 2 diabetes and for chronic weight management.",
+        tier: 1,
+        kind: "regulatory",
+        source: {
+          label: "FDA label – Saxenda (accessdata)",
+          href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/206321Orig1s000lbl.pdf",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "cagrilintide",
+    name: "Cagrilintide",
+    aka: ["NN9838", "CagriSema (with semaglutide)"],
+    class: "Long-acting amylin analog",
+    hook: "The amylin half of the next weight-loss combination.",
+    summary:
+      "A once-weekly, lipidated analog of amylin, the pancreatic satiety hormone. Alone it produced weight loss comparable to liraglutide in Phase 2; paired with semaglutide as CagriSema it reached the low twenties in Phase 3. It is not approved in any form.",
+    mechanism:
+      "Amylin is co-released with insulin and signals fullness through the brainstem, slowing gastric emptying and suppressing glucagon. Cagrilintide is a stabilized, fatty-acid-linked version built to last a week. Its appeal is additivity: amylin and GLP-1 act on different receptors, so the combination can outdo either alone.",
+    sequence: {
+      residues:
+        "37-residue amylin analog with stabilizing substitutions and a C20 fatty-diacid side chain",
+      note: "Described rather than spelled out: the exact substitutions are in the sponsor's chemistry papers and have not been letter-verified here.",
+      source: {
+        label: "Lau et al., 2021 (Lancet, Phase 2)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/34798060/",
+      },
+    },
+    regulatory: {
+      status: "research-only",
+      detail:
+        "Investigational. Neither cagrilintide alone nor the CagriSema combination is approved anywhere as of this review; Phase 3 results for the combination were published in 2025.",
+      source: {
+        label: "Garvey et al., 2025 (NEJM, REDEFINE 1)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/40544433/",
+      },
+    },
+    safety: [
+      {
+        text: "Gastrointestinal events, mainly nausea, were more common than placebo at every dose in Phase 2, along with injection-site reactions; discontinuation rates were similar across groups.",
+        source: {
+          label: "Lau et al., 2021 (Lancet, Phase 2)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/34798060/",
+        },
+      },
+      {
+        text: "In the Phase 3 combination trial, gastrointestinal adverse events affected about four in five participants on CagriSema versus two in five on placebo, mostly transient and mild to moderate.",
+        source: {
+          label: "Garvey et al., 2025 (NEJM, REDEFINE 1)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40544433/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is cagrilintide a GLP-1 drug?",
+        a: "No. It mimics amylin, a different hormone with a different receptor. That is exactly why it is being paired with semaglutide: the two signals add rather than overlap.",
+      },
+      {
+        q: "How much does cagrilintide add to semaglutide?",
+        a: "In REDEFINE 1 the combination produced about 20% weight loss at 68 weeks against 3% on placebo. The trial also ran each drug alone, and the combination beat both arms.",
+      },
+    ],
+    tags: ["metabolic", "amylin", "investigational"],
+    claims: [
+      {
+        text: "Produced 6.0% to 10.8% mean weight loss across doses vs 3.0% on placebo over 26 weeks, and beat liraglutide at the top dose (Phase 2).",
+        tier: 2,
+        source: {
+          label: "Lau et al., 2021 (Lancet, Phase 2)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/34798060/",
+        },
+      },
+      {
+        text: "Combined with semaglutide (CagriSema), produced 20.4% mean weight loss vs 3.0% on placebo at 68 weeks in a Phase 3 trial of 3,417 adults.",
+        tier: 2,
+        source: {
+          label: "Garvey et al., 2025 (NEJM, REDEFINE 1)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40544433/",
+        },
+      },
+      {
+        text: "No approved indication in any jurisdiction.",
+        tier: 1,
+        kind: "regulatory",
+        source: {
+          label: "Garvey et al., 2025 (NEJM, REDEFINE 1)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40544433/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "sermorelin",
+    name: "Sermorelin",
+    aka: ["GHRH(1-29)", "Geref"],
+    class: "GHRH analog",
+    hook: "The once-approved GHRH analog that lives on in compounding.",
+    summary:
+      "The shortest fragment of growth-hormone-releasing hormone that keeps full activity. It was an FDA-approved diagnostic and pediatric treatment (Geref) until the manufacturer discontinued it in 2008, and it is now widely compounded for adult use that was never on the label. The pediatric evidence is real; the adult anti-aging use is not studied.",
+    mechanism:
+      "Sermorelin is the first 29 residues of native GHRH(1-44). It binds the GHRH receptor on pituitary somatotrophs and triggers a physiological pulse of growth hormone, subject to the body's own feedback – which is the argument made for it over injecting GH directly.",
+    sequence: {
+      residues: "YADAIFTNSYRKVLGQLSARKLLQDIMSR-NH₂",
+      note: "Human GHRH(1-29) amide, unmodified. Tesamorelin and CJC-1295 are both built on this backbone.",
+      source: {
+        label: "Prakash & Goa, 1999 (BioDrugs review)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+      },
+    },
+    regulatory: {
+      status: "withdrawn",
+      detail:
+        "Approved in the US as Geref for diagnosis and then treatment of pediatric growth hormone deficiency; the manufacturer discontinued it in 2008 for reasons unrelated to safety or effectiveness. No approved product exists today, and compounded sermorelin is unapproved.",
+      source: {
+        label: "Prakash & Goa, 1999 (BioDrugs review)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+      },
+    },
+    safety: [
+      {
+        text: "In the pediatric program the main adverse effects were injection-site reactions and transient flushing; no serious drug-related harm emerged in the trials reviewed. Adult, long-term, or anti-aging use has no controlled safety data.",
+        source: {
+          label: "Prakash & Goa, 1999 (BioDrugs review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is sermorelin FDA-approved?",
+        a: "It was. The approved product was withdrawn from the market in 2008 for commercial reasons, so what is prescribed today is compounded and unapproved. The approval covered children with growth hormone deficiency, not adults.",
+      },
+      {
+        q: "Does it work for anti-aging in adults?",
+        a: "That has not been tested in a controlled trial. It reliably raises growth hormone, which is a different thing from improving an outcome.",
+      },
+    ],
+    tags: ["GH-axis", "GHRH", "frontier"],
+    claims: [
+      {
+        text: "Increased height velocity over 12 months in prepubertal children with idiopathic GH deficiency, with limited data suggesting the effect persists to 36 months.",
+        tier: 2,
+        source: {
+          label: "Prakash & Goa, 1999 (BioDrugs review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+        },
+      },
+      {
+        text: "Produces a rapid, relatively specific GH response used diagnostically for GH deficiency.",
+        tier: 2,
+        source: {
+          label: "Prakash & Goa, 1999 (BioDrugs review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+        },
+      },
+      {
+        text: "Formerly FDA-approved (Geref) for pediatric GH deficiency; discontinued in 2008, no approved product today.",
+        tier: 1,
+        kind: "regulatory",
+        source: {
+          label: "Prakash & Goa, 1999 (BioDrugs review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18031173/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "ghrp-2",
+    name: "GHRP-2",
+    aka: ["Pralmorelin", "KP-102"],
+    class: "Ghrelin-receptor / GH secretagogue",
+    hook: "The GH-releasing peptide that became a diagnostic test in Japan.",
+    summary:
+      "A synthetic hexapeptide from the growth-hormone-releasing-peptide family that acts on the ghrelin receptor. It produces a strong GH pulse in children and adults, strong enough that Japan uses it as a stimulation test for GH deficiency. It has never been approved as a treatment anywhere.",
+    mechanism:
+      "GHRP-2 is a ghrelin-receptor (GHS-R1a) agonist that acts directly on pituitary somatotrophs and on the hypothalamus. Given with GHRH the two signals are synergistic, which is the physiological basis for the secretagogue-plus-GHRH combinations now sold in grey markets.",
+    sequence: {
+      residues: "D-Ala-D-2-Nal-Ala-Trp-D-Phe-Lys-NH₂",
+      note: "A hexapeptide with three D-amino acids and a naphthylalanine, so no one-letter form applies.",
+      source: {
+        label: "Pihoker et al., 1995 (J Clin Endocrinol Metab)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/7559885/",
+      },
+    },
+    regulatory: {
+      status: "approved-abroad",
+      detail:
+        "Used in Japan as a GH stimulation test (pralmorelin) for diagnosing adult GH deficiency. Not approved as a treatment anywhere, and not approved in any form by the FDA or EMA.",
+      source: {
+        label: "Kinoshita et al., 2013 (Endocr J)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/23079545/",
+      },
+    },
+    safety: [
+      {
+        text: "Single diagnostic doses have been well tolerated in children and adults, including intranasally. Nothing is known about long-term or repeated use, and secretagogues of this family also stimulate ACTH and cortisol.",
+        source: {
+          label: "Pihoker et al., 1995 (J Clin Endocrinol Metab)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/7559885/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is GHRP-2 approved?",
+        a: "Only as a one-off diagnostic test in Japan. There is no approved therapeutic use of GHRP-2 anywhere, and the diagnostic record says nothing about what repeated dosing does.",
+      },
+    ],
+    tags: ["GH-axis", "secretagogue", "approved-abroad"],
+    claims: [
+      {
+        text: "Produced GH responses in children equal to GHRH and synergistic with it; intranasal doses were effective and well tolerated.",
+        tier: 2,
+        source: {
+          label: "Pihoker et al., 1995 (J Clin Endocrinol Metab)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/7559885/",
+        },
+      },
+      {
+        text: "As a stimulation test, produced higher peak GH than the insulin tolerance test with high sensitivity and specificity for severe adult GH deficiency.",
+        tier: 2,
+        source: {
+          label: "Kinoshita et al., 2013 (Endocr J)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/23079545/",
+        },
+      },
+      {
+        text: "Used as a diagnostic agent in Japan; no approved therapeutic indication anywhere.",
+        tier: 1,
+        kind: "regulatory",
+        source: {
+          label: "Kinoshita et al., 2013 (Endocr J)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/23079545/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "ghrp-6",
+    name: "GHRP-6",
+    class: "Ghrelin-receptor / GH secretagogue",
+    hook: "The unnatural peptide that led researchers to ghrelin.",
+    summary:
+      "The original growth-hormone-releasing peptide, a synthetic hexapeptide designed in the 1980s before anyone knew what receptor it hit. The hunt for that receptor produced ghrelin. It releases GH in people by every route tested, raises cortisol as well, and was never developed as a drug.",
+    mechanism:
+      "GHRP-6 is a ghrelin-receptor (GHS-R1a) agonist. It was built by trial and error from enkephalin fragments; its receptor was cloned in 1996 and the natural ligand, ghrelin, was found in 1999. It stimulates GH directly at the pituitary and through the hypothalamus, and in people it also stimulates ACTH and cortisol and provokes hunger.",
+    sequence: {
+      residues: "His-D-Trp-Ala-Trp-D-Phe-Lys-NH₂",
+      note: "A hexapeptide with two D-amino acids, so no one-letter form applies.",
+      source: {
+        label: "Bowers, 2001 (J Clin Endocrinol Metab review)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/11297568/",
+      },
+    },
+    regulatory: {
+      status: "research-only",
+      detail:
+        "Never approved in any jurisdiction. A research tool with a short human-study record in the 1990s, now sold in grey markets.",
+      source: {
+        label: "Bowers, 2001 (J Clin Endocrinol Metab review)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/11297568/",
+      },
+    },
+    safety: [
+      {
+        text: "In healthy men it raised ACTH and cortisol overnight alongside GH, the opposite of GHRH, which blunts cortisol. That is the clearest difference from ipamorelin, and the reason 'selective' secretagogues were developed.",
+        source: {
+          label: "Frieboes et al., 1995 (Neuroendocrinology)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/7617137/",
+        },
+      },
+      {
+        text: "No long-term human safety data exist. The hunger-promoting effect of ghrelin-receptor agonists is well documented and is a feature, not a side effect, of the mechanism.",
+        source: {
+          label: "Bowers, 2001 (J Clin Endocrinol Metab review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/11297568/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "How does GHRP-6 differ from ipamorelin?",
+        a: "Same receptor, different selectivity. GHRP-6 raises cortisol and prolactin along with GH in human studies; ipamorelin was engineered to avoid that, at least in preclinical work. GHRP-6 is also the stronger appetite stimulant.",
+      },
+    ],
+    tags: ["GH-axis", "secretagogue", "investigational"],
+    claims: [
+      {
+        text: "Raised overnight GH, ACTH and cortisol and increased stage 2 sleep in healthy men (placebo-controlled).",
+        tier: 2,
+        source: {
+          label: "Frieboes et al., 1995 (Neuroendocrinology)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/7617137/",
+        },
+      },
+      {
+        text: "Given orally to short-statured children, produced a GH response comparable to intravenous GHRH.",
+        tier: 2,
+        source: {
+          label: "Bellone et al., 1995 (Eur J Endocrinol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/7581965/",
+        },
+      },
+      {
+        text: "Acts at the ghrelin receptor; its discovery led to the identification of GHS-R and of ghrelin itself.",
+        tier: 3,
+        source: {
+          label: "Bowers, 2001 (J Clin Endocrinol Metab review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/11297568/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "hexarelin",
+    name: "Hexarelin",
+    aka: ["Examorelin"],
+    class: "Ghrelin-receptor / GH secretagogue",
+    hook: "The potent secretagogue with a heart story that never left the lab.",
+    summary:
+      "A methylated analog of GHRP-6 and one of the strongest peptide GH secretagogues tested in people. Human studies mapped its GH, prolactin and cortisol effects in detail in the 1990s and early 2000s. The cardioprotective claims that circulate rest on isolated rat hearts.",
+    mechanism:
+      "Hexarelin is GHRP-6 with a methyl group on the tryptophan, making it more stable and more potent. It acts at the ghrelin receptor to release GH, and in people also drives ACTH and cortisol, apparently through vasopressin. A separate cardiac binding site (CD36) is proposed to explain its effects on heart tissue in animals.",
+    sequence: {
+      residues: "His-D-2-Me-Trp-Ala-Trp-D-Phe-Lys-NH₂",
+      note: "GHRP-6 with 2-methyl-D-tryptophan in position 2. Three-letter form; no one-letter equivalent.",
+      source: {
+        label: "Maccario et al., 2002 (Eur J Endocrinol)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/11888836/",
+      },
+    },
+    regulatory: {
+      status: "research-only",
+      detail:
+        "Never approved in any jurisdiction. Studied as a diagnostic test of pituitary reserve and as an experimental secretagogue; no therapeutic program reached registration.",
+      source: {
+        label: "Korbonits et al., 1999 (Clin Endocrinol)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/10469018/",
+      },
+    },
+    safety: [
+      {
+        text: "Single doses in healthy volunteers raise ACTH and cortisol as well as GH and prolactin, and produce a small acute rise in appetite. Repeated daily injections blunted the GH response within a day, an early sign of tachyphylaxis.",
+        source: {
+          label: "Maccario et al., 2002 (Eur J Endocrinol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/11888836/",
+        },
+      },
+      {
+        text: "No long-term human safety data exist. The cardiac effects reported in animals have not been examined in people.",
+        source: {
+          label: "Torsello et al., 2001 (Endocrine)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/11322492/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is hexarelin good for the heart?",
+        a: "In isolated rat hearts it protected against damage from calcium deprivation, independently of GH. No human study has tested a cardiac outcome. That is a hypothesis with a mechanism, not a benefit.",
+      },
+    ],
+    tags: ["GH-axis", "secretagogue", "investigational"],
+    claims: [
+      {
+        text: "Two or three daily injections raised 24-hour GH secretion in healthy men without changing IGF-1, prolactin, ACTH or cortisol over one day.",
+        tier: 2,
+        source: {
+          label: "Maccario et al., 2002 (Eur J Endocrinol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/11888836/",
+        },
+      },
+      {
+        text: "Produced higher peak GH than insulin-induced hypoglycemia as a test of pituitary reserve in patients with pituitary disease.",
+        tier: 2,
+        source: {
+          label: "Korbonits et al., 1999 (Clin Endocrinol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/10469018/",
+        },
+      },
+      {
+        text: "Protected isolated rat hearts from calcium-paradox damage, an effect GH itself did not reproduce.",
+        tier: 3,
+        source: {
+          label: "Torsello et al., 2001 (Endocrine)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/11322492/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "afamelanotide",
+    name: "Afamelanotide",
+    aka: ["Scenesse", "Melanotan I", "[Nle4, D-Phe7]-α-MSH"],
+    class: "Melanocortin receptor agonist",
+    hook: "The tanning peptide that became an orphan drug for light intolerance.",
+    summary:
+      "A stabilized α-MSH analog that darkens skin through MC1R. It is FDA-approved (Scenesse, 2019) as an implant for erythropoietic protoporphyria, a rare disorder where sunlight causes severe pain. It is the molecule grey-market 'melanotan I' claims to be.",
+    mechanism:
+      "Two substitutions make α-MSH resistant to breakdown and more potent at the melanocortin-1 receptor on melanocytes. The result is eumelanin production without UV exposure. In protoporphyria the extra pigment and the receptor's antioxidant effects raise the threshold for phototoxic reactions.",
+    sequence: {
+      residues: "Ac-Ser-Tyr-Ser-Nle-Glu-His-D-Phe-Arg-Trp-Gly-Lys-Pro-Val-NH₂",
+      note: "α-MSH with Met4→Nle and Phe7→D-Phe; linear, 13 residues.",
+      source: {
+        label: "FDA label – Scenesse (accessdata)",
+        href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210797s000lbl.pdf",
+      },
+    },
+    regulatory: {
+      status: "approved",
+      detail:
+        "FDA-approved (Scenesse, 2019) as a subcutaneous implant to increase pain-free light exposure in adults with erythropoietic protoporphyria; approved by the EMA in 2014.",
+      source: {
+        label: "FDA label – Scenesse (accessdata)",
+        href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210797s000lbl.pdf",
+      },
+    },
+    safety: [
+      {
+        text: "The label lists implant-site reactions, nausea, headache and skin hyperpigmentation, and recommends full-body skin examination because the drug darkens existing moles and may make skin cancers harder to spot.",
+        source: {
+          label: "FDA label – Scenesse (accessdata)",
+          href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210797s000lbl.pdf",
+        },
+      },
+      {
+        text: "In the two pivotal trials adverse events were mostly mild and serious events were not judged drug-related. The approved product is a controlled-release implant; injectable 'melanotan I' sold online has none of that safety record.",
+        source: {
+          label: "Langendonk et al., 2015 (NEJM)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/26132941/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is afamelanotide the same as melanotan II?",
+        a: "No. Afamelanotide is a linear α-MSH analog selective enough for MC1R to be approved as a drug. Melanotan II is a cyclic, broad-spectrum agonist that also hits MC4R, which is why it affects libido, and it was never approved.",
+      },
+      {
+        q: "Can it be used for cosmetic tanning?",
+        a: "It is approved only for erythropoietic protoporphyria and supplied as an implant through specialist centers. Cosmetic use is off-label and the online 'melanotan I' market is unregulated.",
+      },
+    ],
+    tags: ["melanocortin", "pigmentation", "approved"],
+    claims: [
+      {
+        text: "Increased pain-free sunlight exposure and reduced phototoxic reactions versus placebo in two randomized trials in erythropoietic protoporphyria.",
+        tier: 1,
+        source: {
+          label: "Langendonk et al., 2015 (NEJM)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/26132941/",
+        },
+      },
+      {
+        text: "FDA-approved for erythropoietic protoporphyria in adults.",
+        tier: 1,
+        kind: "regulatory",
+        source: {
+          label: "FDA label – Scenesse (accessdata)",
+          href: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210797s000lbl.pdf",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "ll-37",
+    name: "LL-37",
+    aka: ["Cathelicidin", "hCAP18 (37-residue fragment)"],
+    class: "Human antimicrobial peptide",
+    hook: "Your own antimicrobial peptide, now tested on wounds that won’t close.",
+    summary:
+      "The only human cathelicidin, a 37-residue peptide cut from the hCAP18 precursor in skin, airways and immune cells. It kills microbes, recruits immune cells and promotes vessel growth. As a topical drug it has been through a Phase 2b trial in venous leg ulcers that missed its primary endpoint and a small diabetic-foot trial that did not.",
+    mechanism:
+      "LL-37 is an amphipathic helix that disrupts bacterial membranes directly and, at lower concentrations, signals to host cells: it is chemotactic for neutrophils and monocytes, drives angiogenesis and keratinocyte migration, and modulates inflammation in both directions depending on context. That breadth is why it is studied for wounds, infection and, experimentally, cancer.",
+    sequence: {
+      residues: "LLGDFFRKSKEKIGKEFKRIVQRIKDFLRNLVPRTES",
+      note: "Residues 134–170 of the CAMP gene product hCAP18 (UniProt P49913).",
+      source: {
+        label: "UniProt – cathelicidin / hCAP18 (P49913)",
+        href: "https://www.uniprot.org/uniprotkb/P49913/entry",
+      },
+    },
+    regulatory: {
+      status: "research-only",
+      detail:
+        "Not approved in any jurisdiction. A topical formulation has reached Phase 2b; intratumoral injection has been in Phase 1.",
+      source: {
+        label: "Mahlapuu et al., 2021 (Wound Repair Regen, Phase 2b)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/34687253/",
+      },
+    },
+    safety: [
+      {
+        text: "Topical LL-37 was tolerated across a 148-patient placebo-controlled trial without a safety signal that stopped development.",
+        source: {
+          label: "Mahlapuu et al., 2021 (Wound Repair Regen, Phase 2b)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/34687253/",
+        },
+      },
+      {
+        text: "A Phase 1 intratumoral program in melanoma produced a detailed case report of widespread blistering skin toxicity, a reminder that an immune-activating peptide can activate immunity where you did not intend.",
+        source: {
+          label: "Dolkar et al., 2018 (J Cutan Pathol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/29665030/",
+        },
+      },
+      {
+        text: "Excess LL-37 is implicated in rosacea and psoriasis, so systemic or high-dose use carries a plausible pro-inflammatory risk. No systemic human safety data exist.",
+        source: {
+          label: "Dürr et al., 2006 (Biochim Biophys Acta review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/16716248/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Did LL-37 work for leg ulcers?",
+        a: "Not on the trial's primary endpoint. Across all 148 patients healing was no better than placebo. A post-hoc look at the largest wounds found an effect, which is a reason to run another trial, not a result.",
+      },
+      {
+        q: "Is injectable LL-37 sold online the same thing?",
+        a: "Chemically it may be. The human data are for a topical cream on chronic wounds and for intratumoral injection in a trial setting. Systemic injection has no human evidence at all.",
+      },
+    ],
+    tags: ["immune", "repair", "anti-inflammatory", "investigational"],
+    claims: [
+      {
+        text: "Did not improve healing of hard-to-heal venous leg ulcers versus placebo in the full population of a Phase 2b RCT; a post-hoc subgroup with large wounds improved.",
+        tier: 2,
+        source: {
+          label: "Mahlapuu et al., 2021 (Wound Repair Regen, Phase 2b)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/34687253/",
+        },
+      },
+      {
+        text: "Increased granulation tissue in mildly infected diabetic foot ulcers versus placebo cream in a small double-blind RCT.",
+        tier: 2,
+        source: {
+          label: "Miranda et al., 2023 (Arch Dermatol Res)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/37480520/",
+        },
+      },
+      {
+        text: "Kills bacteria by membrane disruption and acts as a chemoattractant and angiogenic signal in vitro and in animals.",
+        tier: 3,
+        source: {
+          label: "Dürr et al., 2006 (Biochim Biophys Acta review)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/16716248/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "thymosin-beta-4",
+    name: "Thymosin β4",
+    aka: ["Tβ4", "RGN-259 (eye drops)", "Timbetasin"],
+    class: "Actin-sequestering regenerative peptide",
+    hook: "The full-length protein the recovery fragment borrows its name from.",
+    summary:
+      "A 43-residue peptide found in nearly every human cell, where it holds actin monomers in reserve and, when released at injury, drives cell migration and repair. It has been through controlled eye trials and is in Phase 3 for dry eye and neurotrophic keratopathy. The grey-market 'TB-500' is a seven-residue fragment of it, not this molecule.",
+    mechanism:
+      "Thymosin β4 binds G-actin, controlling the pool available to build the cytoskeleton. After injury it is released by platelets and immune cells, promotes migration of keratinocytes, endothelial and progenitor cells, reduces inflammation and myofibroblast scarring, and supports new vessel growth. The eye is the organ where that biology has come closest to a drug.",
+    sequence: {
+      residues: "Ac-SDKPDMAEIEKFDKSKLKKTETQEKNPLPSKETIEQEKQAGES",
+      note: "43 residues, N-acetylated. The LKKTET motif (residues 17–22) is the actin-binding site that TB-500 copies.",
+      source: {
+        label: "UniProt – thymosin β4 (P62328)",
+        href: "https://www.uniprot.org/uniprotkb/P62328/entry",
+      },
+    },
+    regulatory: {
+      status: "research-only",
+      detail:
+        "Not approved in any jurisdiction. The ophthalmic formulation (RGN-259) has completed Phase 2 and entered Phase 3 for dry eye and neurotrophic keratopathy.",
+      source: {
+        label: "Sosne, 2018 (Expert Opin Biol Ther)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/30063853/",
+      },
+    },
+    safety: [
+      {
+        text: "In the controlled dry-eye trial, safety measures including visual acuity, intraocular pressure and corneal sensitivity showed no concern. Those are local, short-course data; systemic use in people has no safety record.",
+        source: {
+          label: "Sosne & Ousler, 2015 (Clin Ophthalmol, Phase 2)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/26056426/",
+        },
+      },
+      {
+        text: "Its angiogenic and migratory activity is the basis of a theoretical tumor-promotion concern that has not been resolved either way in humans.",
+        source: {
+          label: "Goldstein et al., 2012 (Expert Opin Biol Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/22074294/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is thymosin β4 the same as TB-500?",
+        a: "No. Thymosin β4 is the whole 43-residue protein studied in the eye trials. TB-500 is a synthetic seven-residue fragment with no human trials of its own. Results for one do not transfer to the other.",
+      },
+      {
+        q: "Did the dry-eye trial succeed?",
+        a: "Partly. The Phase 2 trial missed both primary endpoints but improved several secondary measures, which was enough to justify Phase 3. Until those read out, the honest status is promising and unproven.",
+      },
+    ],
+    tags: ["repair", "angiogenesis", "investigational"],
+    claims: [
+      {
+        text: "Missed both primary endpoints (discomfort, inferior corneal staining) but improved several secondary measures in a 72-patient placebo-controlled Phase 2 dry-eye trial.",
+        tier: 2,
+        source: {
+          label: "Sosne & Ousler, 2015 (Clin Ophthalmol, Phase 2)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/26056426/",
+        },
+      },
+      {
+        text: "Promotes cell migration, angiogenesis and wound repair and reduces scarring in animal models of skin, eye, heart and brain injury.",
+        tier: 3,
+        source: {
+          label: "Goldstein et al., 2012 (Expert Opin Biol Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/22074294/",
+        },
+      },
+      {
+        text: "Phase 3 trials in dry eye and neurotrophic keratopathy are ongoing; no result has been published at review.",
+        tier: 4,
+        source: {
+          label: "Sosne, 2018 (Expert Opin Biol Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/30063853/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
+  {
+    slug: "dihexa",
+    name: "Dihexa",
+    aka: ["PNB-0408", "N-hexanoic-Tyr-Ile-(6)-aminohexanoic amide"],
+    class: "Angiotensin IV analog",
+    hook: "A nootropic whose key mechanism paper has been retracted.",
+    summary:
+      "An orally active, brain-penetrant analog of angiotensin IV developed as a cognitive enhancer. It reversed drug-induced memory deficits in rats and improved an Alzheimer's mouse model, but the paper tying it to the HGF/c-Met growth pathway was retracted in 2025 and the original rat study carries a journal Notice of Concern. There are no human data.",
+    mechanism:
+      "Dihexa is built from the three-residue core of angiotensin IV, capped and stabilized so it survives digestion and crosses the blood-brain barrier. Its developers attributed its synapse-building effect to activation of hepatocyte growth factor and its receptor c-Met; that specific claim now rests on a retracted paper. Independent work in mice points instead at PI3K/AKT signalling and reduced neuroinflammation.",
+    sequence: {
+      residues: "N-hexanoic-Tyr-Ile-(6)-aminohexanoic amide",
+      note: "A capped tripeptide-like molecule: hexanoyl N-terminus, Tyr-Ile, and a 6-aminohexanoic amide C-terminus.",
+      source: {
+        label: "McCoy et al., 2013 (J Pharmacol Exp Ther)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/23055539/",
+      },
+    },
+    regulatory: {
+      status: "research-only",
+      detail:
+        "Never approved or entered human trials in any jurisdiction. Preclinical only, and sold in grey markets on the strength of rodent data.",
+      source: {
+        label: "McCoy et al., 2013 (J Pharmacol Exp Ther)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/23055539/",
+      },
+    },
+    safety: [
+      {
+        text: "No human safety data of any kind exist. If the proposed HGF/c-Met mechanism is real, it is a pathway that drives tumor growth and metastasis when over-activated, which is a serious theoretical concern for chronic use.",
+        source: {
+          label:
+            "Benoist et al., 2014 – retraction notice (J Pharmacol Exp Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40312093/",
+        },
+      },
+      {
+        text: "The originating group's foundational rat study was the subject of a 2021 journal Notice of Concern, which weakens the preclinical base the grey market relies on.",
+        source: {
+          label:
+            "Notice of Concern on McCoy et al., 2013 (J Pharmacol Exp Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/34551989/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is dihexa stronger than BDNF?",
+        a: "That popular claim comes from an in-vitro potency comparison in the developer's own work, part of a literature now under a Notice of Concern and a retraction. It has never been measured in a person.",
+      },
+      {
+        q: "Has dihexa been tested in humans?",
+        a: "No. Every result is from rats or mice. There is no pharmacokinetic, safety or efficacy data in people.",
+      },
+    ],
+    tags: ["neuro", "nootropic", "frontier", "investigational"],
+    claims: [
+      {
+        text: "Reversed scopolamine-induced memory deficits and increased hippocampal synaptogenesis in rats (study now under a Notice of Concern).",
+        tier: 3,
+        source: {
+          label: "McCoy et al., 2013 (J Pharmacol Exp Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/23055539/",
+        },
+      },
+      {
+        text: "Restored spatial learning and reduced neuroinflammation in APP/PS1 Alzheimer's-model mice via PI3K/AKT signalling (independent group).",
+        tier: 3,
+        source: {
+          label: "Sun et al., 2021 (Brain Sci)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/34827486/",
+        },
+      },
+      {
+        text: "The claim that its effects depend on HGF/c-Met activation rests on a paper retracted in 2025.",
+        tier: 4,
+        source: {
+          label:
+            "Benoist et al., 2014 – retraction notice (J Pharmacol Exp Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40312093/",
+        },
+      },
+    ],
+    updated: "2026-10-01",
+    changelog: [{ date: "2026-10-01", note: "Entry added." }],
+  },
 ];
 
 export function getPeptide(slug: string): Peptide | undefined {
