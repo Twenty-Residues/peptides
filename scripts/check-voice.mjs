@@ -5,6 +5,11 @@
  *
  *   node scripts/check-voice.mjs            # print report
  *   node scripts/check-voice.mjs --write    # also write docs/voice-check.md
+ *   node scripts/check-voice.mjs --strict   # exit 1 on any "fix" finding (CI / build)
+ *
+ * Besides the catalog, the banned-word and dosing rules also sweep the site's
+ * own copy (category blurbs, site description, page components) under the
+ * slug "site", so hype can't creep in through a landing page.
  *
  * Rules (from VOICE.md):
  *   - Hooks: one line, ~10 words, a real claim or tension.
@@ -113,6 +118,27 @@ for (const e of entries) {
   if (straight > 0) add(e.slug, "nit", "straight apostrophes", `${straight}× ' — the site renders them as typed; use ’ for polish`);
 }
 
+// ── Site copy (not the catalog): banned words and dosing only ─────────────
+import { readdirSync, statSync } from "node:fs";
+const walk = (dir) =>
+  readdirSync(dir).flatMap((f) => {
+    const p = join(dir, f);
+    return statSync(p).isDirectory() ? walk(p) : /\.(tsx?|mdx?)$/.test(f) && !p.endsWith("peptides.ts") ? [p] : [];
+  });
+const siteText = [];
+for (const f of [...walk(join(root, "src", "app")), ...walk(join(root, "src", "components")), join(root, "src", "lib", "categories.ts"), join(root, "src", "lib", "site.ts")]) {
+  const t = readFileSync(f, "utf8");
+  // String literals and JSX text nodes, with the file for the report.
+  for (const x of t.matchAll(/"((?:[^"\\]|\\.)*)"|>([^<>{}]{12,})</g)) {
+    const str = (x[1] ?? x[2] ?? "").trim();
+    if (str && !str.startsWith("https://") && !/^[\w\s/:.\-]*(className|px|py|text-|bg-|ring-)/.test(str)) siteText.push({ str, file: f.slice(root.length + 1) });
+  }
+}
+for (const { str, file } of siteText) {
+  for (const b of BANNED) if (b.re.test(str)) add("site", "fix", `${b.why} (${file})`, `“${str.slice(0, 110)}${str.length > 110 ? "…" : ""}”`);
+  for (const d of DOSING) if (d.re.test(str)) add("site", "review", `dosing: ${d.why} (${file})`, `“${str.slice(0, 110)}${str.length > 110 ? "…" : ""}”`);
+}
+
 // ── Report ────────────────────────────────────────────────────────────────
 const order = { fix: 0, review: 1, nit: 2 };
 findings.sort((a, b) => order[a.severity] - order[b.severity] || a.slug.localeCompare(b.slug));
@@ -167,4 +193,11 @@ if (process.argv.includes("--write")) {
   mkdirSync(join(root, "docs"), { recursive: true });
   writeFileSync(join(root, "docs", "voice-check.md"), out + "\n");
   console.error(`\nWrote docs/voice-check.md (${counts.fix} fix, ${counts.review} review, ${counts.nit} nit)`);
+}
+if (process.argv.includes("--strict")) {
+  if (counts.fix > 0) {
+    console.error(`\n✗ Voice check: ${counts.fix} "fix" finding(s) break VOICE.md. See the worklist above.\n`);
+    process.exit(1);
+  }
+  console.error(`\n✓ Voice check passed — ${entries.length} entries, ${counts.review} review, ${counts.nit} nit.`);
 }

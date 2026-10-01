@@ -4,7 +4,7 @@ A plain-language, research-grade reference for peptides — "Examine for peptide
 Every claim is graded by how well it's proven (the Standard) and cited to a fixed
 record. We sell nothing.
 
-Next.js 15 (App Router) · TypeScript · Tailwind CSS v4.
+Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Node ≥ 22.6.
 
 ## What's here
 
@@ -31,13 +31,32 @@ query. The build enforces this:
 npm run check:sources
 ```
 
-Copy is held to [`VOICE.md`](VOICE.md). The voice check audits hooks,
-summaries, dashes, banned words, and dosing language, and writes a worklist
-to [`docs/voice-check.md`](docs/voice-check.md):
+The catalog check loads the real data and verifies its structure: unique
+slugs, every claim tiered and cited to a known record host (PubMed, PMC, DOI,
+FDA label, ClinicalTrials.gov, UniProt), regulatory claims and status tags in
+agreement, every entry in a browse category, real dates, valid sequences.
+Missing sections (safety, FAQs, sequence) print as warnings – the editor's
+worklist:
 
 ```bash
-npm run check:voice
+npm run check:catalog
 ```
+
+Copy is held to [`VOICE.md`](VOICE.md). The voice check audits hooks,
+summaries, dashes, banned words, and dosing language across the catalog and
+the site's own page copy, and writes a worklist to
+[`docs/voice-check.md`](docs/voice-check.md). Commit the regenerated worklist;
+CI fails if it is stale or if any rule is broken outright:
+
+```bash
+npm run check:voice       # regenerate docs/voice-check.md
+npm run check:voice:ci    # strict: exit 1 on any "fix" finding
+npm run check             # sources + catalog + voice, what `build` runs first
+```
+
+Citations are re-fetched weekly by the `Citation links` workflow (and on
+demand with `npm run check:links`); a 404, a DNS failure, or a redirect to a
+search page fails the run.
 
 ## Develop
 
@@ -52,7 +71,8 @@ npm run dev
 npm run build && npm start
 ```
 
-The `build` script runs the source guardrail before `next build`.
+The `build` script runs `npm run check` (sources, catalog, voice) before `next build`.
+CI (`.github/workflows/ci.yml`) runs the same checks plus a typecheck and build on every PR.
 
 ## Deploy
 

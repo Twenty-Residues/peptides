@@ -532,6 +532,10 @@ export const peptides: Peptide[] = [
         text: "No approved human indication; remains investigational.",
         tier: 1,
         kind: "regulatory",
+        source: {
+          label: "Raun et al., 1998 (Eur J Endocrinol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/9849822/",
+        },
       },
     ],
     updated: REVIEWED,
@@ -599,6 +603,10 @@ export const peptides: Peptide[] = [
         text: "No approved human indication in any major regulatory jurisdiction.",
         tier: 1,
         kind: "regulatory",
+        source: {
+          label: "Safety of intravenous BPC-157 in humans (PubMed)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40131143/",
+        },
       },
     ],
     updated: REVIEWED,
@@ -714,7 +722,7 @@ export const peptides: Peptide[] = [
         a: "There is real controlled human evidence for topical use – better than most 'peptide' skincare – but the trials are small and short-term, so treat it as promising rather than proven.",
       },
     ],
-    tags: ["skin", "repair", "cosmetic"],
+    tags: ["skin", "repair", "cosmetic", "investigational"],
     claims: [
       {
         text: "Upregulates collagen, elastin, and repair/remodeling gene programs across cell and tissue models.",
@@ -878,7 +886,7 @@ export const peptides: Peptide[] = [
         a: "That claim rests on decades-old, mostly single-group studies and has not been independently replicated at scale. Treat it as an open question, not a demonstrated effect.",
       },
     ],
-    tags: ["longevity", "frontier"],
+    tags: ["longevity", "frontier", "investigational"],
     claims: [
       {
         text: "Induced telomerase (hTERT) activity and telomere elongation in cultured human somatic cells.",
@@ -926,7 +934,7 @@ export const peptides: Peptide[] = [
         a: "It is used clinically in Russia and small studies there report anxiolytic effects, but it has not been validated in large independent Western trials.",
       },
     ],
-    tags: ["neuro", "anxiolytic", "frontier"],
+    tags: ["neuro", "anxiolytic", "frontier", "approved-abroad"],
     claims: [
       {
         text: "Comparable anxiolytic effect to a benzodiazepine, with added anti-asthenic effects, in a small Russian study of generalized anxiety and neurasthenia.",
@@ -981,7 +989,7 @@ export const peptides: Peptide[] = [
         a: "In Russia it is used clinically, including in stroke care. It has not been approved or validated in large Western randomized trials.",
       },
     ],
-    tags: ["neuro", "nootropic", "frontier"],
+    tags: ["neuro", "nootropic", "frontier", "approved-abroad"],
     claims: [
       {
         text: "Regulated BDNF and TrkB expression in rat hippocampus – the mechanistic basis for its nootropic claims.",
@@ -999,6 +1007,10 @@ export const peptides: Peptide[] = [
         text: "Registered in Russia as an intranasal drug; not approved by the FDA or EMA.",
         tier: 1,
         kind: "regulatory",
+        source: {
+          label: "Dolotov et al., 2006 (Neuroscience)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/16996037/",
+        },
       },
     ],
     updated: REVIEWED,
@@ -1178,7 +1190,7 @@ export const peptides: Peptide[] = [
         a: "It is unapproved, and case reports link it to serious harms – rhabdomyolysis, priapism, and changes to moles including melanoma. Dermatologists caution against it.",
       },
     ],
-    tags: ["melanocortin", "pigmentation", "frontier"],
+    tags: ["melanocortin", "pigmentation", "frontier", "investigational"],
     claims: [
       {
         text: "A broad-spectrum α-MSH analog and potent agonist at MC1R/MC3R/MC4R, driving pigmentation and sexual response (early human Phase I).",
