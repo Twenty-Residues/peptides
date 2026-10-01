@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Catalog, voice, types, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Source guardrail (fixed records only)
+        run: npm run check:sources
+      - name: Catalog integrity (schema, tags, dates, citations)
+        run: npm run check:catalog
+      - name: Voice (VOICE.md rules, strict)
+        run: npm run check:voice:ci
+      - name: Worklist is current
+        run: |
+          npm run check:voice
+          git diff --exit-code -I '^Generated ' docs/voice-check.md || {
+            echo "::error::docs/voice-check.md is stale. Run 'npm run check:voice' and commit the result."; exit 1; }
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build
+        run: npx next build
