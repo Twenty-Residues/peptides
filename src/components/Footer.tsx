@@ -55,6 +55,11 @@ export function Footer() {
                 </li>
               ))}
               <li>
+                <Link href="/privacy" className="hover:text-plum hover:underline">
+                  Privacy
+                </Link>
+              </li>
+              <li>
                 <a
                   href={`mailto:${editorial.contact}`}
                   className="hover:text-plum hover:underline"
