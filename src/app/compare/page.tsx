@@ -3,6 +3,7 @@ import Link from "next/link";
 import { peptides } from "@/lib/peptides";
 import { site } from "@/lib/site";
 import { compareGroups, type CompareRow } from "@/lib/compare";
+import { comparisons, pairOf } from "@/lib/comparisons";
 import { TIERS, TierBadge } from "@/lib/evidence";
 
 export const metadata: Metadata = {
@@ -110,6 +111,12 @@ export default function ComparePage() {
         <span className="text-xs font-semibold tracking-widest text-muted uppercase">
           Jump to
         </span>
+        <a
+          href="#head-to-head"
+          className="font-medium text-plum-500 underline-offset-4 hover:underline"
+        >
+          Head to head
+        </a>
         {groups.map((g) => (
           <a
             key={g.category.slug}
@@ -129,6 +136,37 @@ export default function ComparePage() {
           </span>
         ))}
       </div>
+
+      {/* Head to head */}
+      <section id="head-to-head" className="mt-12 scroll-mt-24">
+        <h2 className="text-2xl font-medium text-plum">Head to head</h2>
+        <p className="mt-1 max-w-prose text-sm text-muted">
+          The pairs people actually weigh against each other, with every point
+          of difference cited.
+        </p>
+        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+          {comparisons.map((c) => {
+            const [a, b] = pairOf(c);
+            return (
+              <li key={c.slug}>
+                <Link
+                  href={`/compare/${c.slug}`}
+                  className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 shadow-sm transition hover:-translate-y-px hover:border-plum-500/30 hover:shadow-md"
+                >
+                  <span className="font-serif text-lg font-semibold text-plum group-hover:text-plum-500">
+                    {a.name}{" "}
+                    <span className="font-sans text-sm text-muted">vs</span>{" "}
+                    {b.name}
+                  </span>
+                  <span className="mt-2 text-sm leading-relaxed text-ink/75">
+                    {c.hook}
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
 
       {groups.map((g) => (
         <section
