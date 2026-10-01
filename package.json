@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "check:sources": "node scripts/check-sources.mjs",
+    "check:voice": "node scripts/check-voice.mjs --write",
     "build": "node scripts/check-sources.mjs && next build",
     "start": "next start",
     "lint": "next lint"

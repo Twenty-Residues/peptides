@@ -31,6 +31,14 @@ query. The build enforces this:
 npm run check:sources
 ```
 
+Copy is held to [`VOICE.md`](VOICE.md). The voice check audits hooks,
+summaries, dashes, banned words, and dosing language, and writes a worklist
+to [`docs/voice-check.md`](docs/voice-check.md):
+
+```bash
+npm run check:voice
+```
+
 ## Develop
 
 ```bash
