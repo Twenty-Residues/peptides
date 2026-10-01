@@ -313,7 +313,7 @@ export const peptides: Peptide[] = [
     name: "AOD-9604",
     aka: ["hGH fragment 176-191"],
     class: "Growth-hormone fragment",
-    hook: "The 'fat-burning fragment' the clinic couldn't confirm.",
+    hook: "The ‘fat-burning fragment’ the clinic couldn’t confirm.",
     summary:
       "A synthetic fragment of human growth hormone marketed for lipolysis. It showed fat-metabolism activity in preclinical work, but company-run human weight-loss trials failed to beat placebo – a clean example of a great story meeting hard endpoints.",
     mechanism:
@@ -801,7 +801,7 @@ export const peptides: Peptide[] = [
     slug: "mots-c",
     name: "MOTS-c",
     class: "Mitochondrial-derived peptide",
-    hook: "An 'exercise mimetic' written into your mitochondrial DNA.",
+    hook: "An ‘exercise mimetic’ written into your mitochondrial DNA.",
     summary:
       "A 16-amino-acid peptide encoded within mitochondrial DNA that activates AMPK and improves insulin sensitivity – the closest thing to a molecular echo of exercise. The mechanism work is elegant and Western peer-reviewed; human data is early and mostly associative.",
     mechanism:

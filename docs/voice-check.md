@@ -24,7 +24,7 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 | semaglutide | 9 | The molecule that rewrote what weight loss looks like. |
 | tirzepatide | 11 | Two incretin receptors, one injection, up to ~21% body weight gone. |
 | retatrutide | 9 | The triple agonist posting the biggest weight-loss numbers yet. |
-| aod-9604 | 7 | The 'fat-burning fragment' the clinic couldn't confirm. |
+| aod-9604 | 7 | The ‘fat-burning fragment’ the clinic couldn’t confirm. |
 | tesamorelin | 8 | An FDA-approved GHRH analog that targets visceral fat. |
 | cjc-1295 | 9 | One shot, a week of elevated GH and IGF-1. |
 | ipamorelin | 8 | The selective GH pulse without the cortisol baggage. |
@@ -32,7 +32,7 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 | tb-500 | 7 | The migration-and-angiogenesis peptide behind the recovery hype. |
 | ghk-cu | 10 | The copper peptide that actually earned its place in skincare. |
 | kpv | 8 | The three-residue tail of α-MSH that calms inflammation. |
-| mots-c | 8 | An 'exercise mimetic' written into your mitochondrial DNA. |
+| mots-c | 8 | An ‘exercise mimetic’ written into your mitochondrial DNA. |
 | epithalon | 9 | The telomerase peptide riding decades of Russian longevity claims. |
 | selank | 10 | A Russian anxiolytic peptide with no sedation on the label. |
 | semax | 10 | A nootropic ACTH fragment used clinically in Russia for stroke. |
@@ -44,11 +44,11 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 
 ### aod-9604
 
-- [ ] **nit** · quotes in hook — “The 'fat-burning fragment' the clinic couldn't confirm.”
+- [ ] **nit** · quotes in hook — “The ‘fat-burning fragment’ the clinic couldn’t confirm.”
 
 ### mots-c
 
-- [ ] **nit** · quotes in hook — “An 'exercise mimetic' written into your mitochondrial DNA.”
+- [ ] **nit** · quotes in hook — “An ‘exercise mimetic’ written into your mitochondrial DNA.”
 
 ### tirzepatide
 
