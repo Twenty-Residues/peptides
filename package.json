@@ -5,15 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "check:sources": "node scripts/check-sources.mjs",
-    "check:catalog": "node --experimental-strip-types --no-warnings scripts/check-catalog.mjs",
+    "check:catalog": "node --experimental-strip-types --no-warnings scripts/check-catalog.mjs --write",
     "check:voice": "node scripts/check-voice.mjs --write",
     "check:voice:ci": "node scripts/check-voice.mjs --strict",
     "check:links": "node --experimental-strip-types --no-warnings scripts/check-links.mjs",
-    "check": "npm run check:sources && npm run check:catalog && npm run check:voice:ci",
+    "check": "npm run check:sources && npm run check:catalog:ci && npm run check:voice:ci",
     "typecheck": "tsc --noEmit",
     "build": "npm run check && next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:catalog:ci": "node --experimental-strip-types --no-warnings scripts/check-catalog.mjs",
+    "test": "tsx --test src/lib/*.test.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -30,6 +32,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^15.5.27",
     "tailwindcss": "^4.1.13",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.2"
   },
   "overrides": {
