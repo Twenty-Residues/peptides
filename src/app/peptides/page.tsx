@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { peptides } from "@/lib/peptides";
+import { cardData, peptides } from "@/lib/peptides";
 import { CatalogExplorer } from "@/components/CatalogExplorer";
 
 export const metadata: Metadata = {
@@ -17,6 +17,7 @@ export default async function CatalogPage({
   searchParams: SearchParams;
 }) {
   const { q = "", category = "" } = await searchParams;
+  const cards = peptides.map(cardData);
   const datasetJsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
@@ -53,7 +54,7 @@ export default async function CatalogPage({
       <div className="mt-8">
         <CatalogExplorer
           key={`${q}|${category}`}
-          peptides={peptides}
+          peptides={cards}
           initialQuery={q}
           initialCategory={category}
         />

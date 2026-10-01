@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  cardData,
   efficacyTiers,
   getPeptide,
   peptides,
@@ -428,7 +429,7 @@ export default async function PeptidePage({
           <ul className="grid gap-4 sm:grid-cols-3">
             {related.map((r) => (
               <li key={r.slug}>
-                <PeptideCard p={r} compact />
+                <PeptideCard p={cardData(r)} compact />
               </li>
             ))}
           </ul>

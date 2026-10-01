@@ -1,7 +1,6 @@
 import Link from "next/link";
-import type { Peptide } from "@/lib/peptides";
-import { efficacyTiers, snapshot } from "@/lib/peptides";
-import { evidenceFloor, TierBadge } from "@/lib/evidence";
+import type { CardData } from "@/lib/peptides";
+import { TierBadge } from "@/lib/evidence";
 
 const REG_SHORT: Record<string, string> = {
   approved: "FDA-approved",
@@ -14,11 +13,9 @@ export function PeptideCard({
   p,
   compact = false,
 }: {
-  p: Peptide;
+  p: CardData;
   compact?: boolean;
 }) {
-  const floor = evidenceFloor(efficacyTiers(p));
-  const snap = snapshot(p);
   return (
     <Link
       href={`/peptides/${p.slug}`}
@@ -28,7 +25,7 @@ export function PeptideCard({
         <span className="font-serif text-lg font-semibold text-plum group-hover:text-plum-500">
           {p.name}
         </span>
-        {floor && <TierBadge tier={floor} />}
+        {p.floor && <TierBadge tier={p.floor} />}
       </div>
       <p className="mt-0.5 text-xs font-medium tracking-wide text-muted uppercase">
         {p.class}
@@ -38,15 +35,15 @@ export function PeptideCard({
         <p className="mt-2 text-sm leading-relaxed text-ink/70">{p.summary}</p>
       )}
       <p className="mt-auto pt-4 text-xs text-muted">
-        {snap.humanClaims > 0
-          ? `${snap.humanClaims} of ${snap.totalClaims} claims human-tested`
+        {p.humanClaims > 0
+          ? `${p.humanClaims} of ${p.totalClaims} claims human-tested`
           : "No human data yet"}
         {" · "}
-        {snap.references} {snap.references === 1 ? "reference" : "references"}
+        {p.references} {p.references === 1 ? "reference" : "references"}
         {p.regulatory && (
           <>
             {" · "}
-            {REG_SHORT[p.regulatory.status]}
+            {REG_SHORT[p.regulatory]}
           </>
         )}
       </p>

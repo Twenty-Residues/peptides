@@ -63,7 +63,7 @@ export const categories: Category[] = [
   },
 ];
 
-export function inCategory(p: Peptide, c: Category): boolean {
+export function inCategory(p: { tags: readonly string[] }, c: Category): boolean {
   return p.tags.some((t) => c.tags.includes(t));
 }
 

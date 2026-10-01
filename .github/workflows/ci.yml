@@ -29,5 +29,7 @@ jobs:
             echo "::error::docs/voice-check.md is stale. Run 'npm run check:voice' and commit the result."; exit 1; }
       - name: Typecheck
         run: npm run typecheck
+      - name: Lint
+        run: npm run lint
       - name: Build
         run: npx next build
