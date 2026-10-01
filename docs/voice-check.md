@@ -6,7 +6,7 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 |---|---|---|
 | **fix** | Breaks a VOICE.md rule outright | 0 |
 | **review** | Judgment calls: dosing-adjacent language, or a figure in a hook | 1 |
-| **nit** | Typography and polish | 2 |
+| **nit** | Typography and polish | 0 |
 
 ## Rules checked
 
@@ -41,14 +41,6 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 | melanotan-ii | 9 | The tanning-and-libido peptide that never made it to approval. |
 
 ## Worklist by entry
-
-### aod-9604
-
-- [ ] **nit** · quotes in hook — “The ‘fat-burning fragment’ the clinic couldn’t confirm.”
-
-### mots-c
-
-- [ ] **nit** · quotes in hook — “An ‘exercise mimetic’ written into your mitochondrial DNA.”
 
 ### tirzepatide
 

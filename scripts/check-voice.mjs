@@ -107,7 +107,7 @@ for (const e of entries) {
   // figure there must be carried by a Tier 1–2 claim in the entry.
   if (/\d+\s?%|\b\d{2,}\b/.test(hook)) add(e.slug, "review", "numeric claim in hook", `“${hook}” — confirm a human-tier claim below carries the figure, or soften.`);
   // Scare quotes around marketing terms in the hook (fine, but flag so they're deliberate)
-  if (/(^|\s)['‘“"]/.test(hook)) add(e.slug, "nit", "quotes in hook", `“${hook}”`);
+  if (/(^|\s)['"]/.test(hook)) add(e.slug, "nit", "straight quotes in hook", `“${hook}”`);
   // Straight apostrophes/quotes (typography)
   const straight = (joined.match(/\b\w'\w\b/g) ?? []).length;
   if (straight > 0) add(e.slug, "nit", "straight apostrophes", `${straight}× ' — the site renders them as typed; use ’ for polish`);
