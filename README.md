@@ -35,11 +35,14 @@ The catalog check loads the real data and verifies its structure: unique
 slugs, every claim tiered and cited to a known record host (PubMed, PMC, DOI,
 FDA label, ClinicalTrials.gov, UniProt), regulatory claims and status tags in
 agreement, every entry in a browse category, real dates, valid sequences.
-Missing sections (safety, FAQs, sequence) print as warnings – the editor's
-worklist:
+Missing sections (safety, FAQs, sequence) and uncited Tier 4 absence claims
+are warnings, written as an editor's worklist to
+[`docs/catalog-check.md`](docs/catalog-check.md). Commit the regenerated file;
+CI fails if it is stale:
 
 ```bash
-npm run check:catalog
+npm run check:catalog       # regenerate docs/catalog-check.md
+npm run check:catalog:ci    # errors only, no write
 ```
 
 Copy is held to [`VOICE.md`](VOICE.md). The voice check audits hooks,
@@ -65,6 +68,15 @@ npm install
 npm run dev
 ```
 
+## Test
+
+Unit tests for the catalog helpers (evidence floor, snapshot, card projection,
+categories, related entries) run on Node's test runner via `tsx`:
+
+```bash
+npm test
+```
+
 ## Build
 
 ```bash
@@ -72,7 +84,7 @@ npm run build && npm start
 ```
 
 The `build` script runs `npm run check` (sources, catalog, voice) before `next build`.
-CI (`.github/workflows/ci.yml`) runs the same checks plus a typecheck and build on every PR.
+CI (`.github/workflows/ci.yml`) runs the same checks plus worklist freshness, unit tests, typecheck, lint, and build on every PR.
 
 ## Deploy
 
