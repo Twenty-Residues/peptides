@@ -79,7 +79,7 @@ export default function Home() {
         </form>
 
         <p className="mt-4 text-sm text-muted">
-          Popular:{" "}
+          Start with:{" "}
           {["semaglutide", "bpc-157", "tirzepatide", "ghk-cu"].map((s, i) => {
             const p = peptides.find((x) => x.slug === s)!;
             return (
@@ -165,7 +165,7 @@ export default function Home() {
           </Link>
         </div>
         <p className="mt-2 text-ink/70">
-          The most-searched entries, from the best-proven down to the frontier.
+          Six entries that show the range, from FDA-approved to the frontier.
         </p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
