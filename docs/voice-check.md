@@ -4,9 +4,9 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 
 | Severity | Meaning | Count |
 |---|---|---|
-| **fix** | Breaks a VOICE.md rule outright | 16 |
+| **fix** | Breaks a VOICE.md rule outright | 0 |
 | **review** | Judgment calls: dosing-adjacent language, or a figure in a hook | 1 |
-| **nit** | Typography and polish | 4 |
+| **nit** | Typography and polish | 2 |
 
 ## Rules checked
 
@@ -44,70 +44,13 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 
 ### aod-9604
 
-- [ ] **fix** · em dashes — 5 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
 - [ ] **nit** · quotes in hook — “The 'fat-burning fragment' the clinic couldn't confirm.”
-
-### bpc-157
-
-- [ ] **fix** · em dashes — 2 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-- [ ] **nit** · quotes in hook — “The repair peptide the research world can't stop talking about.”
-
-### bremelanotide
-
-- [ ] **fix** · em dashes — 8 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### cjc-1295
-
-- [ ] **fix** · em dashes — 2 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### epithalon
-
-- [ ] **fix** · em dashes — 2 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### ghk-cu
-
-- [ ] **fix** · em dashes — 5 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-- [ ] **nit** · en dash spacing — 1× unspaced en dash used as aside
-
-### ipamorelin
-
-- [ ] **fix** · em dashes — 4 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### melanotan-ii
-
-- [ ] **fix** · em dashes — 6 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
 
 ### mots-c
 
-- [ ] **fix** · em dashes — 3 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
 - [ ] **nit** · quotes in hook — “An 'exercise mimetic' written into your mitochondrial DNA.”
-
-### retatrutide
-
-- [ ] **fix** · em dashes — 5 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### semaglutide
-
-- [ ] **fix** · em dashes — 7 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### semax
-
-- [ ] **fix** · em dashes — 3 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### tb-500
-
-- [ ] **fix** · em dashes — 5 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### tesamorelin
-
-- [ ] **fix** · em dashes — 7 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
-
-### thymosin-alpha-1
-
-- [ ] **fix** · em dashes — 5 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
 
 ### tirzepatide
 
-- [ ] **fix** · em dashes — 7 on the page (max 1). Swap extras for a spaced en dash ( – ) or a full stop.
 - [ ] **review** · numeric claim in hook — “Two incretin receptors, one injection, up to ~21% body weight gone.” — confirm a human-tier claim below carries the figure, or soften.
 
