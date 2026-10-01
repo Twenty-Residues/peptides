@@ -183,7 +183,7 @@ export const peptides: Peptide[] = [
     name: "Tirzepatide",
     aka: ["Mounjaro", "Zepbound"],
     class: "GIP / GLP-1 dual receptor agonist",
-    hook: "Two incretin receptors, one injection, up to ~21% body weight gone.",
+    hook: "Two incretin receptors, one injection, and pivotal-trial weight loss to match.",
     summary:
       "A once-weekly dual agonist that hits both the GIP and GLP-1 receptors. In its pivotal obesity trial it drove weight loss rivaling bariatric surgery, and it is FDA-approved for type 2 diabetes, obesity, and obstructive sleep apnea.",
     mechanism:

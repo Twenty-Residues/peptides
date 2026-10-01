@@ -5,7 +5,7 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 | Severity | Meaning | Count |
 |---|---|---|
 | **fix** | Breaks a VOICE.md rule outright | 0 |
-| **review** | Judgment calls: dosing-adjacent language, or a figure in a hook | 1 |
+| **review** | Judgment calls: dosing-adjacent language, or a figure in a hook | 0 |
 | **nit** | Typography and polish | 0 |
 
 ## Rules checked
@@ -22,7 +22,7 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 | Entry | Words | Hook |
 |---|---|---|
 | semaglutide | 9 | The molecule that rewrote what weight loss looks like. |
-| tirzepatide | 11 | Two incretin receptors, one injection, up to ~21% body weight gone. |
+| tirzepatide | 11 | Two incretin receptors, one injection, and pivotal-trial weight loss to match. |
 | retatrutide | 9 | The triple agonist posting the biggest weight-loss numbers yet. |
 | aod-9604 | 7 | The ‘fat-burning fragment’ the clinic couldn’t confirm. |
 | tesamorelin | 8 | An FDA-approved GHRH analog that targets visceral fat. |
@@ -42,7 +42,4 @@ Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after edi
 
 ## Worklist by entry
 
-### tirzepatide
-
-- [ ] **review** · numeric claim in hook — “Two incretin receptors, one injection, up to ~21% body weight gone.” — confirm a human-tier claim below carries the figure, or soften.
-
+Clean. Nothing to do.
