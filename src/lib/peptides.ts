@@ -161,7 +161,8 @@ export const peptides: Peptide[] = [
     mechanism:
       "Semaglutide mimics GLP-1, a gut hormone released after eating. It boosts glucose-dependent insulin release, slows how fast the stomach empties, and acts on appetite centers in the hypothalamus – so you feel full sooner and stay full longer. A fatty-acid chain lets it bind albumin in the blood, stretching its action to about a week per dose.",
     sequence: {
-      residues: "GLP-1(7-37) backbone with Aib8, Arg34, and a C18 di-acid on Lys26",
+      residues:
+        "GLP-1(7-37) backbone with Aib8, Arg34, and a C18 di-acid on Lys26",
       note: "A modified analog of human GLP-1, not a natural sequence: Aib at position 8 resists DPP-4, and the acylation on Lys26 binds albumin for a ~1-week half-life. Not cleanly representable as plain one-letter code.",
       source: {
         label: "FDA label – Ozempic (accessdata)",
@@ -229,7 +230,8 @@ export const peptides: Peptide[] = [
     mechanism:
       "Tirzepatide activates two gut-hormone receptors at once – GIP and GLP-1 – which together improve insulin response, blunt appetite, and slow gastric emptying. Adding GIP to the GLP-1 effect appears to amplify the metabolic response. A C20 fatty-acid chain gives it a ~5-day half-life.",
     sequence: {
-      residues: "39-residue GIP-based backbone with Aib at positions 2 and 13, a C20 di-acid on Lys20, and a C-terminal amide",
+      residues:
+        "39-residue GIP-based backbone with Aib at positions 2 and 13, a C20 di-acid on Lys20, and a C-terminal amide",
       note: "A synthetic dual agonist containing non-natural residues and acylation – not representable as plain one-letter code.",
       source: {
         label: "FDA label – Mounjaro (accessdata)",
@@ -293,6 +295,15 @@ export const peptides: Peptide[] = [
       "An investigational once-weekly peptide that activates three metabolic receptors at once. Phase 2 data are striking, but it is not yet approved – this is late-stage clinical promise, not a settled therapy.",
     mechanism:
       "Retatrutide adds glucagon-receptor activity to the GIP + GLP-1 combination. The glucagon arm is thought to raise energy expenditure on top of the appetite and insulin effects of the other two – a three-receptor bet on bigger metabolic swings.",
+    sequence: {
+      residues:
+        "39-residue engineered peptide on a GIP-like backbone, with Aib substitutions and a C20 fatty-diacid side chain on a lysine linker",
+      note: "Lilly's published structure (LY3437943). Described rather than spelled out: not letter-verified against a primary sequence database.",
+      source: {
+        label: "Doggrell, 2023 (Expert Opin Investig Drugs)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/37086147/",
+      },
+    },
     regulatory: {
       status: "research-only",
       detail:
@@ -380,6 +391,16 @@ export const peptides: Peptide[] = [
         },
       },
     ],
+    faqs: [
+      {
+        q: "Does AOD-9604 burn fat?",
+        a: "In animals it shifted fat metabolism. In the company-run human obesity trials it did not produce significant weight loss against placebo, which is why the drug program was shelved. The preclinical signal is real; the human result is negative.",
+      },
+      {
+        q: "Does AOD-9604 affect blood sugar or IGF-1 like growth hormone does?",
+        a: "No. The fragment keeps the lipolytic region of growth hormone and drops the parts responsible for growth, IGF-1 release, and insulin resistance. That selectivity was the whole design rationale.",
+      },
+    ],
     tags: ["metabolic", "GH-fragment", "investigational"],
     claims: [
       {
@@ -399,8 +420,8 @@ export const peptides: Peptide[] = [
         },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [...VERIFIED_LOG, { date: "2026-10-01", note: "Added FAQs." }],
   },
 
   // ── GH secretagogues / GHRH ───────────────────────────────────────────────
@@ -415,7 +436,8 @@ export const peptides: Peptide[] = [
     mechanism:
       "Tesamorelin is a protected copy of GHRH, the hormone that tells the pituitary to release growth hormone. An added acyl cap on the N-terminus shields it from rapid breakdown, so it drives natural GH pulses rather than replacing GH directly. More GH in turn mobilizes visceral fat.",
     sequence: {
-      residues: "Human GHRH(1-44) with an N-terminal trans-3-hexenoyl cap and C-terminal amide",
+      residues:
+        "Human GHRH(1-44) with an N-terminal trans-3-hexenoyl cap and C-terminal amide",
       note: "The acyl cap protects against DPP-4 cleavage and is the load-bearing structural feature.",
       source: {
         label: "FDA label – Egrifta SV (accessdata)",
@@ -479,7 +501,8 @@ export const peptides: Peptide[] = [
     mechanism:
       "CJC-1295 is a modified GHRH(1-29) fragment. The DAC – an albumin-binding chemical group – latches onto a blood protein so the peptide circulates for days instead of minutes, producing a long, low 'bleed' of growth-hormone release. Remove the DAC and you get 'modified GRF 1-29', which acts for only about half an hour.",
     sequence: {
-      residues: "Modified GRF(1-29): D-Ala2, Gln8, Ala15, Leu27 substitutions, plus a DAC albumin-binding group",
+      residues:
+        "Modified GRF(1-29): D-Ala2, Gln8, Ala15, Leu27 substitutions, plus a DAC albumin-binding group",
       note: "'CJC-1295 with DAC' (long-acting) and DAC-free 'modified GRF 1-29' (~30-minute action) are two distinct molecules that are often conflated.",
       source: {
         label: "Teichman et al., 2006 (J Clin Endocrinol Metab)",
@@ -499,6 +522,29 @@ export const peptides: Peptide[] = [
       {
         q: "What's the difference between CJC-1295 with and without DAC?",
         a: "The DAC (Drug Affinity Complex) binds albumin and extends action to several days. Without it, 'modified GRF 1-29' works for roughly 30 minutes. They are not interchangeable, despite often being sold under the same 'CJC-1295' name.",
+      },
+    ],
+    safety: [
+      {
+        text: "In the single-dose and repeat-dose human PK study, the most common adverse events were transient injection-site reactions, headache, and flushing; no serious drug-related events were reported in the small cohorts studied.",
+        source: {
+          label: "Teichman et al., 2006 (J Clin Endocrinol Metab)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/16352683/",
+        },
+      },
+      {
+        text: "Continuous stimulation preserved pulsatile GH secretion rather than flattening it, which argues against a crude override of the axis, though it says nothing about months or years of use.",
+        source: {
+          label: "Ionescu & Frohman, 2006 (J Clin Endocrinol Metab)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/17018654/",
+        },
+      },
+      {
+        text: "There are no long-term human safety data. Sustained elevation of GH and IGF-1 is the same exposure that raises theoretical concerns around glucose handling and tumour growth with any GH-axis therapy.",
+        source: {
+          label: "Teichman et al., 2006 (J Clin Endocrinol Metab)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/16352683/",
+        },
       },
     ],
     tags: ["GH-axis", "GHRH", "investigational"],
@@ -521,8 +567,14 @@ export const peptides: Peptide[] = [
         },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Added safety section citing the human PK studies.",
+      },
+    ],
   },
   {
     slug: "ipamorelin",
@@ -530,7 +582,7 @@ export const peptides: Peptide[] = [
     class: "Ghrelin-receptor / GH secretagogue",
     hook: "The selective GH pulse without the cortisol baggage.",
     summary:
-      "A pentapeptide ghrelin-receptor agonist that triggers growth-hormone release with little effect on cortisol or prolactin – the selectivity that made it a research favorite. It works by a different mechanism than the GHRH analogs, and human evidence is thin; the foundational work is preclinical.",
+      "A pentapeptide ghrelin-receptor agonist that triggers growth-hormone release with little effect on cortisol or prolactin – the selectivity that made it a research favorite. It works by a different mechanism than the GHRH analogs. Human data are modest but real: a PK study in volunteers and one placebo-controlled surgical trial that found it safe but no better than placebo.",
     mechanism:
       "Ipamorelin acts on the ghrelin receptor (GHS-R1a), the same 'hunger hormone' receptor that stimulates growth-hormone secretion – a distinct route from GHRH analogs like tesamorelin. Its appeal in early studies was selectivity: a clean GH pulse without a matching rise in cortisol or prolactin.",
     sequence: {
@@ -550,6 +602,32 @@ export const peptides: Peptide[] = [
         href: "https://pubmed.ncbi.nlm.nih.gov/9849822/",
       },
     },
+    safety: [
+      {
+        text: "Seven days of twice-daily intravenous ipamorelin was well tolerated in a placebo-controlled surgical trial: adverse-event rates were no higher than placebo in post-operative patients.",
+        source: {
+          label: "Beck et al., 2014 (Int J Colorectal Dis)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/25331030/",
+        },
+      },
+      {
+        text: "The selectivity claim – GH release without a matching cortisol or prolactin rise – rests on preclinical work and has not been formally characterized in people over time. No long-term human safety data exist.",
+        source: {
+          label: "Raun et al., 1998 (Eur J Endocrinol)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/9849822/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Has ipamorelin ever been tested in people?",
+        a: "Yes, more than most research peptides. A human PK study mapped its GH response, and a Phase 2 placebo-controlled trial tested it for post-surgical gut recovery. It was well tolerated but did not beat placebo, and the program did not continue.",
+      },
+      {
+        q: "How is ipamorelin different from CJC-1295 or tesamorelin?",
+        a: "Different receptor. Ipamorelin mimics ghrelin at the GHS-R1a receptor; CJC-1295 and tesamorelin are GHRH analogs. They are often paired on the theory that the two signals add, but that combination has not been tested in a controlled human trial.",
+      },
+    ],
     tags: ["GH-axis", "secretagogue", "investigational"],
     claims: [
       {
@@ -569,6 +647,22 @@ export const peptides: Peptide[] = [
         },
       },
       {
+        text: "Produced a single, dose-dependent GH pulse in healthy volunteers, with a terminal half-life of about two hours.",
+        tier: 2,
+        source: {
+          label: "Gobburu et al., 1999 (Pharm Res)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/10496658/",
+        },
+      },
+      {
+        text: "Did not shorten time to first tolerated meal versus placebo in a Phase 2 trial of postoperative ileus after bowel resection (n=114).",
+        tier: 2,
+        source: {
+          label: "Beck et al., 2014 (Int J Colorectal Dis)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/25331030/",
+        },
+      },
+      {
         text: "No approved human indication; remains investigational.",
         tier: 1,
         kind: "regulatory",
@@ -578,8 +672,14 @@ export const peptides: Peptide[] = [
         },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Added the human PK study and the Phase 2 ileus RCT as Tier 2 claims; added safety and FAQs.",
+      },
+    ],
   },
 
   // ── Repair / recovery ─────────────────────────────────────────────────────
@@ -715,10 +815,20 @@ export const peptides: Peptide[] = [
       {
         text: "No human clinical trial has tested the TB-500 fragment itself for recovery or injury.",
         tier: 4,
+        source: {
+          label: "Goldstein et al., 2012 (Expert Opin Biol Ther)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/22074294/",
+        },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Cited the no-human-trial claim to the 2012 thymosin β4 review, whose trial list covers only the full protein.",
+      },
+    ],
   },
   {
     slug: "ghk-cu",
@@ -817,6 +927,15 @@ export const peptides: Peptide[] = [
         a: "Evidence suggests mostly not – its anti-inflammatory action appears to be receptor-independent, via cellular uptake and NF-κB inhibition. All of this is preclinical so far.",
       },
     ],
+    safety: [
+      {
+        text: "No human safety data exist for KPV itself. Its appeal in reviews is precisely that it keeps the anti-inflammatory activity of α-MSH while dropping the pigmentary effect, but that profile has only been shown in cells and animals.",
+        source: {
+          label: "Brzoska et al., 2008 (Endocr Rev)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18612139/",
+        },
+      },
+    ],
     tags: ["anti-inflammatory", "gut", "investigational"],
     claims: [
       {
@@ -838,10 +957,20 @@ export const peptides: Peptide[] = [
       {
         text: "No human clinical trials have been conducted; all efficacy evidence is preclinical.",
         tier: 4,
+        source: {
+          label: "Brzoska et al., 2008 (Endocr Rev)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18612139/",
+        },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Added safety section; cited the no-human-trials claim to the Endocrine Reviews overview.",
+      },
+    ],
   },
 
   // ── Mitochondrial / longevity ─────────────────────────────────────────────
@@ -871,6 +1000,32 @@ export const peptides: Peptide[] = [
         href: "https://pubmed.ncbi.nlm.nih.gov/25738459/",
       },
     },
+    safety: [
+      {
+        text: "No interventional human safety data exist for administered MOTS-c. The human findings to date measure the body's own MOTS-c, which rises with exercise, not the effect of injecting it.",
+        source: {
+          label: "Reynolds et al., 2021 (Nat Commun)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/33473109/",
+        },
+      },
+      {
+        text: "Mice given MOTS-c into old age tolerated intermittent treatment, but rodent tolerability is a weak guide to human safety, and the senior authors hold a commercial interest in the molecule.",
+        source: {
+          label: "Reynolds et al., 2021 (Nat Commun)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/33473109/",
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: "Is MOTS-c really an exercise mimetic?",
+        a: "In mice, yes in the narrow sense: it activates AMPK, improves insulin sensitivity, and raised physical performance even when started late in life. In people, exercise raises natural MOTS-c levels, which is an association, not evidence that taking it reproduces exercise.",
+      },
+      {
+        q: "Has MOTS-c been given to humans in a trial?",
+        a: "Not as MOTS-c itself in a published trial. A modified analog was taken into early-phase testing by a biotech company, but those results do not transfer to the native peptide.",
+      },
+    ],
     tags: ["metabolic", "longevity", "investigational"],
     claims: [
       {
@@ -889,9 +1044,23 @@ export const peptides: Peptide[] = [
           href: "https://pubmed.ncbi.nlm.nih.gov/29593067/",
         },
       },
+      {
+        text: "Intermittent treatment begun late in life increased physical capacity in old mice; in humans, exercise raised endogenous MOTS-c in muscle and blood.",
+        tier: 3,
+        source: {
+          label: "Reynolds et al., 2021 (Nat Commun)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/33473109/",
+        },
+      },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Added safety and FAQs; added the 2021 healthspan study.",
+      },
+    ],
   },
   {
     slug: "epithalon",
@@ -926,6 +1095,22 @@ export const peptides: Peptide[] = [
         a: "That claim rests on decades-old, mostly single-group studies and has not been independently replicated at scale. Treat it as an open question, not a demonstrated effect.",
       },
     ],
+    safety: [
+      {
+        text: "No modern, controlled human safety data exist. The long-term clinical reports come from the originating Russian group and are not placebo-controlled by contemporary standards.",
+        source: {
+          label: "Anisimov & Khavinson, 2010 (Biogerontology)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/19830585/",
+        },
+      },
+      {
+        text: "Telomerase activation is a double-edged mechanism: the same enzyme that lengthens telomeres is reactivated in most cancers. Rodent studies from the originating group report fewer tumours, not more, but the question is unresolved in people.",
+        source: {
+          label: "Araj et al., 2025 (Int J Mol Sci)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/40141333/",
+        },
+      },
+    ],
     tags: ["longevity", "frontier", "investigational"],
     claims: [
       {
@@ -939,10 +1124,20 @@ export const peptides: Peptide[] = [
       {
         text: "Reported lifespan and age-marker effects in rodents and small Russian cohorts; not independently replicated at scale.",
         tier: 4,
+        source: {
+          label: "Anisimov & Khavinson, 2010 (Biogerontology)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/19830585/",
+        },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Added safety section; cited the longevity claim to the originating group's review.",
+      },
+    ],
   },
 
   // ── Neuro / cognition ─────────────────────────────────────────────────────
@@ -974,6 +1169,22 @@ export const peptides: Peptide[] = [
         a: "It is used clinically in Russia and small studies there report anxiolytic effects, but it has not been validated in large independent Western trials.",
       },
     ],
+    safety: [
+      {
+        text: "In the Russian clinical literature it is described as free of sedation, dependence, and withdrawal, the usual liabilities of GABAergic anxiolytics. Those reports are small and not independently replicated.",
+        source: {
+          label: "Zozulia et al., 2008 (Selank in GAD, PubMed)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/18454096/",
+        },
+      },
+      {
+        text: "The proposed mechanism is allosteric modulation of GABA-A receptors, which means interactions with benzodiazepines and other GABAergic drugs are plausible and have not been systematically studied in people.",
+        source: {
+          label: "Vyunova et al., 2018 (Protein Pept Lett)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/30255741/",
+        },
+      },
+    ],
     tags: ["neuro", "anxiolytic", "frontier", "approved-abroad"],
     claims: [
       {
@@ -994,8 +1205,11 @@ export const peptides: Peptide[] = [
         },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      { date: "2026-10-01", note: "Added safety section." },
+    ],
   },
   {
     slug: "semax",
@@ -1029,6 +1243,22 @@ export const peptides: Peptide[] = [
         a: "In Russia it is used clinically, including in stroke care. It has not been approved or validated in large Western randomized trials.",
       },
     ],
+    safety: [
+      {
+        text: "Decades of Russian clinical use, including in stroke patients, have not produced reports of serious drug-related harm, but that record consists of open or lightly controlled studies rather than formal pharmacovigilance.",
+        source: {
+          label: "Gusev et al., 2018 (Zh Nevrol Psikhiatr)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/29798983/",
+        },
+      },
+      {
+        text: "Semax raises circulating BDNF in treated patients. Growth-factor elevation is the mechanism behind its claimed benefits and also the reason long-term effects outside the Russian data are an open question.",
+        source: {
+          label: "Gusev et al., 2018 (Zh Nevrol Psikhiatr)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/29798983/",
+        },
+      },
+    ],
     tags: ["neuro", "nootropic", "frontier", "approved-abroad"],
     claims: [
       {
@@ -1042,6 +1272,10 @@ export const peptides: Peptide[] = [
       {
         text: "Neuroprotective and pro-cognitive effects reported in Russian clinical studies; not independently replicated in Western RCTs.",
         tier: 4,
+        source: {
+          label: "Gusev et al., 2018 (Zh Nevrol Psikhiatr)",
+          href: "https://pubmed.ncbi.nlm.nih.gov/29798983/",
+        },
       },
       {
         text: "Registered in Russia as an intranasal drug; not approved by the FDA or EMA.",
@@ -1053,8 +1287,14 @@ export const peptides: Peptide[] = [
         },
       },
     ],
-    updated: REVIEWED,
-    changelog: VERIFIED_LOG,
+    updated: "2026-10-01",
+    changelog: [
+      ...VERIFIED_LOG,
+      {
+        date: "2026-10-01",
+        note: "Added safety section; cited the Russian stroke data.",
+      },
+    ],
   },
 
   // ── Immune ────────────────────────────────────────────────────────────────
