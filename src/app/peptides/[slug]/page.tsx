@@ -314,7 +314,9 @@ export default async function PeptidePage({
                 {p.sequence.residues}
               </code>
               {p.sequence.note && (
-                <span className="mt-1 block max-w-prose">{p.sequence.note}</span>
+                <span className="mt-1 block max-w-prose">
+                  {p.sequence.note}
+                </span>
               )}
             </p>
           )}
@@ -331,19 +333,19 @@ export default async function PeptidePage({
           {p.claims
             .filter((c) => c.kind !== "regulatory")
             .map((c, i) => (
-            <li
-              key={i}
-              className="rounded-2xl border border-line bg-surface p-5 shadow-sm"
-            >
-              <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                <p className="leading-relaxed text-ink">{c.text}</p>
-                <div className="shrink-0">
-                  <TierBadge tier={c.tier} />
+              <li
+                key={i}
+                className="rounded-2xl border border-line bg-surface p-5 shadow-sm"
+              >
+                <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                  <p className="leading-relaxed text-ink">{c.text}</p>
+                  <div className="shrink-0">
+                    <TierBadge tier={c.tier} />
+                  </div>
                 </div>
-              </div>
-              {c.source && <Cite s={c.source} className="mt-3" />}
-            </li>
-          ))}
+                {c.source && <Cite s={c.source} className="mt-3" />}
+              </li>
+            ))}
         </ul>
       </Section>
 
@@ -433,15 +435,28 @@ export default async function PeptidePage({
               </li>
             ))}
           </ul>
+          {cats[0] && (
+            <p className="mt-5 text-sm text-muted">
+              <Link
+                href={`/compare#${cats[0].slug}`}
+                className="font-medium text-plum-500 underline-offset-4 hover:underline"
+              >
+                Compare every {cats[0].label.toLowerCase()} peptide side by side
+              </Link>
+            </p>
+          )}
         </Section>
       )}
 
       {/* Meta footer */}
       <div className="mt-14 border-t border-line pt-6 text-sm text-muted">
         <p>
-          Written by {editorial.writtenBy}. Medical review: {editorial.reviewStatus}.
+          Written by {editorial.writtenBy}. Medical review:{" "}
+          {editorial.reviewStatus}.
         </p>
-        {p.updated && <p className="mt-1">Last updated {fmtDate(p.updated)}.</p>}
+        {p.updated && (
+          <p className="mt-1">Last updated {fmtDate(p.updated)}.</p>
+        )}
         <p className="mt-3">
           Spot an error or a better source?{" "}
           <a

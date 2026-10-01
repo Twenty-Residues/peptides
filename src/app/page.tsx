@@ -33,9 +33,9 @@ export default function Home() {
           Every peptide, graded by how well it&apos;s proven.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink/80">
-          Plain-language monographs on {peptides.length} research peptides.
-          Each claim carries an evidence tier and a citation to a fixed record,
-          so you can see exactly where the science is settled and where the
+          Plain-language monographs on {peptides.length} research peptides. Each
+          claim carries an evidence tier and a citation to a fixed record, so
+          you can see exactly where the science is settled and where the
           frontier begins.
         </p>
 
@@ -115,7 +115,9 @@ export default function Home() {
             },
           ].map((s) => (
             <div key={s.k} className="bg-surface px-5 py-5">
-              <p className="font-serif text-lg font-semibold text-plum">{s.k}</p>
+              <p className="font-serif text-lg font-semibold text-plum">
+                {s.k}
+              </p>
               <p className="mt-1 text-sm leading-relaxed text-ink/70">{s.v}</p>
             </div>
           ))}
@@ -165,7 +167,15 @@ export default function Home() {
           </Link>
         </div>
         <p className="mt-2 text-ink/70">
-          Six entries that show the range, from FDA-approved to the frontier.
+          Six entries that show the range, from FDA-approved to the frontier. Or
+          see{" "}
+          <Link
+            href="/compare"
+            className="font-medium text-plum-500 underline-offset-4 hover:underline"
+          >
+            all of them side by side
+          </Link>
+          .
         </p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
