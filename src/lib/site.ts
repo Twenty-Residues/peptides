@@ -9,6 +9,7 @@ export const site = {
 
 export const nav = [
   { href: "/peptides", label: "Catalog" },
+  { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
 ] as const;
