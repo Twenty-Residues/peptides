@@ -99,6 +99,46 @@ export type Peptide = {
   changelog?: ChangeLogEntry[];
 };
 
+/**
+ * Everything a catalog card or search result needs, and nothing else. The
+ * catalog explorer is a client component, so whatever it receives is
+ * serialized into the page; sending the full monographs there roughly
+ * tripled the payload. Build with `cardData(p)` on the server.
+ */
+export type CardData = {
+  slug: string;
+  name: string;
+  aka: string[];
+  class: string;
+  hook: string;
+  summary: string;
+  tags: string[];
+  /** Strongest efficacy tier (the badge). */
+  floor: Tier | null;
+  humanClaims: number;
+  totalClaims: number;
+  references: number;
+  regulatory: Regulatory["status"] | null;
+};
+
+export function cardData(p: Peptide): CardData {
+  const snap = snapshot(p);
+  return {
+    slug: p.slug,
+    name: p.name,
+    aka: p.aka ?? [],
+    class: p.class,
+    hook: p.hook,
+    summary: p.summary,
+    tags: p.tags,
+    floor: snap.floor,
+    humanClaims: snap.humanClaims,
+    totalClaims: snap.totalClaims,
+    references: snap.references,
+    regulatory: p.regulatory?.status ?? null,
+  };
+}
+
 /** Date of the sourced-review pass that verified every entry below. */
 const REVIEWED = "2026-09-19";
 const VERIFIED_LOG: ChangeLogEntry[] = [
@@ -163,7 +203,7 @@ export const peptides: Peptide[] = [
         tier: 1,
         source: {
           label: "Wilding et al., 2021 (NEJM, STEP 1)",
-          href: "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183",
+          href: "https://pubmed.ncbi.nlm.nih.gov/33567185/",
         },
       },
       {
@@ -171,7 +211,7 @@ export const peptides: Peptide[] = [
         tier: 1,
         source: {
           label: "Lincoff et al., 2023 (NEJM, SELECT)",
-          href: "https://www.nejm.org/doi/full/10.1056/NEJMoa2307563",
+          href: "https://pubmed.ncbi.nlm.nih.gov/37952131/",
         },
       },
     ],
@@ -555,7 +595,7 @@ export const peptides: Peptide[] = [
       "In animal work, BPC-157 appears to promote healing by encouraging new blood-vessel growth and modulating growth-factor and nitric-oxide signaling at injury sites. The parent 'Body Protection Compound' protein is not well characterized in protein databases, so the peptide is best described as a synthetic fragment.",
     sequence: {
       residues: "GEPPPGKPADDAGLV",
-      note: "A 15-residue synthetic peptide (note the three consecutive prolines). No UniProt entry exists for the isolated peptide.",
+      note: "A 15-residue synthetic peptide (note the three consecutive prolines). No UniProt entry exists for the isolated peptide, so the sequence is secondary-sourced – not letter-verified against a primary database.",
     },
     regulatory: {
       status: "research-only",

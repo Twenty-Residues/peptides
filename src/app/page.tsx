@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { peptides, snapshot } from "@/lib/peptides";
+import { cardData, peptides, snapshot } from "@/lib/peptides";
 import { site } from "@/lib/site";
 import { categories, inCategory } from "@/lib/categories";
 import { TIERS, TierBadge, type Tier } from "@/lib/evidence";
@@ -170,7 +170,7 @@ export default function Home() {
         <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
             <li key={p.slug}>
-              <PeptideCard p={p} compact />
+              <PeptideCard p={cardData(p)} compact />
             </li>
           ))}
         </ul>

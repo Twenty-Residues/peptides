@@ -2,17 +2,16 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Peptide } from "@/lib/peptides";
-import { efficacyTiers } from "@/lib/peptides";
-import { evidenceFloor, TIERS, type Tier } from "@/lib/evidence";
+import type { CardData } from "@/lib/peptides";
+import { TIERS, type Tier } from "@/lib/evidence";
 import { categories, inCategory } from "@/lib/categories";
 import { PeptideCard } from "./PeptideCard";
 
 type Sort = "evidence" | "name";
 
-function matches(p: Peptide, q: string) {
+function matches(p: CardData, q: string) {
   if (!q) return true;
-  const hay = [p.name, ...(p.aka ?? []), p.class, p.hook, ...p.tags]
+  const hay = [p.name, ...p.aka, p.class, p.hook, ...p.tags]
     .join(" ")
     .toLowerCase();
   return q
@@ -27,7 +26,7 @@ export function CatalogExplorer({
   initialQuery = "",
   initialCategory = "",
 }: {
-  peptides: Peptide[];
+  peptides: CardData[];
   initialQuery?: string;
   initialCategory?: string;
 }) {
@@ -43,21 +42,13 @@ export function CatalogExplorer({
     const list = peptides.filter((p) => {
       if (!matches(p, deferredQ)) return false;
       if (cat && !inCategory(p, cat)) return false;
-      if (tier) {
-        const floor = evidenceFloor(efficacyTiers(p));
-        if (floor !== tier) return false;
-      }
+      if (tier && p.floor !== tier) return false;
       return true;
     });
     if (sort === "name") {
       list.sort((a, b) => a.name.localeCompare(b.name));
     } else {
-      list.sort(
-        (a, b) =>
-          (evidenceFloor(efficacyTiers(a)) ?? 5) -
-            (evidenceFloor(efficacyTiers(b)) ?? 5) ||
-          a.name.localeCompare(b.name),
-      );
+      list.sort((a, b) => (a.floor ?? 5) - (b.floor ?? 5) || a.name.localeCompare(b.name));
     }
     return list;
   }, [peptides, deferredQ, category, tier, sort]);
