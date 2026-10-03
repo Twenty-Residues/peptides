@@ -17,6 +17,7 @@ export const nav = [
 /** Secondary routes and trust pages — footer only. */
 export const footerNav = [
   { href: "/compare", label: "Compare" },
+  { href: "/data", label: "Open data" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
   { href: "/privacy", label: "Privacy" },
