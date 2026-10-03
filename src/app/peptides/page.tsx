@@ -26,7 +26,8 @@ export default async function CatalogPage({
       "A catalog of research peptides with claim-level, tiered, cited evidence (the Standard).",
     url: "https://peptides.info/peptides",
     creator: { "@type": "Organization", name: "Peptides.info" },
-    license: "https://peptides.info/methodology",
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    distribution: { "@type": "DataDownload", contentUrl: "https://peptides.info/data/claims.json", encodingFormat: "application/json" },
     variableMeasured: "Evidence tier (1–4) per claim",
   };
 
