@@ -18,6 +18,7 @@ import { PeptideCard } from "@/components/PeptideCard";
 import { newsForCompound } from "@/lib/news";
 import { NewsCard } from "@/components/NewsCard";
 import { ProposeQuestion } from "@/components/ProposeQuestion";
+import { ShareRow } from "@/components/ShareRow";
 
 export function generateStaticParams() {
   return peptides.map((p) => ({ slug: p.slug }));
@@ -432,7 +433,12 @@ export default async function PeptidePage({
                   <span aria-hidden className="shrink-0 font-mono text-sm text-gold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="max-w-prose font-serif text-lg leading-snug">{q}</p>
+                  <div className="flex flex-col gap-2">
+                    <p className="max-w-prose font-serif text-lg leading-snug">{q}</p>
+                    <div>
+                      <ShareRow text={q} path={`/peptides/${p.slug}#open-questions`} />
+                    </div>
+                  </div>
                 </li>
               ))}
             </ol>

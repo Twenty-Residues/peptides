@@ -6,6 +6,7 @@ import { getPeptide } from "@/lib/peptides";
 import { NewsCard, StatusPill, fmtDate } from "@/components/NewsCard";
 import { editorial, site } from "@/lib/site";
 import { ProposeQuestion } from "@/components/ProposeQuestion";
+import { ShareRow } from "@/components/ShareRow";
 
 export function generateStaticParams() {
   return news.map((n) => ({ slug: n.slug }));
@@ -186,6 +187,9 @@ export default async function StoryPage({
           We don&apos;t answer this one. Take it to wherever you argue about
           peptides, and send us the strongest case from either side.
         </p>
+        <div className="mt-4">
+          <ShareRow text={s.openQuestion} path={`/news/${s.slug}`} />
+        </div>
       </section>
       <ProposeQuestion subject={s.title} />
 
