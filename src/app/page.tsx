@@ -5,6 +5,8 @@ import { site } from "@/lib/site";
 import { categories, inCategory } from "@/lib/categories";
 import { TIERS, TierBadge, type Tier } from "@/lib/evidence";
 import { PeptideCard } from "@/components/PeptideCard";
+import { sortedNews } from "@/lib/news";
+import { NewsCard } from "@/components/NewsCard";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -153,6 +155,30 @@ export default function Home() {
             );
           })}
         </ul>
+      </section>
+
+      {/* Latest news */}
+      <section className="mx-auto max-w-5xl px-6 pt-16">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-2xl font-medium text-plum">Latest</h2>
+          <Link
+            href="/news"
+            className="text-sm font-semibold text-plum-500 underline-offset-4 hover:underline"
+          >
+            All news →
+          </Link>
+        </div>
+        <p className="mt-2 max-w-prose text-sm text-ink/70">
+          What&apos;s documented, what isn&apos;t, and what would change it. No
+          verdicts, no ads.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {sortedNews()
+            .slice(0, 3)
+            .map((s) => (
+              <NewsCard key={s.slug} story={s} />
+            ))}
+        </div>
       </section>
 
       {/* Featured */}

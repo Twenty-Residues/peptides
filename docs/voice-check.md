@@ -1,6 +1,6 @@
 # Voice check — catalog copy vs VOICE.md
 
-Generated 2026-10-01 by `node scripts/check-voice.mjs --write`. Re-run after editing `src/lib/peptides.ts`.
+Generated 2026-10-03 by `node scripts/check-voice.mjs --write`. Re-run after editing `src/lib/peptides.ts`.
 
 | Severity | Meaning | Count |
 |---|---|---|

@@ -15,6 +15,8 @@ import { categoriesFor } from "@/lib/categories";
 import { relatedPeptides } from "@/lib/related";
 import { comparisonsFor, pairOf } from "@/lib/comparisons";
 import { PeptideCard } from "@/components/PeptideCard";
+import { newsForCompound } from "@/lib/news";
+import { NewsCard } from "@/components/NewsCard";
 
 export function generateStaticParams() {
   return peptides.map((p) => ({ slug: p.slug }));
@@ -65,6 +67,7 @@ export default async function PeptidePage({
   const related = relatedPeptides(p);
   const cats = categoriesFor(p);
   const headToHead = comparisonsFor(p);
+  const inTheNews = newsForCompound(p.slug);
 
   // Collect a de-duplicated, numbered reference list across the whole entry.
   const refs: Source[] = [];
@@ -378,6 +381,17 @@ export default async function PeptidePage({
             {p.regulatory.source && (
               <Cite s={p.regulatory.source} className="mt-3" />
             )}
+          </div>
+        </Section>
+      )}
+
+      {/* In the news */}
+      {inTheNews.length > 0 && (
+        <Section id="news" title="In the news">
+          <div className="grid gap-4">
+            {inTheNews.slice(0, 3).map((n) => (
+              <NewsCard key={n.slug} story={n} />
+            ))}
           </div>
         </Section>
       )}
