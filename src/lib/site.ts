@@ -2,6 +2,7 @@ export const site = {
   name: "Peptides.info",
   org: "Twenty Residues",
   url: "https://peptides.info",
+  repo: "https://github.com/Twenty-Residues/peptides",
   tagline: "Peptides, straight.",
   description:
     "The peptide reference that wants you to understand: every claim tiered by how well it's proven and cited to a fixed record. Bullish on the science, honest about the frontier.",
@@ -25,4 +26,5 @@ export const editorial = {
   /** Reads naturally after "Medical review:" */
   reviewStatus: "pending; a named reviewer is being assigned",
   contact: "corrections@peptides.info",
+  questions: "questions@peptides.info",
 } as const;

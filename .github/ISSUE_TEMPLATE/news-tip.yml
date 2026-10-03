@@ -1,0 +1,22 @@
+name: Send a news tip
+description: An enforcement action, ruling, approval, trial result, or shutdown we have not covered.
+title: "[tip] "
+labels: ["news-tip"]
+body:
+  - type: textarea
+    id: event
+    attributes:
+      label: What happened
+      description: One or two sentences with the date.
+    validations:
+      required: true
+  - type: textarea
+    id: primary
+    attributes:
+      label: Primary record, if you have one
+      description: The agency letter, court document, company release, or registry entry. A story runs only when one exists; without it the tip goes on the leads list.
+  - type: textarea
+    id: secondary
+    attributes:
+      label: Where you saw it
+      description: News report, post, or thread. Useful as a lead.

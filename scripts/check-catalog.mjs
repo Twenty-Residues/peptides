@@ -13,6 +13,7 @@
  *   - dates are real ISO dates, not in the future, and the changelog is ordered
  *   - one-letter sequences only use amino-acid letters
  *   - FAQs are questions with answers; the same href always carries one label
+ *   - open questions end in a question mark and carry no verdict word
  *
  *   node scripts/check-catalog.mjs            # errors fail (exit 1), warnings print
  *   node scripts/check-catalog.mjs --strict   # warnings fail too
@@ -118,6 +119,12 @@ for (const p of peptides) {
   if (!p.sequence) warn(slug, "no sequence");
   if (!p.safety?.length) warn(slug, "no safety section");
   if (!p.faqs?.length) warn(slug, "no FAQs");
+  if (!p.openQuestions?.length) warn(slug, "no open questions");
+  for (const q of p.openQuestions ?? []) {
+    if (!q.trim().endsWith("?")) err(slug, `open question must end with a question mark: "${q.slice(0, 60)}…"`);
+    const verdict = q.match(/\b(safe|effective|scam|useless|miracle|guaranteed|worthless)\b/i);
+    if (verdict) err(slug, `open question carries a verdict word (${verdict[1]}): "${q.slice(0, 60)}…"`);
+  }
   if (p.aka && p.aka.some((a) => !a.trim())) err(slug, "empty aka entry");
 
   // Claims
@@ -237,6 +244,7 @@ if (write) {
     `| Sequence | ${cov("sequence")} / ${peptides.length} |`,
     `| Safety | ${cov("safety")} / ${peptides.length} |`,
     `| FAQs | ${cov("faqs")} / ${peptides.length} |`,
+    `| Open questions | ${cov("openQuestions")} / ${peptides.length} |`,
     `| Unique cited records | ${unique} |`,
     "",
     "## Worklist by entry",

@@ -1,0 +1,29 @@
+name: Propose an open question
+description: A question about a peptide or a story that both an enthusiast and a skeptic would want to argue. We publish the question, not the answer.
+title: "[question] "
+labels: ["open-question"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry or story
+      description: The peptide or news story this belongs to (name or URL).
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+      description: One question, phrased so it does not hint at the answer. No safe, effective, scam, useless, miracle, or guaranteed.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it is open
+      description: What evidence is missing, and what document or trial would settle it.
+  - type: input
+    id: credit
+    attributes:
+      label: How to credit you (optional)
+      description: Name or handle. Leave blank to stay anonymous. Published questions carry attribution.

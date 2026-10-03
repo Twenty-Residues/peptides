@@ -90,6 +90,12 @@ export type Peptide = {
   regulatory?: Regulatory;
   safety?: Safety[];
   faqs?: FAQ[];
+  /**
+   * Open questions — what the record cannot yet answer, phrased so an
+   * enthusiast and a skeptic would each pick it up. We publish the question,
+   * never the answer. The share unit of the monograph.
+   */
+  openQuestions?: string[];
   tags: string[];
   claims: Claim[];
   /** Placeholder byline until the reviewer is named (user-owned). */
@@ -197,6 +203,11 @@ export const peptides: Peptide[] = [
         a: "Trials show much of the lost weight tends to return after stopping, because the appetite effects depend on continued dosing. It is studied as an ongoing therapy, not a short course.",
       },
     ],
+    openQuestions: [
+      "SELECT showed fewer cardiovascular events in people without diabetes, and the trial was not designed to separate the weight loss from the molecule. How much of the benefit is each?",
+      "Most of the weight returns after stopping. Is that a failure of the drug, or confirmation that obesity behaves like other chronic conditions that need ongoing treatment?",
+      "Trial exposure is measured in years; population use will be measured in decades. What would a 20-year signal look like, and who is positioned to see it first?",
+    ],
     tags: ["metabolic", "GLP-1", "approved"],
     claims: [
       {
@@ -261,6 +272,11 @@ export const peptides: Peptide[] = [
         q: "How is tirzepatide different from semaglutide?",
         a: "Semaglutide activates one receptor (GLP-1); tirzepatide activates two (GIP and GLP-1). In trials the dual mechanism has produced larger average weight loss.",
       },
+    ],
+    openQuestions: [
+      "SURMOUNT-1 reported ~21% mean loss, a figure long associated with bariatric surgery. Surgery has 30 years of follow-up. What is the comparison worth until the drug does too?",
+      "Dual agonism beat single agonism on weight, and the head-to-head data cannot yet say why. Is GIP adding efficacy, tolerability, or both?",
+      "The sleep-apnea approval rests on weight loss improving apnea. Is that a new indication, or the same one measured differently?",
     ],
     tags: ["metabolic", "GLP-1", "GIP", "approved"],
     claims: [
@@ -327,6 +343,11 @@ export const peptides: Peptide[] = [
         q: "Can I get retatrutide?",
         a: "Not as an approved medicine – it remains investigational. Any material sold as retatrutide outside a clinical trial is unapproved and unverified.",
       },
+    ],
+    openQuestions: [
+      "Phase 3 reported surgery-level loss and a dropout rate that rises with dose. Is the right dose the one that produces the most loss, or the one most people stay on?",
+      "The glucagon receptor is the new piece. Glucagon raises energy expenditure and also blood glucose. What does that trade-off look like beyond 80 weeks?",
+      "This molecule is sold grey-market before any approval exists. Does that pressure speed regulatory review, slow it, or change nothing?",
     ],
     tags: ["metabolic", "GLP-1", "GIP", "glucagon", "investigational"],
     claims: [
@@ -401,6 +422,10 @@ export const peptides: Peptide[] = [
         a: "No. The fragment keeps the lipolytic region of growth hormone and drops the parts responsible for growth, IGF-1 release, and insulin resistance. That selectivity was the whole design rationale.",
       },
     ],
+    openQuestions: [
+      "The preclinical lipolysis signal was real and the human weight-loss trials failed, a pattern that applies to most Tier 3 entries here. Was the hypothesis wrong, or the trials?",
+      "It is sold today on animal data that its own developer's human trials did not confirm. What should that pattern tell a reader about any peptide with only preclinical evidence?",
+    ],
     tags: ["metabolic", "GH-fragment", "investigational"],
     claims: [
       {
@@ -467,6 +492,10 @@ export const peptides: Peptide[] = [
         q: "Is tesamorelin a growth hormone?",
         a: "No – it prompts your own pituitary to release growth hormone, rather than being GH itself. That is why it is described as a GHRH analog.",
       },
+    ],
+    openQuestions: [
+      "Approved for visceral fat in HIV lipodystrophy, with the benefit reversing on discontinuation. Is a drug you cannot stop a treatment, a maintenance therapy, or something else?",
+      "The mechanism is not HIV-specific. Why has no one run the pivotal trial in people without HIV, and what would it cost to find out?",
     ],
     tags: ["GH-axis", "GHRH", "approved"],
     claims: [
@@ -546,6 +575,10 @@ export const peptides: Peptide[] = [
           href: "https://pubmed.ncbi.nlm.nih.gov/16352683/",
         },
       },
+    ],
+    openQuestions: [
+      "A single dose raises GH and IGF-1 for over a week in humans. Elevated IGF-1 is what oncologists watch. Does a long-acting secretagogue deserve a different evidence bar than a short-acting one?",
+      "The DAC and non-DAC versions are different molecules sold under one name. How much of the community's experience with 'CJC-1295' describes which one?",
     ],
     tags: ["GH-axis", "GHRH", "investigational"],
     claims: [
@@ -627,6 +660,10 @@ export const peptides: Peptide[] = [
         q: "How is ipamorelin different from CJC-1295 or tesamorelin?",
         a: "Different receptor. Ipamorelin mimics ghrelin at the GHS-R1a receptor; CJC-1295 and tesamorelin are GHRH analogs. They are often paired on the theory that the two signals add, but that combination has not been tested in a controlled human trial.",
       },
+    ],
+    openQuestions: [
+      "Selectivity, GH without cortisol, is the whole pitch, and the only placebo-controlled efficacy trial missed its endpoint. Does a clean mechanism count for anything when the outcome trial does not?",
+      "The half-life is about two hours. What does a two-hour GH pulse do over months that a longer one would not, and has anyone measured it?",
     ],
     tags: ["GH-axis", "secretagogue", "investigational"],
     claims: [
@@ -721,6 +758,11 @@ export const peptides: Peptide[] = [
         a: "That hasn't been shown. The healing evidence is from rodent and in-vitro studies, mostly from a single research group. No completed placebo-controlled human efficacy trial exists yet.",
       },
     ],
+    openQuestions: [
+      "Fifteen years of rodent studies, mostly from one laboratory. Is that a warning sign, or just what happens when nobody else is funded to look?",
+      "Why has the best-selling repair peptide in the space never been given to injured humans in a controlled trial? The protocol would be cheap. Who benefits from not running it?",
+      "A Phase 2 hamstring trial is now registered. If it misses, does the community update? If it hits, do the skeptics?",
+    ],
     tags: ["repair", "gut", "investigational"],
     claims: [
       {
@@ -793,6 +835,10 @@ export const peptides: Peptide[] = [
         q: "Is TB-500 the same as thymosin β4?",
         a: "No. TB-500 is a small synthetic fragment (Ac-LKKTETQ); thymosin β4 is the full 43-amino-acid protein. Most healing studies used the full protein, so their results don't automatically apply to TB-500.",
       },
+    ],
+    openQuestions: [
+      "Most cited 'TB-500' research used full-length thymosin β4, a 43-residue protein, not this seven-residue fragment, and nobody has published the test. Does the fragment keep the activity?",
+      "If the fragment turns out to be inert, what explains the volume of positive user reports? If it turns out to be active, why did no company develop it?",
     ],
     tags: ["repair", "angiogenesis", "investigational"],
     claims: [
@@ -872,6 +918,10 @@ export const peptides: Peptide[] = [
         a: "There is real controlled human evidence for topical use – better than most 'peptide' skincare – but the trials are small and short-term, so treat it as promising rather than proven.",
       },
     ],
+    openQuestions: [
+      "The topical evidence is the strongest in the cosmeceutical group, the trials are small and short, and the marketing uses the result both ways. Is a 12-week fine-line result a skincare claim or a tissue-remodeling claim?",
+      "GHK-Cu is on FDA's compounding review list, and injectable use has no human trial behind it. Should topical evidence carry any weight for a different route?",
+    ],
     tags: ["skin", "repair", "cosmetic", "investigational"],
     claims: [
       {
@@ -935,6 +985,10 @@ export const peptides: Peptide[] = [
           href: "https://pubmed.ncbi.nlm.nih.gov/18612139/",
         },
       },
+    ],
+    openQuestions: [
+      "The mouse colitis data are consistent and the human data are absent. An FDA panel voted narrowly for compounding anyway. What did the panel weigh that the agency's reviewers did not, or the reverse?",
+      "KPV appears to act without the melanocortin receptor. If the mechanism is unclear, does that make the preclinical signal more interesting or less trustworthy?",
     ],
     tags: ["anti-inflammatory", "gut", "investigational"],
     claims: [
@@ -1026,6 +1080,10 @@ export const peptides: Peptide[] = [
         a: "Not as MOTS-c itself in a published trial. A modified analog was taken into early-phase testing by a biotech company, but those results do not transfer to the native peptide.",
       },
     ],
+    openQuestions: [
+      "A peptide encoded in mitochondrial DNA that mimics exercise in mice, and human data that are correlational. Does causation in mice plus correlation in humans add up to anything, or is that two half-answers?",
+      "Exercise raises MOTS-c on its own. If the goal is the signal, is the injection a shortcut or a substitute for the thing that produces it?",
+    ],
     tags: ["metabolic", "longevity", "investigational"],
     claims: [
       {
@@ -1111,6 +1169,10 @@ export const peptides: Peptide[] = [
         },
       },
     ],
+    openQuestions: [
+      "The telomerase result is in a dish; the lifespan claims are from decades-old Russian cohorts. Is the right response to replicate, to dismiss, or to ask why nobody has tried to replicate?",
+      "A tetrapeptide that activates telomerase would, in principle, interest oncologists as much as longevity researchers. Why has neither field followed up?",
+    ],
     tags: ["longevity", "frontier", "investigational"],
     claims: [
       {
@@ -1185,6 +1247,10 @@ export const peptides: Peptide[] = [
         },
       },
     ],
+    openQuestions: [
+      "A registered prescription drug in Russia with almost no trial data indexed in the West. Is that a regulatory gap, a translation gap, or evidence of a lower bar?",
+      "The comparator in its key study was a benzodiazepine. Matching one on anxiety without sedation would matter if replicated. What would replication need to look like to convince either side?",
+    ],
     tags: ["neuro", "anxiolytic", "frontier", "approved-abroad"],
     claims: [
       {
@@ -1258,6 +1324,10 @@ export const peptides: Peptide[] = [
           href: "https://pubmed.ncbi.nlm.nih.gov/29798983/",
         },
       },
+    ],
+    openQuestions: [
+      "The mechanism work on BDNF and TrkB is Western-indexed; the efficacy work is entirely Russian. Should a reader weight the two literatures differently, and on what basis?",
+      "Used in Russian stroke care for decades. If it worked as described, what would the Western literature look like today? If it did not, what would the Russian literature look like?",
     ],
     tags: ["neuro", "nootropic", "frontier", "approved-abroad"],
     claims: [
@@ -1340,6 +1410,10 @@ export const peptides: Peptide[] = [
         a: "No – it is approved in many other countries (as Zadaxin) but not in the United States, where it remains investigational.",
       },
     ],
+    openQuestions: [
+      "Approved in dozens of countries and not in the US. Is that a verdict on the evidence, or on who filed and where?",
+      "The sepsis trial improved 28-day outcomes. Sepsis trials are notorious for failing to replicate. What would it take for this one to be believed?",
+    ],
     tags: ["immune", "antiviral", "approved-abroad"],
     claims: [
       {
@@ -1406,6 +1480,10 @@ export const peptides: Peptide[] = [
         a: "They share almost the same structure, but bremelanotide ends in a free acid and was refined toward central MC4R activity – becoming an FDA-approved drug. Melanotan II stayed broad-spectrum (including MC1R tanning), unapproved, and carries the safety concerns.",
       },
     ],
+    openQuestions: [
+      "FDA-approved for desire in premenopausal women; its near-twin melanotan II is sold grey-market for the same effect. What does a C-terminal acid buy a molecule besides a label?",
+      "The effect size in RECONNECT was modest and the nausea rate was not. How should a reader weigh a real but small benefit against a common but transient side effect?",
+    ],
     tags: ["melanocortin", "sexual-health", "approved"],
     claims: [
       {
@@ -1469,6 +1547,10 @@ export const peptides: Peptide[] = [
         q: "Is Melanotan II safe for tanning?",
         a: "It is unapproved, and case reports link it to serious harms – rhabdomyolysis, priapism, and changes to moles including melanoma. Dermatologists caution against it.",
       },
+    ],
+    openQuestions: [
+      "Rhabdomyolysis and renal dysfunction have been reported after injection, and the case reports cannot separate the molecule from unregulated product. Which one is the reader actually warned about?",
+      "It never reached approval; its analogs did. What does that history say about the molecule, and what does it say about the development path?",
     ],
     tags: ["melanocortin", "pigmentation", "frontier", "investigational"],
     claims: [
@@ -1555,6 +1637,10 @@ export const peptides: Peptide[] = [
         a: "For adherence, yes, compared with weekly agents. Pharmacologically the daily schedule just reflects a shorter half-life; the receptor and the effects are the same.",
       },
     ],
+    openQuestions: [
+      "Less weight loss than its successors, more years of safety data. For a reader comparing GLP-1s, which number should carry more weight?",
+      "Now a generic-era benchmark. Does going generic change how the newer trials that used it as the comparator should be read?",
+    ],
     tags: ["metabolic", "GLP-1", "approved"],
     claims: [
       {
@@ -1640,6 +1726,10 @@ export const peptides: Peptide[] = [
         a: "In REDEFINE 1 the combination produced about 20% weight loss at 68 weeks against 3% on placebo. The trial also ran each drug alone, and the combination beat both arms.",
       },
     ],
+    openQuestions: [
+      "Alone it matches liraglutide; with semaglutide it reaches the low twenties. How much of CagriSema's result is amylin, and how much is simply adding anything to semaglutide?",
+      "Amylin agonism is a different pathway with a different side-effect profile. Is a second mechanism progress, or a second set of unknowns?",
+    ],
     tags: ["metabolic", "amylin", "investigational"],
     claims: [
       {
@@ -1717,6 +1807,10 @@ export const peptides: Peptide[] = [
         a: "That has not been tested in a controlled trial. It reliably raises growth hormone, which is a different thing from improving an outcome.",
       },
     ],
+    openQuestions: [
+      "Approved for children, withdrawn for business reasons, now compounded for adults. The pediatric evidence is real. Does any of it transfer to an adult anti-aging use that was never studied?",
+      "A discontinued drug is not a disproven one. How should a reader treat 'withdrawn' when the reason was commercial?",
+    ],
     tags: ["GH-axis", "GHRH", "frontier"],
     claims: [
       {
@@ -1789,6 +1883,10 @@ export const peptides: Peptide[] = [
         q: "Is GHRP-2 approved?",
         a: "Only as a one-off diagnostic test in Japan. There is no approved therapeutic use of GHRP-2 anywhere, and the diagnostic record says nothing about what repeated dosing does.",
       },
+    ],
+    openQuestions: [
+      "Strong enough to serve as a diagnostic test in Japan, never approved as a treatment anywhere. Is that because the GH pulse does not translate into outcomes, or because nobody ran the outcome trial?",
+      "Intranasal doses worked in children in controlled studies. Why did that route go nowhere?",
     ],
     tags: ["GH-axis", "secretagogue", "approved-abroad"],
     claims: [
@@ -1869,6 +1967,10 @@ export const peptides: Peptide[] = [
         a: "Same receptor, different selectivity. GHRP-6 raises cortisol and prolactin along with GH in human studies; ipamorelin was engineered to avoid that, at least in preclinical work. GHRP-6 is also the stronger appetite stimulant.",
       },
     ],
+    openQuestions: [
+      "It led to the discovery of ghrelin and was never developed as a drug. Does a molecule's scientific importance say anything about its therapeutic value?",
+      "It raises cortisol along with GH, and the sleep-study data do not settle what that means. Is the cortisol a side effect, or part of the effect?",
+    ],
     tags: ["GH-axis", "secretagogue", "investigational"],
     claims: [
       {
@@ -1947,6 +2049,10 @@ export const peptides: Peptide[] = [
         q: "Is hexarelin good for the heart?",
         a: "In isolated rat hearts it protected against damage from calcium deprivation, independently of GH. No human study has tested a cardiac outcome. That is a hypothesis with a mechanism, not a benefit.",
       },
+    ],
+    openQuestions: [
+      "One of the strongest GH secretagogues tested in people, and the heart-protection claim rests on isolated rat hearts. Why did the human program stop, and what did it find before it did?",
+      "Desensitization with repeated dosing was reported in the 1990s. Does a secretagogue that fades after weeks have any long-term use case?",
     ],
     tags: ["GH-axis", "secretagogue", "investigational"],
     claims: [
@@ -2031,6 +2137,10 @@ export const peptides: Peptide[] = [
         a: "It is approved only for erythropoietic protoporphyria and supplied as an implant through specialist centers. Cosmetic use is off-label and the online 'melanotan I' market is unregulated.",
       },
     ],
+    openQuestions: [
+      "An orphan drug for a rare porphyria, and the molecule 'melanotan I' claims to be. If the approved implant is the real thing, what exactly is in the grey-market vial?",
+      "Approved on pain-free sunlight exposure. Does a tanning effect in healthy people count as evidence of anything, or is it an off-target use of a rare-disease drug?",
+    ],
     tags: ["melanocortin", "pigmentation", "approved"],
     claims: [
       {
@@ -2114,6 +2224,10 @@ export const peptides: Peptide[] = [
         a: "Chemically it may be. The human data are for a topical cream on chronic wounds and for intratumoral injection in a trial setting. Systemic injection has no human evidence at all.",
       },
     ],
+    openQuestions: [
+      "The Phase 2b venous-ulcer trial missed its primary endpoint and a post-hoc subgroup looked promising. Post-hoc subgroups are where both hype and real signal live. How does a reader tell them apart?",
+      "Your body makes LL-37. Does that make topical dosing lower-risk, or does the body's own tight regulation of it suggest more is not better?",
+    ],
     tags: ["immune", "repair", "anti-inflammatory", "investigational"],
     claims: [
       {
@@ -2196,6 +2310,10 @@ export const peptides: Peptide[] = [
         q: "Did the dry-eye trial succeed?",
         a: "Partly. The Phase 2 trial missed both primary endpoints but improved several secondary measures, which was enough to justify Phase 3. Until those read out, the honest status is promising and unproven.",
       },
+    ],
+    openQuestions: [
+      "Phase 3 trials in dry eye are underway for this full-length protein, the one grey-market 'TB-500' is named after. If the eye trials succeed, does that say anything about systemic injection of the fragment?",
+      "Missed both primary endpoints but improved secondaries in a 72-patient Phase 2. Is that a signal, noise, or a trial designed around the wrong endpoints?",
     ],
     tags: ["repair", "angiogenesis", "investigational"],
     claims: [
@@ -2281,6 +2399,10 @@ export const peptides: Peptide[] = [
         q: "Has dihexa been tested in humans?",
         a: "No. Every result is from rats or mice. There is no pharmacokinetic, safety or efficacy data in people.",
       },
+    ],
+    openQuestions: [
+      "The key mechanism paper was retracted in 2025 and the original rat study is under a Notice of Concern. An independent group still reported effects in an Alzheimer's mouse model. Does that result survive the retraction, or depend on what was retracted?",
+      "A compound with no human data and a retracted mechanism is sold as a nootropic. What is a buyer actually buying: the molecule, or the story?",
     ],
     tags: ["neuro", "nootropic", "frontier", "investigational"],
     claims: [

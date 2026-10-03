@@ -17,6 +17,7 @@ import { comparisonsFor, pairOf } from "@/lib/comparisons";
 import { PeptideCard } from "@/components/PeptideCard";
 import { newsForCompound } from "@/lib/news";
 import { NewsCard } from "@/components/NewsCard";
+import { ProposeQuestion } from "@/components/ProposeQuestion";
 
 export function generateStaticParams() {
   return peptides.map((p) => ({ slug: p.slug }));
@@ -182,6 +183,7 @@ export default async function PeptidePage({
     p.safety?.length && { id: "safety", label: "Safety" },
     p.regulatory && { id: "regulatory", label: "Status" },
     p.faqs?.length && { id: "faq", label: "FAQ" },
+    p.openQuestions?.length && { id: "open-questions", label: "Open questions" },
     refs.length && { id: "references", label: "References" },
   ].filter(Boolean) as { id: string; label: string }[];
 
@@ -417,6 +419,29 @@ export default async function PeptidePage({
               </details>
             ))}
           </div>
+        </Section>
+      )}
+
+      {/* Open questions */}
+      {p.openQuestions && p.openQuestions.length > 0 && (
+        <Section id="open-questions" title="Open questions">
+          <div className="rounded-2xl bg-plum px-6 py-6 text-surface">
+            <ol className="space-y-4">
+              {p.openQuestions.map((q, i) => (
+                <li key={i} className="flex gap-4">
+                  <span aria-hidden className="shrink-0 font-mono text-sm text-gold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="max-w-prose font-serif text-lg leading-snug">{q}</p>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-5 text-sm text-surface/70">
+              We don&apos;t answer these. Take them to wherever you argue about
+              peptides, and send us the strongest case from either side.
+            </p>
+          </div>
+          <ProposeQuestion subject={p.name} />
         </Section>
       )}
 
