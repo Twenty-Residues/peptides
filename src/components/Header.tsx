@@ -2,8 +2,11 @@ import Link from "next/link";
 import { nav, site } from "@/lib/site";
 import { NavLinks } from "./NavLinks";
 import { LogoMark, Wordmark } from "./Logo";
+import { SearchButton, SearchPalette } from "./SearchPalette";
+import { buildSearchIndex } from "@/lib/search";
 
 export function Header() {
+  const index = buildSearchIndex();
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
       <a href="#main" className="skip-link">
@@ -22,6 +25,7 @@ export function Header() {
         {/* Desktop */}
         <nav aria-label="Primary" className="hidden items-center gap-6 sm:flex">
           <NavLinks />
+          <SearchButton />
           <Link
             href="/peptides"
             className="rounded-full bg-gold px-4 py-1.5 text-sm font-semibold text-plum transition-colors hover:bg-gold-600"
@@ -30,8 +34,10 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* Mobile — a native <details> so it works with JS disabled */}
-        <details className="menu-toggle relative sm:hidden">
+        {/* Mobile — search + a native <details> so the menu works with JS disabled */}
+        <div className="flex items-center gap-1 sm:hidden">
+        <SearchButton className="!px-2.5" />
+        <details className="menu-toggle relative">
           <summary
             className="grid size-10 cursor-pointer place-items-center rounded-lg text-plum hover:bg-plum-050"
             aria-label="Menu"
@@ -84,7 +90,9 @@ export function Header() {
             </Link>
           </nav>
         </details>
+        </div>
       </div>
+      <SearchPalette index={index} />
     </header>
   );
 }
