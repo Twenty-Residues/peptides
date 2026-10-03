@@ -10,6 +10,8 @@ import {
 } from "@/lib/peptides";
 import { evidenceFloor, TIERS, TierBadge } from "@/lib/evidence";
 import { editorial, site } from "@/lib/site";
+import { newsForCompound } from "@/lib/news";
+import { NewsCard } from "@/components/NewsCard";
 
 export function generateStaticParams() {
   return peptides.map((p) => ({ slug: p.slug }));
@@ -57,6 +59,7 @@ export default async function PeptidePage({
 
   const floor = evidenceFloor(efficacyTiers(p));
   const snap = snapshot(p);
+  const inTheNews = newsForCompound(p.slug);
 
   // Collect a de-duplicated, numbered reference list across the whole entry.
   const refs: Source[] = [];
@@ -306,6 +309,17 @@ export default async function PeptidePage({
                 [{refIndex(p.regulatory.source.href)}] {p.regulatory.source.label}
               </a>
             )}
+          </div>
+        </Section>
+      )}
+
+      {/* In the news */}
+      {inTheNews.length > 0 && (
+        <Section id="news" title="In the news">
+          <div className="grid gap-4">
+            {inTheNews.slice(0, 3).map((n) => (
+              <NewsCard key={n.slug} story={n} />
+            ))}
           </div>
         </Section>
       )}
