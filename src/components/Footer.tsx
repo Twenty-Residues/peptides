@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { editorial, nav, site } from "@/lib/site";
+import { editorial, footerNav, nav, site } from "@/lib/site";
 import { categories } from "@/lib/categories";
 import { LogoMark, Wordmark } from "./Logo";
 
@@ -44,7 +44,7 @@ export function Footer() {
               Site
             </p>
             <ul className="mt-3 space-y-2">
-              {nav.map((item) => (
+              {[...nav, ...footerNav].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -54,11 +54,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/privacy" className="hover:text-plum hover:underline">
-                  Privacy
-                </Link>
-              </li>
               <li>
                 <a
                   href={`mailto:${editorial.contact}`}
