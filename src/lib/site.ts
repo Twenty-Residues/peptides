@@ -8,15 +8,15 @@ export const site = {
     "The peptide reference that wants you to understand: every claim tiered by how well it's proven and cited to a fixed record. Bullish on the science, honest about the frontier.",
 };
 
-/** Primary header navigation — the three things a reader comes here to do. */
+/** Primary header navigation — the two things a reader comes here to do. */
 export const nav = [
   { href: "/peptides", label: "Catalog" },
-  { href: "/compare", label: "Compare" },
   { href: "/news", label: "News" },
 ] as const;
 
-/** Trust and policy pages — footer only. */
+/** Secondary routes and trust pages — footer only. */
 export const footerNav = [
+  { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
   { href: "/privacy", label: "Privacy" },
