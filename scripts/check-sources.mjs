@@ -4,15 +4,17 @@
  * fixed, verifiable record. Catches the failure mode the launch audit found:
  * a "source" that is actually a search query, or a non-https link.
  *
- * A citation is any `href: "..."` in src/lib/peptides.ts or src/lib/news.ts.
+ * A citation is any `href: "..."` in src/lib/peptides.ts,
+ * src/lib/comparisons.ts, or src/lib/news.ts.
  */
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const files = ["peptides.ts", "news.ts"].map((f) => join(root, "src", "lib", f));
-const src = files.map((f) => readFileSync(f, "utf8")).join("\n");
+const src = ["peptides.ts", "comparisons.ts", "news.ts"]
+  .map((f) => readFileSync(join(root, "src", "lib", f), "utf8"))
+  .join("\n");
 
 const hrefs = [...src.matchAll(/href:\s*"([^"]+)"/g)].map((m) => m[1]);
 const problems = [];

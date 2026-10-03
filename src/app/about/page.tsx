@@ -17,7 +17,7 @@ export default function AboutPage() {
       <p className="mt-4 max-w-prose text-lg leading-relaxed text-ink/85">
         {site.name} is a plain-language reference for peptides. We read the
         literature so you don&apos;t have to, and we grade every claim by how
-        well it&apos;s actually proven — from regulatory-grade trials down to
+        well it&apos;s actually proven, from regulatory-grade trials down to
         early signals on the frontier.
       </p>
 
@@ -76,9 +76,10 @@ export default function AboutPage() {
         Editorial &amp; review
       </h2>
       <p className="mt-3 max-w-prose leading-relaxed text-ink/75">
-        Written by {editorial.writtenBy}. {editorial.reviewedBy}. Medical review
-        strengthens a reference like this, and naming a qualified reviewer is a
-        priority as the site matures.
+        Written by {editorial.writtenBy}. Medical review is{" "}
+        {editorial.reviewStatus}. A named clinical reviewer strengthens a
+        reference like this, and we will show the name on every entry the day
+        one is in place rather than imply a review that hasn&apos;t happened.
       </p>
 
       <h2 className="mt-12 text-2xl font-medium text-plum">
