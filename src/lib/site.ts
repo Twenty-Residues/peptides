@@ -4,12 +4,13 @@ export const site = {
   url: "https://peptides.info",
   tagline: "Peptides, straight.",
   description:
-    "The peptide reference that reads like it wants you to understand — every entry hooked hard, then held to the evidence. Bullish on the science, honest about the frontier.",
+    "The peptide reference that wants you to understand: every claim tiered by how well it's proven and cited to a fixed record. Bullish on the science, honest about the frontier.",
 };
 
 export const nav = [
   { href: "/peptides", label: "Catalog" },
   { href: "/news", label: "News" },
+  { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
 ] as const;
@@ -21,5 +22,7 @@ export const nav = [
 export const editorial = {
   writtenBy: "Twenty Residues editorial",
   reviewedBy: "Pending named medical review",
+  /** Reads naturally after "Medical review:" */
+  reviewStatus: "pending; a named reviewer is being assigned",
   contact: "corrections@peptides.info",
 } as const;

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { peptides } from "@/lib/peptides";
 import { news } from "@/lib/news";
+import { comparisons } from "@/lib/comparisons";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,8 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/peptides`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/news`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${base}/compare`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/methodology`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/about`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/privacy`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const monographs: MetadataRoute.Sitemap = peptides.map((p) => ({
@@ -28,4 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [...staticRoutes, ...monographs, ...stories];
+  const headToHead: MetadataRoute.Sitemap = comparisons.map((c) => ({
+    url: `${base}/compare/${c.slug}`,
+    lastModified: new Date(c.updated),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...monographs, ...headToHead];
 }

@@ -12,6 +12,8 @@ type TierMeta = {
   label: string;
   short: string;
   blurb: string;
+  /** One plain-English line for legends and tooltips. */
+  plain: string;
   className: string;
 };
 
@@ -20,7 +22,8 @@ export const TIERS: Record<Tier, TierMeta> = {
     label: "Tier 1 — Regulatory / pivotal RCT",
     short: "Established",
     blurb:
-      "Regulatory approval or a pivotal (Phase 3 / confirmatory) randomized controlled trial in humans. The strongest floor.",
+      "Regulatory approval or a pivotal (Phase 3 / confirmatory) randomized controlled trial in humans. The strongest evidence there is.",
+    plain: "Approved, or proven in a pivotal human trial.",
     className:
       "bg-emerald-50 text-emerald-800 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-400/20",
   },
@@ -29,6 +32,7 @@ export const TIERS: Record<Tier, TierMeta> = {
     short: "Clinical",
     blurb:
       "Human clinical data short of a pivotal trial: Phase 2 RCTs, cohorts, open-label studies, or well-powered pilots.",
+    plain: "Tested in people, but not yet at pivotal scale.",
     className:
       "bg-sky-50 text-sky-800 ring-sky-600/20 dark:bg-sky-500/10 dark:text-sky-300 dark:ring-sky-400/20",
   },
@@ -37,6 +41,7 @@ export const TIERS: Record<Tier, TierMeta> = {
     short: "Preclinical",
     blurb:
       "Animal models and in-vitro work. Mechanistically informative; not yet shown in people.",
+    plain: "Shown in animals or cells, not yet in people.",
     className:
       "bg-amber-50 text-amber-800 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-400/20",
   },
@@ -45,6 +50,7 @@ export const TIERS: Record<Tier, TierMeta> = {
     short: "Emerging",
     blurb:
       "Early signals, theory, or community observation without controlled evidence. The frontier.",
+    plain: "Early signals and theory. The frontier.",
     className:
       "bg-neutral-100 text-neutral-700 ring-neutral-500/20 dark:bg-neutral-500/10 dark:text-neutral-300 dark:ring-neutral-400/20",
   },
@@ -55,6 +61,7 @@ export function TierBadge({ tier }: { tier: Tier }) {
   return (
     <span
       title={meta.blurb}
+      aria-label={`${meta.label}: ${meta.plain}`}
       className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${meta.className}`}
     >
       <span aria-hidden className="font-mono">
@@ -66,8 +73,10 @@ export function TierBadge({ tier }: { tier: Tier }) {
 }
 
 /**
- * The evidence floor of a set of claims is the strongest tier that at least
- * one claim reaches (i.e. the numerically lowest tier present).
+ * The "evidence floor" (internal name) of a set of claims is the strongest
+ * tier at least one claim reaches (the numerically lowest tier present).
+ * In reader-facing copy call it "best evidence" or "strongest tier" — the
+ * word "floor" reads as a minimum, which is the opposite of what it is.
  */
 export function evidenceFloor(tiers: Tier[]): Tier | null {
   if (tiers.length === 0) return null;

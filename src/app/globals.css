@@ -67,3 +67,56 @@ h3 {
   color: var(--plum);
   letter-spacing: -0.01em;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--plum);
+}
+
+/* One focus treatment everywhere; the default outline gets lost on plum. */
+:focus-visible {
+  outline: 2px solid var(--plum-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link — visible only when focused. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 50;
+  border-radius: 9999px;
+  background: var(--plum);
+  color: var(--surface);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* <details>-driven mobile menu: swap the icon, no JS. */
+.menu-toggle summary {
+  list-style: none;
+}
+.menu-toggle summary::-webkit-details-marker {
+  display: none;
+}
+.menu-toggle[open] .icon-open {
+  display: none;
+}
+.menu-toggle:not([open]) .icon-close {
+  display: none;
+}
