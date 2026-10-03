@@ -1,0 +1,26 @@
+name: Report a correction
+description: A claim, tier, date, figure, or source that looks wrong. Corrections are logged on the entry.
+title: "[correction] "
+labels: ["correction"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry or story
+      description: Name or URL.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: Quote the line as it appears.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: The record that shows it
+      description: A fixed record (PMID, PMCID, DOI, docket, label, registry entry). We cannot act on a search link or a secondary report alone.
+    validations:
+      required: true

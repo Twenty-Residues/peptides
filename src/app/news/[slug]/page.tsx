@@ -5,6 +5,7 @@ import { CATEGORY_LABEL, getStory, news, sortedNews } from "@/lib/news";
 import { getPeptide } from "@/lib/peptides";
 import { NewsCard, StatusPill, fmtDate } from "@/components/NewsCard";
 import { editorial, site } from "@/lib/site";
+import { ProposeQuestion } from "@/components/ProposeQuestion";
 
 export function generateStaticParams() {
   return news.map((n) => ({ slug: n.slug }));
@@ -186,6 +187,7 @@ export default async function StoryPage({
           peptides, and send us the strongest case from either side.
         </p>
       </section>
+      <ProposeQuestion subject={s.title} />
 
       <section className="mt-12">
         <h2 className="text-sm font-semibold tracking-widest text-plum-500 uppercase">
@@ -237,16 +239,10 @@ export default async function StoryPage({
         </section>
       )}
 
-      <p className="mt-12 max-w-prose text-sm text-muted">
-        Something wrong or missing? Tell us at{" "}
-        <a
-          href="mailto:corrections@peptides.info"
-          className="font-medium text-plum-500 underline-offset-4 hover:underline"
-        >
-          corrections@peptides.info
-        </a>
-        . Corrections are logged on the story.
-      </p>
+      <div className="mt-8 flex flex-wrap gap-x-8">
+        <ProposeQuestion subject={s.title} kind="correction" />
+        <ProposeQuestion subject={s.title} kind="tip" />
+      </div>
 
       {related.length > 0 && (
         <section className="mt-14">
