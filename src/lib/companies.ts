@@ -2668,3 +2668,94 @@ export function recordSummary(c: Company) {
   }
   return [...out.entries()].map(([kind, v]) => ({ kind, ...v }));
 }
+
+/**
+ * Four series for the year chart, in fixed order. Ten event kinds are too
+ * many hues; these four are the reader's real questions: did the government
+ * act, did product come back, did someone sue, did the company change.
+ */
+export type RecordGroup = "enforcement" | "recall" | "legal" | "corporate";
+
+export const GROUP_ORDER: RecordGroup[] = [
+  "enforcement",
+  "recall",
+  "legal",
+  "corporate",
+];
+
+export const GROUP_LABEL: Record<RecordGroup, string> = {
+  enforcement: "Enforcement",
+  recall: "Recalls",
+  legal: "Lawsuits",
+  corporate: "Corporate",
+};
+
+export const GROUP_OF: Record<EventKind, RecordGroup> = {
+  "warning-letter": "enforcement",
+  "import-alert": "enforcement",
+  criminal: "enforcement",
+  recall: "recall",
+  lawsuit: "legal",
+  approval: "corporate",
+  acquisition: "corporate",
+  dissolution: "corporate",
+  delisting: "corporate",
+  filing: "corporate",
+};
+
+export type YearRow = { year: string } & Record<RecordGroup, number>;
+
+/** Records per year per group, oldest first, with empty years filled in. */
+export function timelineByYear(): YearRow[] {
+  const by = new Map<string, YearRow>();
+  for (const e of timeline()) {
+    const y = e.date.slice(0, 4);
+    const row = by.get(y) ?? {
+      year: y,
+      enforcement: 0,
+      recall: 0,
+      legal: 0,
+      corporate: 0,
+    };
+    row[GROUP_OF[e.kind]]++;
+    by.set(y, row);
+  }
+  const years = [...by.keys()].map(Number);
+  if (years.length === 0) return [];
+  const out: YearRow[] = [];
+  for (let y = Math.min(...years); y <= Math.max(...years); y++) {
+    out.push(
+      by.get(String(y)) ?? {
+        year: String(y),
+        enforcement: 0,
+        recall: 0,
+        legal: 0,
+        corporate: 0,
+      },
+    );
+  }
+  return out;
+}
+
+/** Catalog peptides that appear on at least one company's record, with counts. */
+export function peptideCoverage(): {
+  slug: string;
+  companies: number;
+  byStatus: Partial<Record<CompanyStatus, number>>;
+}[] {
+  const by = new Map<
+    string,
+    { companies: number; byStatus: Partial<Record<CompanyStatus, number>> }
+  >();
+  for (const c of companies) {
+    for (const s of c.peptides ?? []) {
+      const cur = by.get(s) ?? { companies: 0, byStatus: {} };
+      cur.companies++;
+      cur.byStatus[c.status] = (cur.byStatus[c.status] ?? 0) + 1;
+      by.set(s, cur);
+    }
+  }
+  return [...by.entries()]
+    .map(([slug, v]) => ({ slug, ...v }))
+    .sort((a, b) => b.companies - a.companies || a.slug.localeCompare(b.slug));
+}

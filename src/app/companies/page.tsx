@@ -77,6 +77,13 @@ export default async function CompaniesPage({
         >
           See every record as a timeline
         </Link>
+        , or{" "}
+        <Link
+          href="/companies/by-peptide"
+          className="font-medium text-plum-500 underline-offset-4 hover:underline"
+        >
+          look it up by peptide
+        </Link>
         .
       </p>
 
