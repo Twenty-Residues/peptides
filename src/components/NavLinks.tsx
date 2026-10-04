@@ -2,13 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { nav } from "@/lib/site";
+import type { NavItem } from "@/lib/site";
 
-export function NavLinks({ className = "" }: { className?: string }) {
+export function NavLinks({
+  items,
+  className = "",
+}: {
+  items: readonly NavItem[];
+  className?: string;
+}) {
   const pathname = usePathname();
   return (
     <>
-      {nav.map((item) => {
+      {items.map((item) => {
         const active =
           pathname === item.href || pathname.startsWith(item.href + "/");
         return (

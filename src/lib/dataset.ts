@@ -2,6 +2,8 @@ import { efficacyTiers, peptides, snapshot } from "./peptides";
 import { evidenceFloor } from "./evidence";
 import { categoriesFor } from "./categories";
 import { news } from "./news";
+import { companies, GROUP_OF } from "./companies";
+import { registerIsPublic } from "./register-flag";
 import { site } from "./site";
 
 /**
@@ -22,6 +24,7 @@ export function datasetVersion(): string {
     ...peptides.map((p) => p.updated ?? ""),
     ...peptides.flatMap((p) => (p.changelog ?? []).map((c) => c.date)),
     ...news.map((n) => n.updated ?? n.published),
+    ...(registerIsPublic() ? companies.map((c) => c.updated) : []),
   ].filter(Boolean);
   return dates.sort().at(-1) ?? "";
 }
@@ -108,6 +111,44 @@ export function newsRows() {
   }));
 }
 
+export function companyRows() {
+  return companies.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    aka: c.aka ?? [],
+    kind: c.kind,
+    jurisdiction: c.jurisdiction,
+    status: c.status,
+    note: c.note,
+    labelling: c.labelling ?? null,
+    domains: c.domains ?? [],
+    peptides: c.peptides ?? [],
+    records: (c.events ?? []).length,
+    latest_record: (c.events ?? []).at(-1)?.date ?? null,
+    updated: c.updated,
+    page: `${site.url}/companies/${c.slug}`,
+  }));
+}
+
+/** One row per dated record, flat, for spreadsheets. */
+export function recordRows() {
+  return companies.flatMap((c) =>
+    (c.events ?? []).map((e) => ({
+      company: c.slug,
+      company_name: c.name,
+      kind: c.kind,
+      status: c.status,
+      date: e.date,
+      record_kind: e.kind,
+      group: GROUP_OF[e.kind],
+      summary: e.summary,
+      source_label: e.source.label,
+      source_url: e.source.href,
+      page: `${site.url}/companies/${c.slug}`,
+    })),
+  );
+}
+
 export function envelope<T>(name: string, rows: T[]) {
   return {
     dataset: `${site.name} ${name}`,
@@ -128,12 +169,44 @@ export function toCsv<T extends Record<string, unknown>>(rows: T[]): string {
     const s = Array.isArray(v) ? v.join("; ") : v == null ? "" : String(v);
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
-  return [cols.join(","), ...rows.map((r) => cols.map((c) => cell(r[c])).join(","))].join("\n") + "\n";
+  return (
+    [
+      cols.join(","),
+      ...rows.map((r) => cols.map((c) => cell(r[c])).join(",")),
+    ].join("\n") + "\n"
+  );
 }
 
-export const FILES = [
-  { path: "claims.json", what: "One row per claim: text, tier, kind, fixed record, page." },
+export type DataFile = { path: string; what: string };
+
+const CORE_FILES: DataFile[] = [
+  {
+    path: "claims.json",
+    what: "One row per claim: text, tier, kind, fixed record, page.",
+  },
   { path: "claims.csv", what: "The same rows as CSV, for spreadsheets." },
-  { path: "peptides.json", what: "One row per monograph: class, categories, status, evidence floor, counts, sequence, open questions." },
-  { path: "news.json", what: "One row per story: the three blocks, open question, graded sources." },
-] as const;
+  {
+    path: "peptides.json",
+    what: "One row per monograph: class, categories, status, evidence floor, counts, sequence, open questions.",
+  },
+  {
+    path: "news.json",
+    what: "One row per story: the three blocks, open question, graded sources.",
+  },
+];
+
+const REGISTER_FILES: DataFile[] = [
+  {
+    path: "companies.json",
+    what: "One row per company: kind, jurisdiction, status, labelling, domains, peptides on record, record count.",
+  },
+  {
+    path: "records.csv",
+    what: "One row per dated record: company, date, kind, group, summary, source URL.",
+  },
+];
+
+/** The register's files appear only once it is public. */
+export function dataFiles(): DataFile[] {
+  return registerIsPublic() ? [...CORE_FILES, ...REGISTER_FILES] : CORE_FILES;
+}

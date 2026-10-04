@@ -8,21 +8,32 @@ export const site = {
     "The peptide reference that wants you to understand: every claim tiered by how well it's proven and cited to a fixed record. Bullish on the science, honest about the frontier.",
 };
 
+import { registerIsPublic } from "./register-flag";
+
+export type NavItem = { href: string; label: string };
+
 /** Primary header navigation — the two things a reader comes here to do. */
-export const nav = [
+export const nav: readonly NavItem[] = [
   { href: "/peptides", label: "Catalog" },
   { href: "/news", label: "News" },
-] as const;
+];
+
+/** The header once the company register is public: it earns a third slot. */
+export function primaryNav(): readonly NavItem[] {
+  return registerIsPublic()
+    ? [...nav, { href: "/companies", label: "Companies" }]
+    : nav;
+}
 
 /** Secondary routes and trust pages — footer only. */
-export const footerNav = [
+export const footerNav: readonly NavItem[] = [
   { href: "/compare", label: "Compare" },
   { href: "/companies", label: "Companies" },
   { href: "/data", label: "Open data" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
   { href: "/privacy", label: "Privacy" },
-] as const;
+];
 
 /**
  * Editorial byline — a swappable placeholder until a named author/reviewer is

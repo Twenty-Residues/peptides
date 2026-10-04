@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { editorial, footerNav, nav, site } from "@/lib/site";
+import { editorial, footerNav, primaryNav, site } from "@/lib/site";
 import { categories } from "@/lib/categories";
 import { LogoMark, Wordmark } from "./Logo";
 
@@ -44,7 +44,12 @@ export function Footer() {
               Site
             </p>
             <ul className="mt-3 space-y-2">
-              {[...nav, ...footerNav].map((item) => (
+              {[
+                ...primaryNav(),
+                ...footerNav.filter(
+                  (f) => !primaryNav().some((n) => n.href === f.href),
+                ),
+              ].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
