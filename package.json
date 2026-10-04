@@ -9,13 +9,15 @@
     "check:voice": "node scripts/check-voice.mjs --write",
     "check:voice:ci": "node scripts/check-voice.mjs --strict",
     "check:links": "node --experimental-strip-types --no-warnings scripts/check-links.mjs",
-    "check": "npm run check:sources && npm run check:catalog:ci && npm run check:voice:ci",
+    "check": "npm run check:sources && npm run check:catalog:ci && npm run check:companies:ci && npm run check:voice:ci",
     "typecheck": "tsc --noEmit",
     "build": "npm run check && next build",
     "start": "next start",
     "lint": "eslint .",
     "check:catalog:ci": "node --experimental-strip-types --no-warnings scripts/check-catalog.mjs",
-    "test": "tsx --test src/lib/*.test.ts"
+    "test": "tsx --test src/lib/*.test.ts",
+    "check:companies": "node --experimental-strip-types --no-warnings scripts/check-companies.mjs --write",
+    "check:companies:ci": "node --experimental-strip-types --no-warnings scripts/check-companies.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

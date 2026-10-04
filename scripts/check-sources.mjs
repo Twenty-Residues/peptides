@@ -23,7 +23,8 @@ for (const href of hrefs) {
   if (!href.startsWith("https://")) {
     problems.push(`Non-https citation: ${href}`);
   }
-  if (/[?&]term=/.test(href) || /\/search\b/.test(href)) {
+  // openFDA enforcement reports are addressed by recall number: a fixed record.
+  if ((/[?&]term=/.test(href) || /\/search\b/.test(href)) && !/^https:\/\/api\.fda\.gov\/drug\/enforcement\.json\?search=recall_number:/.test(href)) {
     problems.push(`Search-query used as a source (cite a fixed record): ${href}`);
   }
 }

@@ -16,6 +16,16 @@ Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Node ≥ 22.6.
   cites a record. Pairs live in [`src/lib/comparisons.ts`](src/lib/comparisons.ts)
   and look their sources up from the monographs by label, so they cannot cite
   anything the monographs don't.
+- **Company register** (`/companies`, veiled) — who makes, compounds and sells
+  peptides, with a status quoted from a fixed record: FDA warning letters,
+  openFDA enforcement reports, DOJ releases, SEC filings. Data in
+  [`src/lib/companies.ts`](src/lib/companies.ts); `npm run check:companies`
+  enforces that every status has the record its definition demands and
+  writes [`docs/companies-check.md`](docs/companies-check.md). Ships behind a
+  coming-soon veil: set `REGISTER_LIVE=true` to publish, or
+  `REGISTER_PREVIEW_KEY=<key>` and visit `/companies/preview?key=<key>` to
+  preview in one browser (`?key=off` clears it). Domains are shown as text and
+  never linked.
 - **The Standard** (`/methodology`) — claim-level evidence tiering:
   - **Tier 1** — regulatory approval or a pivotal / Phase 3 RCT
   - **Tier 2** — human clinical short of pivotal (Phase 2 RCT, cohort, open-label)

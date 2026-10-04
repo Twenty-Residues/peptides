@@ -3,6 +3,8 @@ import { peptides } from "@/lib/peptides";
 import { comparisons } from "@/lib/comparisons";
 import { news } from "@/lib/news";
 import { site } from "@/lib/site";
+import { companies } from "@/lib/companies";
+import { registerIsPublic } from "@/lib/register-flag";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
@@ -38,5 +40,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...monographs, ...headToHead, ...stories];
+  const register: MetadataRoute.Sitemap = registerIsPublic()
+    ? [
+        { url: `${base}/companies`, changeFrequency: "weekly", priority: 0.8 },
+        {
+          url: `${base}/companies/timeline`,
+          changeFrequency: "weekly",
+          priority: 0.7,
+        },
+        ...companies.map((c) => ({
+          url: `${base}/companies/${c.slug}`,
+          lastModified: new Date(c.updated),
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
+        })),
+      ]
+    : [];
+
+  return [
+    ...staticRoutes,
+    ...monographs,
+    ...headToHead,
+    ...stories,
+    ...register,
+  ];
 }
