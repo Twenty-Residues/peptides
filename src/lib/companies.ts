@@ -84,6 +84,21 @@ export const STATUS_PLAIN: Record<CompanyStatus, string> = {
     "No public record found either way. Not an endorsement, not an accusation.",
 };
 
+/** What a status must be able to point to. Enforced by the register check. */
+export const STATUS_PROOF: Record<CompanyStatus, string> = {
+  "active-regulated": "An FDA or EMA approval, or a securities filing.",
+  "under-enforcement":
+    "A government record: FDA warning letter, import alert, or a criminal or civil action.",
+  "recall-on-record":
+    "An FDA enforcement report, with no stronger record on file.",
+  "in-litigation":
+    "A lawsuit on the record, with no government action on file.",
+  ceased: "A dissolution, bankruptcy or wind-down filing.",
+  acquired: "A completed acquisition or merger filing.",
+  unverified:
+    "Nothing. An entry with any record at all cannot carry this status.",
+};
+
 /** Order for the register: regulated first, then by severity, unverified last. */
 export const STATUS_ORDER: CompanyStatus[] = [
   "active-regulated",
@@ -2608,4 +2623,48 @@ export function registerCounts() {
     byStatus,
     byKind,
   };
+}
+
+/** The few fields the client-side finder needs. Built on the server. */
+export type FinderRow = {
+  slug: string;
+  name: string;
+  kind: CompanyKind;
+  status: CompanyStatus;
+  jurisdiction: string;
+  /** Lower-cased words the query is matched against. */
+  keywords: string;
+};
+
+export function finderRows(): FinderRow[] {
+  return companies.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    kind: c.kind,
+    status: c.status,
+    jurisdiction: c.jurisdiction,
+    keywords: [
+      c.name,
+      ...(c.aka ?? []),
+      ...(c.domains ?? []),
+      ...(c.peptides ?? []),
+    ]
+      .join(" ")
+      .toLowerCase(),
+  }));
+}
+
+/** Record counts by kind with first and last dates, for the summary strip. */
+export function recordSummary(c: Company) {
+  const out = new Map<EventKind, { n: number; first: string; last: string }>();
+  for (const e of c.events ?? []) {
+    const cur = out.get(e.kind);
+    if (!cur) out.set(e.kind, { n: 1, first: e.date, last: e.date });
+    else {
+      cur.n++;
+      if (e.date < cur.first) cur.first = e.date;
+      if (e.date > cur.last) cur.last = e.date;
+    }
+  }
+  return [...out.entries()].map(([kind, v]) => ({ kind, ...v }));
 }
