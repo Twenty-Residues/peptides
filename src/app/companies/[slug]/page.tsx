@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  EVENT_LABEL,
   KIND_LABEL,
   LABELLING_LABEL,
   STATUS_PLAIN,
   companies,
   getCompany,
+  recordSummary,
 } from "@/lib/companies";
 import { getPeptide } from "@/lib/peptides";
 import { news } from "@/lib/news";
@@ -49,6 +51,14 @@ export default async function CompanyPage({
     .map((s) => news.find((n) => n.slug === s))
     .filter(Boolean);
   const events = c.events ?? [];
+  const summary = recordSummary(c);
+  const SHOW = 5;
+  const recent =
+    events.length > SHOW + 1
+      ? events.slice(-SHOW).reverse()
+      : [...events].reverse();
+  const older =
+    events.length > SHOW + 1 ? events.slice(0, -SHOW).reverse() : [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -104,7 +114,7 @@ export default async function CompanyPage({
 
       <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
         {[
-          { k: "Records", v: String(events.length) },
+          { k: "Dated records", v: String(events.length) },
           {
             k: "Latest",
             v: events.at(-1) ? fmtDate(events.at(-1)!.date) : "—",
@@ -142,11 +152,46 @@ export default async function CompanyPage({
             company. That is all this entry says. If you hold one, send it.
           </p>
         ) : (
-          <ol className="mt-6 space-y-6 border-l border-line pl-1">
-            {events.map((e, i) => (
-              <EventItem key={i} e={e} />
-            ))}
-          </ol>
+          <>
+            {summary.length > 1 || events.length > 2 ? (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {summary.map((s) => (
+                  <li
+                    key={s.kind}
+                    className="rounded-full border border-line bg-surface px-3 py-1 text-xs text-ink/80"
+                  >
+                    <span className="font-semibold text-plum">{s.n}</span>{" "}
+                    {EVENT_LABEL[s.kind].toLowerCase()}
+                    {s.n > 1 ? "s" : ""}
+                    <span className="text-muted">
+                      {" · "}
+                      {s.first === s.last
+                        ? fmtDate(s.last)
+                        : `${s.first.slice(0, 4)} to ${s.last.slice(0, 4)}`}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <ol className="mt-6 space-y-6 border-l border-line pl-1">
+              {recent.map((e, i) => (
+                <EventItem key={i} e={e} />
+              ))}
+            </ol>
+            {older.length > 0 && (
+              <details className="mt-6">
+                <summary className="cursor-pointer text-sm font-medium text-plum-500 underline-offset-4 hover:underline">
+                  Show {older.length} earlier{" "}
+                  {older.length === 1 ? "record" : "records"}
+                </summary>
+                <ol className="mt-6 space-y-6 border-l border-line pl-1">
+                  {older.map((e, i) => (
+                    <EventItem key={i} e={e} />
+                  ))}
+                </ol>
+              </details>
+            )}
+          </>
         )}
       </section>
 

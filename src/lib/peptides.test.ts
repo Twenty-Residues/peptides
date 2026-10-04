@@ -21,6 +21,8 @@ import {
   companies,
   companiesFor,
   compareCompanies,
+  finderRows,
+  recordSummary,
   registerCounts,
   timeline,
 } from "./companies";
@@ -201,4 +203,16 @@ test("register: timeline is newest first and counts match", () => {
 test("register: companiesFor finds the approval holder for semaglutide", () => {
   assert.ok(companiesFor("semaglutide").some((c) => c.slug === "novo-nordisk"));
   assert.deepEqual(companiesFor("no-such-peptide"), []);
+});
+
+test("register: finder rows match on domains and peptides, summary counts add up", () => {
+  const rows = finderRows();
+  assert.equal(rows.length, companies.length);
+  const royal = rows.find((r) => r.slug === "royal-peptides")!;
+  assert.ok(royal.keywords.includes("royal-peptides.com"));
+  assert.ok(royal.keywords.includes("tirzepatide"));
+  for (const c of companies) {
+    const total = recordSummary(c).reduce((n: number, s) => n + s.n, 0);
+    assert.equal(total, c.events?.length ?? 0, c.slug);
+  }
 });

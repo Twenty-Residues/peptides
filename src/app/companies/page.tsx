@@ -6,13 +6,16 @@ import {
   STATUS_LABEL,
   STATUS_ORDER,
   STATUS_PLAIN,
+  STATUS_PROOF,
   companies,
+  finderRows,
   compareCompanies,
   registerCounts,
   type CompanyKind,
   type CompanyStatus,
 } from "@/lib/companies";
 import { CompanyRow, StatusBadge } from "@/components/CompanyBits";
+import { CompanyFinder } from "@/components/CompanyFinder";
 import { site } from "@/lib/site";
 import { registerIsVisible } from "@/lib/veil";
 import { ComingSoon } from "@/components/ComingSoon";
@@ -32,7 +35,7 @@ const KINDS: CompanyKind[] = [
   "ruo-vendor",
 ];
 
-type SearchParams = Promise<{ status?: string }>;
+type SearchParams = Promise<{ status?: string; q?: string }>;
 
 export default async function CompaniesPage({
   searchParams,
@@ -40,7 +43,7 @@ export default async function CompaniesPage({
   searchParams: SearchParams;
 }) {
   if (!(await registerIsVisible())) return <ComingSoon />;
-  const { status = "" } = await searchParams;
+  const { status = "", q = "" } = await searchParams;
   const filter = STATUS_ORDER.includes(status as CompanyStatus)
     ? (status as CompanyStatus)
     : null;
@@ -76,6 +79,42 @@ export default async function CompaniesPage({
         </Link>
         .
       </p>
+
+      <CompanyFinder key={q} rows={finderRows()} initialQuery={q} />
+
+      {/* How to read a status */}
+      <details className="mt-8 max-w-3xl rounded-2xl border border-line bg-surface px-5 py-4 shadow-sm">
+        <summary className="cursor-pointer list-none font-serif text-lg font-medium text-plum">
+          How to read a status
+          <span className="ml-2 font-sans text-sm font-normal text-muted">
+            Seven words, each with a proof requirement
+          </span>
+        </summary>
+        <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink/75">
+          A status is assigned by rule, not by judgment. Each one names the kind
+          of record it must point to, and the build fails if an entry lacks it.
+          A government enforcement record always wins: a company with a warning
+          letter cannot be listed as anything milder.
+        </p>
+        <dl className="mt-4 divide-y divide-line">
+          {STATUS_ORDER.map((s) => (
+            <div
+              key={s}
+              className="grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:gap-4"
+            >
+              <dt>
+                <StatusBadge status={s} />
+              </dt>
+              <dd className="text-sm leading-relaxed text-ink/85">
+                {STATUS_PLAIN[s]}
+                <span className="mt-0.5 block text-xs text-muted">
+                  Requires: {STATUS_PROOF[s]}
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </details>
 
       {/* Status legend + filter */}
       <div className="mt-8 flex flex-wrap gap-2">
