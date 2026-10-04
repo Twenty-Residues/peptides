@@ -17,6 +17,13 @@ import {
   headlineClaim,
 } from "./compare";
 import { comparisons, comparisonsFor, pairOf } from "./comparisons";
+import {
+  companies,
+  companiesFor,
+  compareCompanies,
+  registerCounts,
+  timeline,
+} from "./companies";
 
 const fixture: Peptide = {
   slug: "x",
@@ -173,4 +180,25 @@ test("a monograph can find the comparisons it appears in", () => {
   const [a] = pairOf(first);
   assert.ok(comparisonsFor(a).some((c) => c.slug === first.slug));
   assert.deepEqual(comparisonsFor({ slug: "no-such-peptide" }), []);
+});
+
+test("register: every company resolves its peptides and sorts regulated first", () => {
+  const slugs = new Set(peptides.map((p) => p.slug));
+  for (const c of companies)
+    for (const s of c.peptides ?? [])
+      assert.ok(slugs.has(s), `${c.slug} → ${s}`);
+  const sorted = [...companies].sort(compareCompanies);
+  assert.equal(sorted[0].status, "active-regulated");
+  assert.equal(sorted.at(-1)!.status, "unverified");
+});
+
+test("register: timeline is newest first and counts match", () => {
+  const t = timeline();
+  for (let i = 1; i < t.length; i++) assert.ok(t[i - 1].date >= t[i].date);
+  assert.equal(t.length, registerCounts().events);
+});
+
+test("register: companiesFor finds the approval holder for semaglutide", () => {
+  assert.ok(companiesFor("semaglutide").some((c) => c.slug === "novo-nordisk"));
+  assert.deepEqual(companiesFor("no-such-peptide"), []);
 });

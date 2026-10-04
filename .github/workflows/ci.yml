@@ -20,14 +20,17 @@ jobs:
         run: npm run check:sources
       - name: Catalog integrity (schema, tags, dates, citations)
         run: npm run check:catalog:ci
+      - name: Company register (status ⇔ record)
+        run: npm run check:companies:ci
       - name: Voice (VOICE.md rules, strict)
         run: npm run check:voice:ci
       - name: Worklists are current
         run: |
           npm run check:voice
           npm run check:catalog
+          npm run check:companies
           git diff --exit-code -I '^Generated ' docs/ || {
-            echo "::error::docs/*-check.md is stale. Run 'npm run check:voice' and 'npm run check:catalog' and commit the result."; exit 1; }
+            echo "::error::docs/*-check.md is stale. Run 'npm run check:voice', 'npm run check:catalog' and 'npm run check:companies' and commit the result."; exit 1; }
       - name: Unit tests
         run: npm test
       - name: Typecheck

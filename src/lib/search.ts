@@ -3,13 +3,19 @@ import { evidenceFloor } from "./evidence";
 import { comparisons } from "./comparisons";
 import { CATEGORY_LABEL, sortedNews } from "./news";
 import { footerNav } from "./site";
+import {
+  KIND_LABEL as COMPANY_KIND_LABEL,
+  STATUS_LABEL as COMPANY_STATUS_LABEL,
+  companies,
+} from "./companies";
+import { registerIsPublic } from "./register-flag";
 
 /**
  * One static index for the whole site. Built on the server at render time
  * and handed to the palette; small enough (a few dozen entries) to ship on
  * every page. No network, no tracking, no third-party search.
  */
-export type SearchKind = "peptide" | "comparison" | "news" | "page";
+export type SearchKind = "peptide" | "comparison" | "news" | "company" | "page";
 
 export type SearchEntry = {
   kind: SearchKind;
@@ -27,6 +33,7 @@ export const KIND_LABEL: Record<SearchKind, string> = {
   peptide: "Peptides",
   comparison: "Head to head",
   news: "News",
+  company: "Companies",
   page: "Pages",
 };
 
@@ -75,17 +82,65 @@ export function buildSearchIndex(): SearchEntry[] {
     });
   }
 
+  if (registerIsPublic()) {
+    for (const c of companies) {
+      out.push({
+        kind: "company",
+        title: c.name,
+        sub: c.note,
+        href: `/companies/${c.slug}`,
+        meta: COMPANY_STATUS_LABEL[c.status],
+        keywords: [
+          c.name,
+          ...(c.aka ?? []),
+          ...(c.domains ?? []),
+          COMPANY_KIND_LABEL[c.kind],
+          c.status,
+          ...(c.peptides ?? []),
+        ]
+          .join(" ")
+          .toLowerCase(),
+      });
+    }
+  }
+
   const pages: [string, string, string, string][] = [
-    ["Catalog", "Every peptide, graded by how well it's proven.", "/peptides", "catalog browse all peptides list"],
-    ["Compare", "Head-to-head pages on the same axes.", "/compare", "compare head to head versus"],
-    ["News", "What's documented, what isn't, and what would change it.", "/news", "news enforcement regulation fda doj trials"],
+    [
+      "Catalog",
+      "Every peptide, graded by how well it's proven.",
+      "/peptides",
+      "catalog browse all peptides list",
+    ],
+    [
+      "Compare",
+      "Head-to-head pages on the same axes.",
+      "/compare",
+      "compare head to head versus",
+    ],
+    [
+      "News",
+      "What's documented, what isn't, and what would change it.",
+      "/news",
+      "news enforcement regulation fda doj trials",
+    ],
     ...footerNav.map(
       (f) =>
-        [f.label, "", f.href, f.label.toLowerCase()] as [string, string, string, string],
+        [f.label, "", f.href, f.label.toLowerCase()] as [
+          string,
+          string,
+          string,
+          string,
+        ],
     ),
   ];
   for (const [title, sub, href, kw] of pages) {
-    out.push({ kind: "page", title, sub, href, keywords: `${title.toLowerCase()} ${kw}` });
+    out.push({
+      kind: "page",
+      title,
+      sub,
+      href,
+      keywords: `${title.toLowerCase()} ${kw}`,
+    });
   }
 
   return out;
@@ -104,7 +159,8 @@ export function scoreEntry(e: SearchEntry, words: string[]): number {
     if (title.startsWith(w)) score += 6;
     else if (title.split(/[\s\-–]+/).some((t) => t.startsWith(w))) score += 4;
     else if (title.includes(w)) score += 3;
-    else if (e.keywords.split(/[\s\-–/(),.]+/).some((k) => k.startsWith(w))) score += 2;
+    else if (e.keywords.split(/[\s\-–/(),.]+/).some((k) => k.startsWith(w)))
+      score += 2;
     else return 0;
   }
   return score;

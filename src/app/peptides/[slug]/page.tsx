@@ -14,6 +14,9 @@ import { editorial, site } from "@/lib/site";
 import { categoriesFor } from "@/lib/categories";
 import { relatedPeptides } from "@/lib/related";
 import { comparisonsFor, pairOf } from "@/lib/comparisons";
+import { companiesFor } from "@/lib/companies";
+import { registerIsPublic } from "@/lib/register-flag";
+import { StatusBadge } from "@/components/CompanyBits";
 import { PeptideCard } from "@/components/PeptideCard";
 import { newsForCompound } from "@/lib/news";
 import { NewsCard } from "@/components/NewsCard";
@@ -69,6 +72,7 @@ export default async function PeptidePage({
   const related = relatedPeptides(p);
   const cats = categoriesFor(p);
   const headToHead = comparisonsFor(p);
+  const onRecord = registerIsPublic() ? companiesFor(p.slug) : [];
   const inTheNews = newsForCompound(p.slug);
 
   // Collect a de-duplicated, numbered reference list across the whole entry.
@@ -184,7 +188,10 @@ export default async function PeptidePage({
     p.safety?.length && { id: "safety", label: "Safety" },
     p.regulatory && { id: "regulatory", label: "Status" },
     p.faqs?.length && { id: "faq", label: "FAQ" },
-    p.openQuestions?.length && { id: "open-questions", label: "Open questions" },
+    p.openQuestions?.length && {
+      id: "open-questions",
+      label: "Open questions",
+    },
     refs.length && { id: "references", label: "References" },
   ].filter(Boolean) as { id: string; label: string }[];
 
@@ -430,13 +437,21 @@ export default async function PeptidePage({
             <ol className="space-y-4">
               {p.openQuestions.map((q, i) => (
                 <li key={i} className="flex gap-4">
-                  <span aria-hidden className="shrink-0 font-mono text-sm text-gold">
+                  <span
+                    aria-hidden
+                    className="shrink-0 font-mono text-sm text-gold"
+                  >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="flex flex-col gap-2">
-                    <p className="max-w-prose font-serif text-lg leading-snug">{q}</p>
+                    <p className="max-w-prose font-serif text-lg leading-snug">
+                      {q}
+                    </p>
                     <div>
-                      <ShareRow text={q} path={`/peptides/${p.slug}#open-questions`} />
+                      <ShareRow
+                        text={q}
+                        path={`/peptides/${p.slug}#open-questions`}
+                      />
                     </div>
                   </div>
                 </li>
@@ -470,6 +485,42 @@ export default async function PeptidePage({
               </li>
             ))}
           </ol>
+        </Section>
+      )}
+
+      {onRecord.length > 0 && (
+        <Section id="companies" title="Companies on record">
+          <p className="mb-4 max-w-prose text-sm text-muted">
+            Companies the public record ties to this peptide: approvals, warning
+            letters, recalls, lawsuits. A status is what the record says, not a
+            rating.
+          </p>
+          <ul className="divide-y divide-line rounded-2xl border border-line bg-surface">
+            {onRecord.slice(0, 8).map((c) => (
+              <li
+                key={c.slug}
+                className="flex flex-wrap items-center justify-between gap-2 px-5 py-3"
+              >
+                <Link
+                  href={`/companies/${c.slug}`}
+                  className="font-medium text-plum underline-offset-4 hover:underline"
+                >
+                  {c.name}
+                </Link>
+                <StatusBadge status={c.status} />
+              </li>
+            ))}
+          </ul>
+          {onRecord.length > 8 && (
+            <p className="mt-3 text-sm text-muted">
+              <Link
+                href="/companies"
+                className="font-medium text-plum-500 underline-offset-4 hover:underline"
+              >
+                All {onRecord.length} companies on record
+              </Link>
+            </p>
+          )}
         </Section>
       )}
 
