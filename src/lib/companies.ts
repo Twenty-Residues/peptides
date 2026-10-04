@@ -204,7 +204,7 @@ export const companies: Company[] = [
         date: "2021-04-21",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (OZEMPIC; Saxenda; ViCTOZA; Xultophy). Reason: Temperature Abuse. Status terminated.",
+          "Class II recall of 4 products (OZEMPIC; Saxenda; ViCTOZA; Xultophy). Reason: Temperature Abuse. Status terminated.",
         source: {
           label: "FDA enforcement report D-0617-2021 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0617-2021%22",
@@ -224,7 +224,7 @@ export const companies: Company[] = [
         date: "2026-01-07",
         kind: "recall",
         summary:
-          "Class II recall of 2 compounded products (Wegovy). Reason: Presence of Particulate Matter. Status ongoing.",
+          "Class II recall of 2 products (Wegovy). Reason: Presence of Particulate Matter. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0244-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0244-2026%22",
@@ -504,7 +504,7 @@ export const companies: Company[] = [
         date: "2026-03-11",
         kind: "recall",
         summary:
-          "Class II recall of 2 compounded products (Semaglutide). Reason: CGMP Deviations This recall has been initiated due to failing to complete process validati. Status ongoing.",
+          "Class II recall of 2 products (Semaglutide). Reason: CGMP Deviations This recall has been initiated due to failing to complete process validati. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0379-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0379-2026%22",
@@ -640,7 +640,7 @@ export const companies: Company[] = [
         date: "2025-10-15",
         kind: "recall",
         summary:
-          "Class II recall of 9 compounded products (BPC; GHK-Cu; Low Solubility Peptide Reconstitution So; Semaglutide for Injection…). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 9 products (BPC; GHK-Cu; Low Solubility Peptide Reconstitution So; Semaglutide for Injection…). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0051-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0051-2026%22",
@@ -673,7 +673,7 @@ export const companies: Company[] = [
         date: "2026-03-11",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (Semaglutide Inj; Tirzepatide Inj). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 4 products (Semaglutide Inj; Tirzepatide Inj). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0392-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0392-2026%22",
@@ -738,7 +738,7 @@ export const companies: Company[] = [
         date: "2020-12-23",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (BPC; CJC; GHRP; IPAMORELIN). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 4 products (BPC; CJC; GHRP; IPAMORELIN). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0128-2021 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0128-2021%22",
@@ -772,7 +772,7 @@ export const companies: Company[] = [
         date: "2019-11-06",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Lyophilized Sermorelin w/ GHRP). Reason: Lack of Sterility Assurance. Status terminated.",
+          "Class II recall of 1 product (Lyophilized Sermorelin w/ GHRP). Reason: Lack of Sterility Assurance. Status terminated.",
         source: {
           label: "FDA enforcement report D-0159-2020 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0159-2020%22",
@@ -782,7 +782,7 @@ export const companies: Company[] = [
         date: "2021-07-28",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Compounded Lyophilized Semorelin/Ipamore). Reason: Lack of Assurance of Sterility. Status completed.",
+          "Class II recall of 1 product (Compounded Lyophilized Semorelin/Ipamore). Reason: Lack of Assurance of Sterility. Status completed.",
         source: {
           label: "FDA enforcement report D-0692-2021 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0692-2021%22",
@@ -816,7 +816,7 @@ export const companies: Company[] = [
         date: "2024-09-11",
         kind: "recall",
         summary:
-          "Class II recall of 7 compounded products (SEMAGLUTIDE; Semaglutide; Semaglutide / Cyanocobalamin Injection:; TIRZEPATIDE…). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 7 products (SEMAGLUTIDE; Semaglutide; Semaglutide / Cyanocobalamin Injection:; TIRZEPATIDE…). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0650-2024 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0650-2024%22",
@@ -826,7 +826,7 @@ export const companies: Company[] = [
         date: "2025-11-05",
         kind: "recall",
         summary:
-          "Class II recall of 7 compounded products (Semaglutide Injection; Tirzepatide Injection). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 7 products (Semaglutide Injection; Tirzepatide Injection). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0114-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0114-2026%22",
@@ -849,7 +849,7 @@ export const companies: Company[] = [
         date: "2025-07-02",
         kind: "recall",
         summary:
-          "Class II recall of 9 compounded products (CJC; Semaglutide; Semaglutide/Cyanocobalamin Injectable; Tirzepatide Injections…). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 9 products (CJC; Semaglutide; Semaglutide/Cyanocobalamin Injectable; Tirzepatide Injections…). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0475-2025 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0475-2025%22",
@@ -872,7 +872,7 @@ export const companies: Company[] = [
         date: "2025-08-13",
         kind: "recall",
         summary:
-          "Class II recall of 13 compounded products (Semaglutide + Cyanocobalamin; Semaglutide + Cyanocobalamin injection s; Semaglutide +Cyanocobalamin; Tirzepatide + Niacinamide). Reason: Lack of Processing Controls. Status ongoing.",
+          "Class II recall of 13 products (Semaglutide + Cyanocobalamin; Semaglutide + Cyanocobalamin injection s; Semaglutide +Cyanocobalamin; Tirzepatide + Niacinamide). Reason: Lack of Processing Controls. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0553-2025 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0553-2025%22",
@@ -895,7 +895,7 @@ export const companies: Company[] = [
         date: "2026-08-19",
         kind: "recall",
         summary:
-          "Class II recall of 11 compounded products (SEMAGLUTIDE). Reason: Presence of Particulate Matter; identified as a nylon/polyamide and silk/proteinaceous-typ. Status ongoing.",
+          "Class II recall of 11 products (SEMAGLUTIDE). Reason: Presence of Particulate Matter; identified as a nylon/polyamide and silk/proteinaceous-typ. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0747-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0747-2026%22",
@@ -918,7 +918,7 @@ export const companies: Company[] = [
         date: "2025-09-10",
         kind: "recall",
         summary:
-          "Class II recall of 3 compounded products (Semaglutide). Reason: Subpotent Drug. Status ongoing.",
+          "Class II recall of 3 products (Semaglutide). Reason: Subpotent Drug. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0606-2025 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0606-2025%22",
@@ -941,7 +941,7 @@ export const companies: Company[] = [
         date: "2026-04-22",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Semaglutide-Glycine-Cyanocobalamin Injec). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 1 product (Semaglutide-Glycine-Cyanocobalamin Injec). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0471-2026 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0471-2026%22",
@@ -964,7 +964,7 @@ export const companies: Company[] = [
         date: "2023-05-31",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Tirzepatide). Reason: Sub-potent Drug. Status ongoing.",
+          "Class II recall of 1 product (Tirzepatide). Reason: Sub-potent Drug. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0771-2023 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0771-2023%22",
@@ -974,7 +974,7 @@ export const companies: Company[] = [
         date: "2024-06-05",
         kind: "recall",
         summary:
-          "Class I recall of 1 compounded product (Tirzepatide). Reason: Labeling. Status ongoing.",
+          "Class I recall of 1 product (Tirzepatide). Reason: Labeling. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0511-2024 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0511-2024%22",
@@ -998,7 +998,7 @@ export const companies: Company[] = [
         date: "2018-11-14",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Tesamorelin). Reason: Labeling. Status terminated.",
+          "Class II recall of 1 product (Tesamorelin). Reason: Labeling. Status terminated.",
         source: {
           label: "FDA enforcement report D-0223-2019 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0223-2019%22",
@@ -1008,7 +1008,7 @@ export const companies: Company[] = [
         date: "2022-07-20",
         kind: "recall",
         summary:
-          "Class II recall of 5 compounded products (Semaglutide/Cyanocobalamin; Sermorelin; Sermorelin/Glycine). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 5 products (Semaglutide/Cyanocobalamin; Sermorelin; Sermorelin/Glycine). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-1224-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1224-2022%22",
@@ -1018,7 +1018,7 @@ export const companies: Company[] = [
         date: "2023-08-30",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Semaglutide/Cyanocobalamin). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 1 product (Semaglutide/Cyanocobalamin). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-1105-2023 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1105-2023%22",
@@ -1041,7 +1041,7 @@ export const companies: Company[] = [
         date: "2017-01-11",
         kind: "recall",
         summary:
-          "Class II recall of 12 compounded products (Sermorelin Acetate; Sermorelin Acetate/GHRP). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 12 products (Sermorelin Acetate; Sermorelin Acetate/GHRP). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0386-2017 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0386-2017%22",
@@ -1064,7 +1064,7 @@ export const companies: Company[] = [
         date: "2013-07-17",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin/GHRP). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 1 product (Sermorelin/GHRP). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-779-2013 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-779-2013%22",
@@ -1074,7 +1074,7 @@ export const companies: Company[] = [
         date: "2022-03-30",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin Acetate Lyophilized powder fo). Reason: Sub Potent. Status terminated.",
+          "Class II recall of 1 product (Sermorelin Acetate Lyophilized powder fo). Reason: Sub Potent. Status terminated.",
         source: {
           label: "FDA enforcement report D-0718-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0718-2022%22",
@@ -1084,7 +1084,7 @@ export const companies: Company[] = [
         date: "2022-05-04",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin Acetate). Reason: CGMP Deviations. Status terminated.",
+          "Class II recall of 1 product (Sermorelin Acetate). Reason: CGMP Deviations. Status terminated.",
         source: {
           label: "FDA enforcement report D-0797-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0797-2022%22",
@@ -1094,7 +1094,7 @@ export const companies: Company[] = [
         date: "2022-06-01",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin Acetate Lyophilized powder fo). Reason: Lack of assurance of sterility. Status completed.",
+          "Class II recall of 1 product (Sermorelin Acetate Lyophilized powder fo). Reason: Lack of assurance of sterility. Status completed.",
         source: {
           label: "FDA enforcement report D-0902-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0902-2022%22",
@@ -1124,7 +1124,7 @@ export const companies: Company[] = [
         date: "2019-02-20",
         kind: "recall",
         summary:
-          "Class II recall of 10 compounded products (BPC; Ipamorelin; Ipamorelin+Modified GRF; Ipamorelin+Sermorelin…). Reason: Lack of sterility assurance. Status terminated.",
+          "Class II recall of 10 products (BPC; Ipamorelin; Ipamorelin+Modified GRF; Ipamorelin+Sermorelin…). Reason: Lack of sterility assurance. Status terminated.",
         source: {
           label: "FDA enforcement report D-0448-2019 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0448-2019%22",
@@ -1147,7 +1147,7 @@ export const companies: Company[] = [
         date: "2018-11-07",
         kind: "recall",
         summary:
-          "Class II recall of 7 compounded products (Sermorelin/GHRP; Sermorelin/Ipamorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 7 products (Sermorelin/GHRP; Sermorelin/Ipamorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0179-2019 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0179-2019%22",
@@ -1157,7 +1157,7 @@ export const companies: Company[] = [
         date: "2019-06-19",
         kind: "recall",
         summary:
-          "Class II recall of 7 compounded products (Ipamorelin Acetate; Sermorelin/GHRP; Sermorelin/Ipamorelin). Reason: Lack of Sterility Assurance. Status terminated.",
+          "Class II recall of 7 products (Ipamorelin Acetate; Sermorelin/GHRP; Sermorelin/Ipamorelin). Reason: Lack of Sterility Assurance. Status terminated.",
         source: {
           label: "FDA enforcement report D-1327-2019 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1327-2019%22",
@@ -1180,7 +1180,7 @@ export const companies: Company[] = [
         date: "2018-01-17",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (Sermorelin; Sermorelin Acetate). Reason: Labeling. Status terminated.",
+          "Class II recall of 4 products (Sermorelin; Sermorelin Acetate). Reason: Labeling. Status terminated.",
         source: {
           label: "FDA enforcement report D-0193-2018 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0193-2018%22",
@@ -1190,7 +1190,7 @@ export const companies: Company[] = [
         date: "2019-10-09",
         kind: "recall",
         summary:
-          "Class II recall of 8 compounded products (Sermorelin; Sermorelin Acetate). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 8 products (Sermorelin; Sermorelin Acetate). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0093-2020 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0093-2020%22",
@@ -1213,7 +1213,7 @@ export const companies: Company[] = [
         date: "2017-01-11",
         kind: "recall",
         summary:
-          "Class II recall of 8 compounded products (Sermorelin Acetate; Sermorelin Forte; Sermorelin Forte Plus; Sermorelin GT). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 8 products (Sermorelin Acetate; Sermorelin Forte; Sermorelin Forte Plus; Sermorelin GT). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0287-2017 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0287-2017%22",
@@ -1236,7 +1236,7 @@ export const companies: Company[] = [
         date: "2016-08-31",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 1 product (Sermorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-1463-2016 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1463-2016%22",
@@ -1246,7 +1246,7 @@ export const companies: Company[] = [
         date: "2021-11-17",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (CJC; SERMORELIN ACETATE). Reason: Lack of assurance of sterility. Status terminated.",
+          "Class II recall of 4 products (CJC; SERMORELIN ACETATE). Reason: Lack of assurance of sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0109-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0109-2022%22",
@@ -1269,7 +1269,7 @@ export const companies: Company[] = [
         date: "2022-09-21",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (Semaglutide/Cyanocobalamin; Sermorelin Acetate). Reason: Lack of Assurance of Sterility. Status completed.",
+          "Class II recall of 4 products (Semaglutide/Cyanocobalamin; Sermorelin Acetate). Reason: Lack of Assurance of Sterility. Status completed.",
         source: {
           label: "FDA enforcement report D-1518-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1518-2022%22",
@@ -1292,7 +1292,7 @@ export const companies: Company[] = [
         date: "2022-11-09",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (SEMAGLUTIDE INJECTION). Reason: Lack of Assurance of Sterility. Status ongoing.",
+          "Class II recall of 1 product (SEMAGLUTIDE INJECTION). Reason: Lack of Assurance of Sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0053-2023 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0053-2023%22",
@@ -1302,7 +1302,7 @@ export const companies: Company[] = [
         date: "2023-04-26",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (C-Semaglutide). Reason: Lack of assurance of sterility. Status ongoing.",
+          "Class II recall of 1 product (C-Semaglutide). Reason: Lack of assurance of sterility. Status ongoing.",
         source: {
           label: "FDA enforcement report D-0538-2023 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0538-2023%22",
@@ -1325,7 +1325,7 @@ export const companies: Company[] = [
         date: "2023-02-01",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (SEMAGLUTIDE). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 1 product (SEMAGLUTIDE). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0236-2023 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0236-2023%22",
@@ -1348,7 +1348,7 @@ export const companies: Company[] = [
         date: "2022-04-27",
         kind: "recall",
         summary:
-          "Class II recall of 3 compounded products (BPC; Ipamorelin Acetate/Sermorelin Acetate; Sermorelin Acetate). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 3 products (BPC; Ipamorelin Acetate/Sermorelin Acetate; Sermorelin Acetate). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0776-2022 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0776-2022%22",
@@ -1371,7 +1371,7 @@ export const companies: Company[] = [
         date: "2020-01-22",
         kind: "recall",
         summary:
-          "Class II recall of 3 compounded products (BPC; CJC; IPAMORELIN). Reason: Lack of sterility assurance. Status terminated.",
+          "Class II recall of 3 products (BPC; CJC; IPAMORELIN). Reason: Lack of sterility assurance. Status terminated.",
         source: {
           label: "FDA enforcement report D-0679-2020 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0679-2020%22",
@@ -1394,7 +1394,7 @@ export const companies: Company[] = [
         date: "2018-09-05",
         kind: "recall",
         summary:
-          "Class II recall of 2 compounded products (Ipamorelin). Reason: Lack of assurance of sterility. Status terminated.",
+          "Class II recall of 2 products (Ipamorelin). Reason: Lack of assurance of sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-1153-2018 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1153-2018%22",
@@ -1417,7 +1417,7 @@ export const companies: Company[] = [
         date: "2019-04-24",
         kind: "recall",
         summary:
-          "Class II recall of 2 compounded products (Sermorelin). Reason: Lack of sterility assurance. Status terminated.",
+          "Class II recall of 2 products (Sermorelin). Reason: Lack of sterility assurance. Status terminated.",
         source: {
           label: "FDA enforcement report D-1175-2019 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1175-2019%22",
@@ -1440,7 +1440,7 @@ export const companies: Company[] = [
         date: "2015-11-25",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin/GHRP). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 1 product (Sermorelin/GHRP). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0364-2016 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0364-2016%22",
@@ -1463,7 +1463,7 @@ export const companies: Company[] = [
         date: "2015-11-04",
         kind: "recall",
         summary:
-          "Class II recall of 3 compounded products (SERMORELIN/GHRP). Reason: Lack of Assurance of Sterility; all sterile human compounded drugs within expiry. Status terminated.",
+          "Class II recall of 3 products (SERMORELIN/GHRP). Reason: Lack of Assurance of Sterility; all sterile human compounded drugs within expiry. Status terminated.",
         source: {
           label: "FDA enforcement report D-0120-2016 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0120-2016%22",
@@ -1486,7 +1486,7 @@ export const companies: Company[] = [
         date: "2015-12-09",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin Injection). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 1 product (Sermorelin Injection). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0450-2016 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0450-2016%22",
@@ -1509,7 +1509,7 @@ export const companies: Company[] = [
         date: "2015-10-14",
         kind: "recall",
         summary:
-          "Class II recall of 1 compounded product (Sermorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 1 product (Sermorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-0006-2016 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-0006-2016%22",
@@ -1532,7 +1532,7 @@ export const companies: Company[] = [
         date: "2015-11-25",
         kind: "recall",
         summary:
-          "Class II recall of 3 compounded products (Sermorelin; sermorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
+          "Class II recall of 3 products (Sermorelin; sermorelin). Reason: Lack of Assurance of Sterility. Status terminated.",
         source: {
           label: "FDA enforcement report D-324-2016 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-324-2016%22",
@@ -1555,7 +1555,7 @@ export const companies: Company[] = [
         date: "2015-09-23",
         kind: "recall",
         summary:
-          "Class II recall of 5 compounded products (Sermorelin; Sermorelin/GHRP). Reason: Lack of Assurance of Sterility; FDA inspection identified GMP violations potentially impac. Status terminated.",
+          "Class II recall of 5 products (Sermorelin; Sermorelin/GHRP). Reason: Lack of Assurance of Sterility; FDA inspection identified GMP violations potentially impac. Status terminated.",
         source: {
           label: "FDA enforcement report D-1629-2015 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-1629-2015%22",
@@ -1578,7 +1578,7 @@ export const companies: Company[] = [
         date: "2013-12-11",
         kind: "recall",
         summary:
-          "Class II recall of 4 compounded products (Sermorelin; Sermorelin GHRP). Reason: The firm received seven reports of adverse reactions in the form of skin abscesses potenti. Status terminated.",
+          "Class II recall of 4 products (Sermorelin; Sermorelin GHRP). Reason: The firm received seven reports of adverse reactions in the form of skin abscesses potenti. Status terminated.",
         source: {
           label: "FDA enforcement report D-262-2014 (openFDA)",
           href: "https://api.fda.gov/drug/enforcement.json?search=recall_number:%22D-262-2014%22",

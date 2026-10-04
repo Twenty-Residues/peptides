@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { primaryNav, site } from "@/lib/site";
 import { NavLinks } from "./NavLinks";
 import { LogoMark, Wordmark } from "./Logo";
 import { SearchButton, SearchPalette } from "./SearchPalette";
 import { buildSearchIndex } from "@/lib/search";
 
 export function Header() {
+  const items = primaryNav();
   const index = buildSearchIndex();
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
@@ -24,7 +25,7 @@ export function Header() {
 
         {/* Desktop */}
         <nav aria-label="Primary" className="hidden items-center gap-6 sm:flex">
-          <NavLinks />
+          <NavLinks items={items} />
           <SearchButton />
           <Link
             href="/peptides"
@@ -36,60 +37,60 @@ export function Header() {
 
         {/* Mobile — search + a native <details> so the menu works with JS disabled */}
         <div className="flex items-center gap-1 sm:hidden">
-        <SearchButton className="!px-2.5" />
-        <details className="menu-toggle relative">
-          <summary
-            className="grid size-10 cursor-pointer place-items-center rounded-lg text-plum hover:bg-plum-050"
-            aria-label="Menu"
-          >
-            <svg
-              className="icon-open"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden
+          <SearchButton className="!px-2.5" />
+          <details className="menu-toggle relative">
+            <summary
+              className="grid size-10 cursor-pointer place-items-center rounded-lg text-plum hover:bg-plum-050"
+              aria-label="Menu"
             >
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-            <svg
-              className="icon-close"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden
-            >
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          </summary>
-          <nav
-            aria-label="Primary"
-            className="absolute right-0 mt-2 flex w-56 flex-col gap-1 rounded-2xl border border-line bg-surface p-2 shadow-lg"
-          >
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-plum-050 hover:text-plum"
+              <svg
+                className="icon-open"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden
               >
-                {item.label}
-              </Link>
-            ))}
-            <Link
-              href="/peptides"
-              className="mt-1 rounded-full bg-gold px-3 py-2 text-center text-sm font-semibold text-plum hover:bg-gold-600"
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+              <svg
+                className="icon-close"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </summary>
+            <nav
+              aria-label="Primary"
+              className="absolute right-0 mt-2 flex w-56 flex-col gap-1 rounded-2xl border border-line bg-surface p-2 shadow-lg"
             >
-              Browse catalog
-            </Link>
-          </nav>
-        </details>
+              {items.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-ink hover:bg-plum-050 hover:text-plum"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/peptides"
+                className="mt-1 rounded-full bg-gold px-3 py-2 text-center text-sm font-semibold text-plum hover:bg-gold-600"
+              >
+                Browse catalog
+              </Link>
+            </nav>
+          </details>
         </div>
       </div>
       <SearchPalette index={index} />

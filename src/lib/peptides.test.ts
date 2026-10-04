@@ -232,3 +232,10 @@ test("register: year rows cover every record once and every year in range", () =
   assert.ok(cov.find((c) => c.slug === "semaglutide")!.companies > 10);
   for (const c of cov) assert.equal(companiesFor(c.slug).length, c.companies);
 });
+
+test("dataset: register rows mirror the register", async () => {
+  const { companyRows, recordRows } = await import("./dataset");
+  assert.equal(companyRows().length, companies.length);
+  assert.equal(recordRows().length, registerCounts().events);
+  for (const r of recordRows()) assert.match(r.source_url, /^https:\/\//);
+});

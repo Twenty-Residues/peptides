@@ -5,11 +5,13 @@ import {
   claimRows,
   DATASET_LICENSE,
   datasetVersion,
-  FILES,
+  dataFiles,
+  companyRows,
   newsRows,
   peptideRows,
 } from "@/lib/dataset";
 import { site } from "@/lib/site";
+import { registerIsPublic } from "@/lib/register-flag";
 
 export const metadata: Metadata = {
   title: "Open data",
@@ -24,6 +26,8 @@ export default function DataPage() {
   const monographs = peptideRows();
   const stories = newsRows();
   const cite = citation();
+  const FILES = dataFiles();
+  const register = registerIsPublic() ? companyRows() : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -35,8 +39,18 @@ export default function DataPage() {
     license: DATASET_LICENSE.url,
     creator: { "@type": "Organization", name: site.org, url: site.url },
     isAccessibleForFree: true,
-    keywords: ["peptides", "evidence", "clinical trials", "regulatory status", "citations"],
-    variableMeasured: ["Evidence tier (1–4) per claim", "Regulatory status", "Source record"],
+    keywords: [
+      "peptides",
+      "evidence",
+      "clinical trials",
+      "regulatory status",
+      "citations",
+    ],
+    variableMeasured: [
+      "Evidence tier (1–4) per claim",
+      "Regulatory status",
+      "Source record",
+    ],
     distribution: FILES.map((f) => ({
       "@type": "DataDownload",
       contentUrl: `${site.url}/data/${f.path}`,
@@ -61,21 +75,29 @@ export default function DataPage() {
         Everything we assert, as rows you can reuse.
       </h1>
       <p className="mt-5 max-w-prose text-lg leading-relaxed text-ink/80">
-        The site is built from a single record. This is that record: every
-        claim with its tier and the fixed source behind it, every monograph,
-        every story with its graded sources. Same data the pages render from,
-        so it cannot disagree with what you read here.
+        The site is built from a single record. This is that record: every claim
+        with its tier and the fixed source behind it, every monograph, every
+        story with its graded sources
+        {register ? ", every company with its dated records" : ""}. Same data
+        the pages render from, so it cannot disagree with what you read here.
       </p>
 
-      <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+      <dl
+        className={`mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line ${register ? "sm:grid-cols-5" : "sm:grid-cols-4"}`}
+      >
         {[
           ["Monographs", String(monographs.length)],
           ["Claims", String(claims.length)],
           ["Stories", String(stories.length)],
+          ...(register
+            ? [["Companies", String(register.length)] as const]
+            : []),
           ["License", DATASET_LICENSE.name],
         ].map(([k, v]) => (
           <div key={k} className="bg-surface px-4 py-3">
-            <dt className="text-[11px] font-medium tracking-wide text-muted uppercase">{k}</dt>
+            <dt className="text-[11px] font-medium tracking-wide text-muted uppercase">
+              {k}
+            </dt>
             <dd className="mt-0.5 font-serif text-lg text-plum">{v}</dd>
           </div>
         ))}
@@ -87,7 +109,10 @@ export default function DataPage() {
         </h2>
         <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-surface">
           {FILES.map((f) => (
-            <li key={f.path} className="flex flex-wrap items-baseline justify-between gap-3 px-5 py-4">
+            <li
+              key={f.path}
+              className="flex flex-wrap items-baseline justify-between gap-3 px-5 py-4"
+            >
               <div>
                 <a
                   href={`/data/${f.path}`}
@@ -102,7 +127,11 @@ export default function DataPage() {
         </ul>
         <p className="mt-3 text-sm text-muted">
           Each JSON file carries a header with the version, license, and
-          citation line, then a <code className="rounded bg-plum-050 px-1 font-mono text-plum">data</code> array.
+          citation line, then a{" "}
+          <code className="rounded bg-plum-050 px-1 font-mono text-plum">
+            data
+          </code>{" "}
+          array.
         </p>
       </section>
 
@@ -121,7 +150,10 @@ export default function DataPage() {
         <p className="mt-3 max-w-prose text-sm text-ink/75">
           Efficacy claims only; regulatory facts are counted separately. The
           tiers are defined in{" "}
-          <Link href="/methodology" className="font-medium text-plum-500 underline-offset-4 hover:underline">
+          <Link
+            href="/methodology"
+            className="font-medium text-plum-500 underline-offset-4 hover:underline"
+          >
             the Standard
           </Link>
           .
@@ -137,11 +169,14 @@ export default function DataPage() {
         </pre>
         <p className="mt-3 max-w-prose text-sm text-ink/75">
           Licensed{" "}
-          <a href={DATASET_LICENSE.url} className="font-medium text-plum-500 underline-offset-4 hover:underline">
+          <a
+            href={DATASET_LICENSE.url}
+            className="font-medium text-plum-500 underline-offset-4 hover:underline"
+          >
             {DATASET_LICENSE.name}
           </a>
-          : reuse, remix, and redistribute, with attribution. The version is
-          the newest date anywhere in the record; cite the version you used.
+          : reuse, remix, and redistribute, with attribution. The version is the
+          newest date anywhere in the record; cite the version you used.
         </p>
       </section>
 
@@ -150,9 +185,25 @@ export default function DataPage() {
           What the data is not
         </h2>
         <ul className="mt-4 max-w-prose list-disc space-y-2 pl-5 text-ink/80">
-          <li>Not a verdict on any peptide. A tier describes how a claim is supported, not whether the peptide works.</li>
-          <li>Not dosing, protocols, or medical advice. Those fields do not exist.</li>
-          <li>Not complete. The catalog covers {monographs.length} peptides and grows as the evidence earns it. Corrections go through the same path as everything else: <a href="mailto:corrections@peptides.info" className="font-medium text-plum-500 underline-offset-4 hover:underline">corrections@peptides.info</a>.</li>
+          <li>
+            Not a verdict on any peptide. A tier describes how a claim is
+            supported, not whether the peptide works.
+          </li>
+          <li>
+            Not dosing, protocols, or medical advice. Those fields do not exist.
+          </li>
+          <li>
+            Not complete. The catalog covers {monographs.length} peptides and
+            grows as the evidence earns it. Corrections go through the same path
+            as everything else:{" "}
+            <a
+              href="mailto:corrections@peptides.info"
+              className="font-medium text-plum-500 underline-offset-4 hover:underline"
+            >
+              corrections@peptides.info
+            </a>
+            .
+          </li>
         </ul>
       </section>
     </main>
