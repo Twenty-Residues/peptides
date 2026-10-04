@@ -511,16 +511,15 @@ export default async function PeptidePage({
               </li>
             ))}
           </ul>
-          {onRecord.length > 8 && (
-            <p className="mt-3 text-sm text-muted">
-              <Link
-                href="/companies"
-                className="font-medium text-plum-500 underline-offset-4 hover:underline"
-              >
-                All {onRecord.length} companies on record
-              </Link>
-            </p>
-          )}
+          <p className="mt-3 text-sm text-muted">
+            <Link
+              href={`/companies/by-peptide?p=${p.slug}`}
+              className="font-medium text-plum-500 underline-offset-4 hover:underline"
+            >
+              All {onRecord.length} companies on record for {p.name}, grouped by
+              status
+            </Link>
+          </p>
         </Section>
       )}
 

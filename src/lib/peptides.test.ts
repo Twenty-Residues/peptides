@@ -23,8 +23,10 @@ import {
   compareCompanies,
   finderRows,
   recordSummary,
+  peptideCoverage,
   registerCounts,
   timeline,
+  timelineByYear,
 } from "./companies";
 
 const fixture: Peptide = {
@@ -215,4 +217,18 @@ test("register: finder rows match on domains and peptides, summary counts add up
     const total = recordSummary(c).reduce((n: number, s) => n + s.n, 0);
     assert.equal(total, c.events?.length ?? 0, c.slug);
   }
+});
+
+test("register: year rows cover every record once and every year in range", () => {
+  const rows = timelineByYear();
+  const sum = rows.reduce(
+    (n: number, r) => n + r.enforcement + r.recall + r.legal + r.corporate,
+    0,
+  );
+  assert.equal(sum, registerCounts().events);
+  for (let i = 1; i < rows.length; i++)
+    assert.equal(Number(rows[i].year), Number(rows[i - 1].year) + 1);
+  const cov = peptideCoverage();
+  assert.ok(cov.find((c) => c.slug === "semaglutide")!.companies > 10);
+  for (const c of cov) assert.equal(companiesFor(c.slug).length, c.companies);
 });

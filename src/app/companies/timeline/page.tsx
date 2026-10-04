@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EVENT_LABEL, timeline, type EventKind } from "@/lib/companies";
+import {
+  EVENT_LABEL,
+  timeline,
+  timelineByYear,
+  type EventKind,
+} from "@/lib/companies";
+import { RecordChart } from "@/components/RecordChart";
 import { EventItem } from "@/components/CompanyBits";
 import { registerIsVisible } from "@/lib/veil";
 import { ComingSoon } from "@/components/ComingSoon";
@@ -54,6 +60,10 @@ export default async function TimelinePage() {
           </span>
         ))}
       </p>
+
+      <div className="mt-8">
+        <RecordChart rows={timelineByYear()} />
+      </div>
 
       {[...byYear.entries()].map(([year, es]) => (
         <section key={year} id={`y${year}`} className="mt-12 scroll-mt-24">
