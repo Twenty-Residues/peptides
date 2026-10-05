@@ -309,6 +309,84 @@ export const news: NewsStory[] = [
       },
     ],
   },
+  {
+    slug: "doj-charges-two-counterfeit-ozempic-scheme-september-2026",
+    title: "DOJ indicts two Indian nationals over counterfeit Ozempic sold to U.S. distributors",
+    dek: "An indictment announced September 29, 2026 in the Middle District of Florida alleges the pair bought fake Ozempic from unapproved Chinese suppliers between July 2023 and April 2024. An indictment is an allegation; no verdict has been reached.",
+    category: "enforcement",
+    published: "2026-10-05",
+    status: "developing",
+    documented: [
+      "DOJ announced charges September 29, 2026 against Swapnadip Roy, 33, and Vicky Ramancha, 37, both Indian nationals: one count of conspiracy to commit smuggling and to defraud the United States, three counts of smuggling, and two counts of selling counterfeit drugs and holding counterfeit drugs for sale.",
+      "The indictment alleges they obtained counterfeit Ozempic from unauthorized sources in China between July 2023 and April 2024, with fake boxes, inserts, pen labels, and needles, and sold it at reduced prices to distributors in the United States.",
+      "DOJ and FDA both state the alleged conduct continued after FDA's December 2023 seizure of counterfeit Ozempic and public warning.",
+      "DOJ states the maximum penalty is 71 years in prison per defendant, and that an indictment is only an allegation and the defendants are presumed innocent.",
+    ],
+    notEstablished: [
+      "No court has found anything. The release does not report a trial, plea, or verdict.",
+      "The releases do not say what the counterfeit pens contained, or that anyone was injured by them. The officials' statements about threats to health are the officials' characterizations, not a stated test result.",
+      "The case concerns counterfeit versions of a branded, approved product. It does not address research-use peptides or compounded semaglutide, and should not be read as evidence about either, in either direction.",
+      "Neither release states how much counterfeit product reached patients or how many distributors were involved.",
+    ],
+    wouldChange:
+      "The indictment itself or later filings (lab analysis of seized pens, a plea agreement, a superseding indictment naming co-conspirators), or a verdict.",
+    openQuestion:
+      "The alleged fakes copied the packaging of an approved drug. When a counterfeit and a grey-market copy both depend on trusting an unverified label, where does one category end and the other begin?",
+    compounds: ["semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "DOJ press release",
+        label: "Two Indian Nationals Charged in Connection with Transnational Counterfeit Ozempic Scheme (DOJ Office of Public Affairs, 2026-09-29)",
+        href: "https://www.justice.gov/opa/pr/two-indian-nationals-charged-connection-transnational-counterfeit-ozempic-scheme",
+      },
+      {
+        grade: "primary",
+        kind: "FDA press announcement",
+        label: "FDA Investigation Leads to Charges Against Two Indian Nationals Involved in Transnational Counterfeit Drug Distribution Scheme (FDA, 2026-09-29)",
+        href: "https://www.fda.gov/news-events/press-announcements/fda-investigation-leads-charges-against-two-indian-nationals-involved-transnational-counterfeit-drug",
+      },
+      {
+        grade: "secondary",
+        kind: "News report",
+        label: "CNBC — Two Indian nationals charged with smuggling counterfeit Ozempic from China (2026-09-29)",
+        href: "https://www.cnbc.com/2026/09/29/ozempiz-counterfeit-china-smuggling-doj.html",
+      },
+    ],
+  },
+  {
+    slug: "novo-wegovy-liver-fat-step-up-easd-october-2026",
+    title: "Novo: 23 of 26 semaglutide 7.2 mg participants with excess liver fat reached normal levels – in a post hoc analysis of 55 people",
+    dek: "Novo Nordisk's October 1, 2026 release, tied to a presentation at EASD 2026, reports a liver-fat sub-analysis of the STEP UP trials. The company itself labels it post hoc and exploratory.",
+    category: "clinical",
+    published: "2026-10-05",
+    status: "developing",
+    documented: [
+      "STEP UP and STEP UP T2D were Phase 3b randomized, double-blind, placebo-controlled trials; the pooled analysis covers 1,919 adults (semaglutide 7.2 mg n=1,312, 2.4 mg n=304, placebo n=303).",
+      "The liver-fat sub-analysis included 55 participants with excess liver fat. Of 26 with baseline liver fat above 5%, 23 (88.5%) were below 5% at week 72; mean liver fat fell from 8.8% to 3.1%.",
+      "Novo states the analysis was post hoc and exploratory and not a pre-specified primary or secondary endpoint of the parent trials. It was presented at EASD 2026 in Milan on October 1, 2026.",
+      "The release gives no adverse-event data and does not report which dose arm the 26 participants were in.",
+    ],
+    notEstablished: [
+      "A company release is the sponsor's summary. The analysis is not peer-reviewed and the underlying data are not public.",
+      "Twenty-six participants cannot establish how often semaglutide normalizes liver fat. The headline '9 out of 10' rests on that small base.",
+      "Liver fat on imaging is not liver outcomes. The release does not report fibrosis change, liver events, or longer-term follow-up, and fewer than 1% of participants met advanced-fibrosis criteria.",
+      "Nothing here applies to compounded or research-use semaglutide, whose contents and dose are outside the trial.",
+    ],
+    wouldChange:
+      "A peer-reviewed publication or poster with dose-arm breakdown and confidence intervals, or a pre-specified liver endpoint from a dedicated trial.",
+    openQuestion:
+      "If a small post hoc subgroup is the only place a liver signal appears, is it a hypothesis worth chasing or a result that was found because someone went looking?",
+    compounds: ["semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo's Wegovy (semaglutide) reduced liver fat to normal levels in 9 out of 10 adults with obesity and excess liver fat – EASD2026 (Novo Nordisk, 2026-10-01)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=917205",
+      },
+    ],
+  },
 ];
 
 export function getStory(slug: string): NewsStory | undefined {
