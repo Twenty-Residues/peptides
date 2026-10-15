@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/peptides`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/map`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/compare`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/news`, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/data`, changeFrequency: "weekly", priority: 0.6 },

@@ -128,9 +128,25 @@ export default function Home() {
 
       {/* Browse by goal */}
       <section className="mx-auto max-w-5xl px-6 pt-16">
-        <h2 className="text-2xl font-medium text-plum">Browse by goal</h2>
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-2xl font-medium text-plum">Browse by goal</h2>
+          <Link
+            href="/map"
+            className="text-sm font-semibold text-plum-500 underline-offset-4 hover:underline"
+          >
+            Therapy map →
+          </Link>
+        </div>
         <p className="mt-2 text-ink/70">
-          Start from what you want to understand, not from a chemical name.
+          Start from what you want to understand, not from a chemical name. Or
+          open the{" "}
+          <Link
+            href="/map"
+            className="font-medium text-plum-500 underline-offset-4 hover:underline"
+          >
+            therapy map
+          </Link>{" "}
+          — each goal with its evidence and the honest access reality.
         </p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((c) => {

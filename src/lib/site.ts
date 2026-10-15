@@ -27,6 +27,7 @@ export function primaryNav(): readonly NavItem[] {
 
 /** Secondary routes and trust pages — footer only. */
 export const footerNav: readonly NavItem[] = [
+  { href: "/map", label: "Therapy map" },
   { href: "/compare", label: "Compare" },
   { href: "/companies", label: "Companies" },
   { href: "/data", label: "Open data" },
