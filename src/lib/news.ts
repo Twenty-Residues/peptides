@@ -387,6 +387,46 @@ export const news: NewsStory[] = [
       },
     ],
   },
+  {
+    slug: "retatrutide-metabolomics-phase-2-jcem-october-2026",
+    title: "Retatrutide Phase 2 metabolomics: biomarker shifts mediated 23.2% of weight loss without T2D, 12.7% with T2D",
+    dek: "A post hoc analysis of two Lilly-sponsored Phase 2 trials, published October 16, 2026 in the Journal of Clinical Endocrinology & Metabolism, reports changes in fatty-acid-oxidation and insulin-resistance metabolite clusters.",
+    category: "science",
+    published: "2026-10-19",
+    status: "settled",
+    documented: [
+      "The paper analyzes fasting plasma samples from two randomized, placebo-controlled Phase 2 trials: 282 participants with obesity (36 weeks; retatrutide 1, 4, 8, 12 mg or placebo) and 213 with type 2 diabetes (48 weeks; retatrutide 0.5, 4, 8, 12 mg, placebo, or dulaglutide 1.5 mg).",
+      "The metabolomic and lipidomic work was a post hoc, exploratory analysis. Higher doses were associated with changes in a cluster including 3-hydroxybutyrate, acetylcarnitine, free carnitine, and long-chain acylcarnitines, in both populations.",
+      "Mediation analyses suggested these biomarker changes accounted for 23.2% of the weight reduction in participants without T2D, and 12.7% in participants with T2D.",
+      "Retatrutide was also associated with changes in metabolites linked to insulin resistance, including branched-chain amino acids, 2-aminoadipic acid, 2-hydroxybutyrate, urate, and certain triglycerides, sustained across study endpoints.",
+      "The authors include Eli Lilly and Company employees; Eli Lilly and Company is listed as the funder of the work.",
+    ],
+    notEstablished: [
+      "A post hoc exploratory analysis can show association, not mechanism. A mediation estimate of 23.2% is a statistical model output, not a measured share of causation.",
+      "The authors describe the direction of change as one associated with improved metabolic health and reduced cardiovascular risk. That is an inference from biomarkers; it is not a cardiovascular outcome, and the cited Phase 2 trials did not test one.",
+      "Nothing here bears on retatrutide products sold outside clinical trials. Retatrutide is not approved, and the samples came from supervised trial participants.",
+      "The paper does not show the changes are unique to retatrutide, or larger than with other incretin drugs, other than the dulaglutide comparison arm in the T2D trial.",
+    ],
+    wouldChange:
+      "Metabolomic results from the Phase 3 TRIUMPH program, an independent replication, or cardiovascular outcome data from a dedicated retatrutide trial.",
+    openQuestion:
+      "If a quarter of weight loss tracks with a shift toward fatty-acid oxidation, is that a window into how the drug works or a readout of the weight loss itself? Which way the arrow runs is the question each camp will want to argue.",
+    compounds: ["retatrutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Peer-reviewed article",
+        label: "Pearson MJ et al. Retatrutide and lipid and metabolite profiles in participants with obesity with or without type 2 diabetes. J Clin Endocrinol Metab 2026;111(11):3217-3228 (PMID 42135195)",
+        href: "https://pubmed.ncbi.nlm.nih.gov/42135195/",
+      },
+      {
+        grade: "primary",
+        kind: "Peer-reviewed article",
+        label: "Same article, publisher record (DOI 10.1210/clinem/dgag201)",
+        href: "https://doi.org/10.1210/clinem/dgag201",
+      },
+    ],
+  },
 ];
 
 export function getStory(slug: string): NewsStory | undefined {
