@@ -427,6 +427,39 @@ export const news: NewsStory[] = [
       },
     ],
   },
+  {
+    slug: "novo-cagrisema-redefine-1-women-menopause-october-2026",
+    title: "Novo: CagriSema –25.0% body weight in women at 68 weeks – in a post hoc analysis that was not adjusted for multiplicity",
+    dek: "Novo Nordisk's October 20, 2026 release, tied to posters at The Menopause Society annual meeting, reports women-only analyses of REDEFINE 1. The company labels both analyses post hoc, exploratory, and hypothesis-generating.",
+    category: "clinical",
+    published: "2026-10-26",
+    status: "developing",
+    documented: [
+      "REDEFINE 1 is a 68-week, double-blind, placebo- and active-controlled Phase 3 trial of once-weekly CagriSema in 3,417 adults with obesity or overweight and at least one comorbidity, without type 2 diabetes. About two-thirds of participants were women.",
+      "Efficacy-estimand mean weight change at week 68 in 2,309 women: −25.0% on CagriSema (n=1,441), −19.0% on semaglutide 2.4 mg (n=199), −13.4% on cagrilintide 2.4 mg (n=208), −3.0% on placebo (n=461). 68.7% of women on CagriSema lost at least 20% of body weight, versus 1.8% on placebo.",
+      "By menopausal status, CagriSema vs placebo: premenopausal −26.7% vs −2.1% (408 vs 122), perimenopausal −24.8% vs −1.7% (256 vs 81), postmenopausal −23.1% vs −2.6% (530 vs 168). Menopausal status was derived from age, medical history, and recorded symptoms, not prospective staging or hormone assays.",
+      "Novo states the p-values were not adjusted for multiplicity and that no formal treatment-by-sex or treatment-by-subgroup interaction testing was performed.",
+      "Novo states the efficacy estimand reflects an idealized scenario in which everyone stayed on treatment. Per the release, discontinuation for adverse events in the primary publication was 5.9% (CagriSema) vs 3.5% (placebo); any gastrointestinal adverse event 79.6% vs 39.9%.",
+    ],
+    notEstablished: [
+      "The release does not show that women respond differently from men, or that response differs by menopausal stage. No interaction testing was done, and the gaps between stages are the authors' own 'need for further research.'",
+      "The efficacy estimand counts what happened on treatment. It is not the figure for everyone randomized, and it says nothing about weight regain after stopping.",
+      "Nothing here is a finding about menopausal symptoms, bone, or cardiovascular outcomes. And CagriSema is not approved in the U.S.; a New Drug Application was filed in December 2025 with a decision expected in Q4 2026, per Novo. Nothing here applies to cagrilintide or semaglutide products sold outside the trial.",
+    ],
+    wouldChange:
+      "Peer-reviewed publication of the poster data with confidence intervals and covariate adjustment, a pre-specified sex or menopause analysis in another CagriSema trial, or an FDA action on the pending application.",
+    openQuestion:
+      "If weight loss is similar across menopausal stages but not identical, is the spread a biological signal or the ordinary scatter of subgroups sliced after the fact?",
+    compounds: ["cagrilintide", "semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo's CagriSema was associated with 25% weight loss on average for women in a post hoc analysis of REDEFINE 1 (Novo Nordisk, 2026-10-20)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=918569",
+      },
+    ],
+  },
 ];
 
 export function getStory(slug: string): NewsStory | undefined {
