@@ -427,6 +427,47 @@ export const news: NewsStory[] = [
       },
     ],
   },
+  {
+    slug: "novo-semaglutide-mash-aasld-november-2026",
+    title: "Novo's AASLD releases: semaglutide 2.4 mg vs resmetirom in a non-randomized records comparison, and a post hoc subgroup of 106 patients with BMI under 27",
+    dek: "Two Novo Nordisk releases dated November 6 and 8, 2026, tied to The Liver Meeting (AASLD) in Denver, report semaglutide 2.4 mg liver-marker data in MASH. The company labels one analysis observational and the other post hoc and exploratory.",
+    category: "clinical",
+    published: "2026-11-09",
+    status: "developing",
+    documented: [
+      "November 6 release: two retrospective, observational studies of de-identified electronic records (Truveta database, June 2021 to March 2026). PLATINUM-Truveta compared 2,873 adults starting semaglutide 2.4 mg with 2,285 starting resmetirom; RHODIUM-2 compared 2,479 semaglutide starters with 70,702 non-starters.",
+      "In PLATINUM-Truveta at six months, mean AST change was -10.4 U/L (semaglutide) vs -4.5 U/L (resmetirom), P<0.001; ALT change was -14.8 vs -11.6 U/L, P=0.20. LDL fell less on semaglutide (-13.7 vs -29.1, P<0.001). Weight change was -18.9 lb vs -5.6 lb.",
+      "In RHODIUM-2 at 12 months, ALT change was -14.0 vs -3.8 U/L (adjusted difference -10.5, P<0.01) and weight change -30.7 vs -2.4 lb.",
+      "November 8 release: a post hoc analysis of 106 adults with MASH, liver scarring, and BMI under 27 kg/m², drawn from the 800-person 72-week interim set of the Phase 3 ESSENCE trial. ALT ratio vs placebo 0.61 (95% CI 0.48-0.79); ELF score difference -0.45 (-0.73 to -0.17); liver stiffness (VCTE-LSM) ratio 0.88 (0.73-1.06), a CI that includes 1.0.",
+      "Novo's releases state that both analyses cannot show causation, that the subgroup work is exploratory, and that the PLATINUM-Truveta table footnote and methods note describe the averaging differently, which the release does not resolve.",
+    ],
+    notEstablished: [
+      "The semaglutide-vs-resmetirom comparison is not randomized. Who was prescribed which drug, and who stayed on it long enough to be counted, may differ in ways the records do not capture. It does not show one drug is better for liver disease.",
+      "ALT, AST, and the fibrosis scores are blood or imaging markers. Neither release reports biopsy results, liver events, or outcomes for the real-world cohorts or this subgroup.",
+      "A lower BMI subgroup of 106 with post hoc endpoints can generate a hypothesis, as Novo itself frames it; it cannot support a claim that the pattern holds across people with lower BMI.",
+      "Skeptics should not read the observational design as evidence of no effect either: the releases show an association in the direction of liver-marker improvement, and the confidence intervals for most markers exclude no change.",
+      "None of this concerns compounded or research-use semaglutide, whose contents and dose lie outside these studies.",
+    ],
+    wouldChange:
+      "Peer-reviewed publication of the abstracts with full methods, a randomized head-to-head comparison, or the ESSENCE part 2 clinical-events readout.",
+    openQuestion:
+      "When a sponsor reports records-based comparisons against a competitor and a post hoc subgroup in the same week, how much weight should each carry, and what would each camp need to see to move?",
+    compounds: ["semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo real-world studies link Wegovy 2.4 mg to reductions in liver enzymes, weight, and blood sugar in adults with MASH – AASLD 2026 (Novo Nordisk, 2026-11-06)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=919926",
+      },
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo post hoc analysis: Wegovy 2.4 mg and liver markers in adults with MASH, liver scarring and BMI under 27 – AASLD 2026 (Novo Nordisk, 2026-11-08)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=920080",
+      },
+    ],
+  },
 ];
 
 export function getStory(slug: string): NewsStory | undefined {
