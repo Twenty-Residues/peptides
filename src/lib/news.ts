@@ -451,6 +451,16 @@ export const news: NewsStory[] = [
     openQuestion:
       "If weight loss is similar across menopausal stages but not identical, is the spread a biological signal or the ordinary scatter of subgroups sliced after the fact?",
     compounds: ["cagrilintide", "semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo's CagriSema was associated with 25% weight loss on average for women in a post hoc analysis of REDEFINE 1 (Novo Nordisk, 2026-10-20)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=918569",
+      },
+    ],
+  },
+  {
     slug: "novo-semaglutide-mash-aasld-november-2026",
     title: "Novo's AASLD releases: semaglutide 2.4 mg vs resmetirom in a non-randomized records comparison, and a post hoc subgroup of 106 patients with BMI under 27",
     dek: "Two Novo Nordisk releases dated November 6 and 8, 2026, tied to The Liver Meeting (AASLD) in Denver, report semaglutide 2.4 mg liver-marker data in MASH. The company labels one analysis observational and the other post hoc and exploratory.",
@@ -480,8 +490,6 @@ export const news: NewsStory[] = [
       {
         grade: "primary",
         kind: "Company press release",
-        label: "Novo's CagriSema was associated with 25% weight loss on average for women in a post hoc analysis of REDEFINE 1 (Novo Nordisk, 2026-10-20)",
-        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=918569",
         label: "Novo real-world studies link Wegovy 2.4 mg to reductions in liver enzymes, weight, and blood sugar in adults with MASH – AASLD 2026 (Novo Nordisk, 2026-11-06)",
         href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=919926",
       },
@@ -490,6 +498,106 @@ export const news: NewsStory[] = [
         kind: "Company press release",
         label: "Novo post hoc analysis: Wegovy 2.4 mg and liver markers in adults with MASH, liver scarring and BMI under 27 – AASLD 2026 (Novo Nordisk, 2026-11-08)",
         href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=920080",
+      },
+    ],
+  },
+  {
+    slug: "novo-cagrisema-redefine-9-lower-doses-november-2026",
+    title: "Novo: CagriSema at lower doses –20.7% and –21.0% body weight at 68 weeks (efficacy estimand), –19.4% and –18.6% counting everyone randomized",
+    dek: "Novo Nordisk's November 14, 2026 release reports primary results of REDEFINE 9, the first Phase 3 weight-management trial of CagriSema below 2.4 mg/2.4 mg, presented at ObesityWeek 2026 and stated to be published in The Lancet Diabetes & Endocrinology.",
+    category: "clinical",
+    published: "2026-11-16",
+    status: "developing",
+    documented: [
+      "REDEFINE 9 is a 68-week, randomized, placebo-controlled Phase 3 trial in 309 adults with obesity, or overweight plus a weight-related complication, without diabetes. Analysis groups: CagriSema 1.7/1.7 mg (n=104), 1.0/1.0 mg (n=103), pooled placebo (n=102). Novo states the trial was not powered to compare the two doses.",
+      "Efficacy-estimand mean weight change at week 68: −20.7% (1.7/1.7 mg), −21.0% (1.0/1.0 mg), −2.0% (placebo). The treatment-regimen estimand, which counts people regardless of discontinuation or rescue medication, reads −19.4%, −18.6%, and −4.6%.",
+      "At least 20% weight loss at week 68 (efficacy estimand): 51.3% and 48.3% on the two doses vs 2.7% on placebo.",
+      "Permanent discontinuation due to adverse events: 2.9% (1.7/1.7 mg), 4.9% (1.0/1.0 mg), 4.9% (placebo). Novo describes the most common adverse events as gastrointestinal and mostly mild to moderate, but the release gives no event rates.",
+      "Novo states a New Drug Application for CagriSema 2.4/2.4 mg was filed in December 2025, with a decision expected in Q4 2026, and that CagriSema is not approved in the U.S.",
+    ],
+    notEstablished: [
+      "The release is the sponsor's summary. We have not reviewed the journal paper it says was published, so full adverse-event tables and subgroup data are not part of this record.",
+      "The trial was not powered to compare the two doses. Near-identical weight loss on 1.7/1.7 mg and 1.0/1.0 mg does not show that dose makes no difference, and does not show that it does.",
+      "The headline figures use the efficacy estimand, which assumes participants stayed on treatment. The release itself puts the figure for everyone randomized at 18.6% to 19.4%.",
+      "Nothing here applies to cagrilintide or semaglutide products sold outside the trial, whose contents and doses are outside this evidence.",
+    ],
+    wouldChange:
+      "The peer-reviewed paper's full adverse-event and dropout tables, an FDA action on the pending application, or a randomized trial designed to compare CagriSema doses directly.",
+    openQuestion:
+      "If a lower dose produces a similar average result in a trial not built to tell the doses apart, is the interesting number the weight loss or the dropout rate, and who decides which one a dose is chosen for?",
+    compounds: ["cagrilintide", "semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "CagriSema REDEFINE 9 Phase 3 results at ObesityWeek 2026 (Novo Nordisk, 2026-11-14)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=920561",
+      },
+    ],
+  },
+  {
+    slug: "novo-cagrisema-early-responders-redefine-1-november-2026",
+    title: "Novo: CagriSema early responders lost 25.4% by week 68 vs 17.8% for delayed responders – a post hoc split on observed on-treatment data",
+    dek: "Novo Nordisk's November 15, 2026 release, tied to ObesityWeek 2026, reports two post hoc analyses of REDEFINE 1: weight loss by response at week 8, and patient-reported physical and psychosocial function. The company says the values are not the basis for changing clinical decision-making.",
+    category: "clinical",
+    published: "2026-11-16",
+    status: "developing",
+    documented: [
+      "Early responders were defined as at least 5% weight loss by week 8: 67.8% of CagriSema participants (n=1,367) vs 649 delayed responders. Mean weight loss at week 68 was 25.4% in early responders and 17.8% in delayed responders; at least 20% loss was reached by 73.3% vs 37.2%.",
+      "Novo labels both analyses post hoc and hypothesis-generating, and the weight data observed on-treatment figures, not a primary endpoint. REDEFINE 1 is a 68-week Phase 3 trial of 3,417 adults without type 2 diabetes.",
+      "In the quality-of-life analysis (IWQOL-Lite-CT, efficacy estimand), 73.1% of CagriSema participants (n=2,108) vs 49.1% of placebo (n=705) reported a meaningful improvement in physical function; psychosocial function 69.0% vs 42.1%.",
+      "Discontinuation due to adverse events in REDEFINE 1 was 5.9% on CagriSema vs 3.5% on placebo; any gastrointestinal adverse event 79.6% vs 39.9% (nausea 55% vs 12.6%, vomiting 26.1% vs 4.1%), per the release.",
+    ],
+    notEstablished: [
+      "Splitting people by early weight loss and then comparing later weight loss uses information from the trial's own course. It does not show that early response can be used to predict who will benefit, or that slow responders should be treated differently.",
+      "The delayed-responder figure is not a failure rate: the release reports 17.8% mean loss in that group. Equally, the early-responder figure is not what a new patient should expect.",
+      "Observed on-treatment weights leave out people who stopped. The release gives the number of delayed responders but does not report how many in either group discontinued.",
+      "CagriSema is not approved in the U.S. Nothing here applies to cagrilintide or semaglutide products sold outside the trial.",
+    ],
+    wouldChange:
+      "A peer-reviewed publication with the discontinuation counts per group and confidence intervals, a prospective trial that uses week-8 response to guide treatment, or an FDA action on the pending application.",
+    openQuestion:
+      "If response at eight weeks sorts people into very different outcomes, is that a tool for deciding who continues, or a description that only exists after the fact?",
+    compounds: ["cagrilintide", "semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo's CagriSema was associated with 25% mean weight loss among early responders in a post hoc analysis of REDEFINE 1 presented at ObesityWeek 2026 (Novo Nordisk, 2026-11-15)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=920645",
+      },
+    ],
+  },
+  {
+    slug: "novo-wegovy-food-noise-real-world-obesityweek-november-2026",
+    title: "Novo: self-reported food noise fell 0.72 points on a 5-point scale at six months in 26,213 telehealth semaglutide starters – an uncontrolled records study",
+    dek: "Two retrospective studies of de-identified Ro telehealth data, announced by Novo Nordisk on November 14, 2026 at ObesityWeek, report lower scores on a food-noise questionnaire after starting semaglutide. Novo says real-world studies cannot determine causality.",
+    category: "clinical",
+    published: "2026-11-16",
+    status: "developing",
+    documented: [
+      "SIGNAL: 26,213 treatment-naïve adults starting semaglutide injection (May 20, 2025 to June 8, 2026), followed up to six months. On the 7-item RAID-FN questionnaire, adjusted mean baseline was 2.72; the change was −0.42 at month 1 and −0.72 at month 6, per Novo.",
+      "OCTANE: 7,669 adults starting oral semaglutide (January 5 to February 7, 2026), three months. Total RAID-FN score fell from 2.8 to 2.1 (p<0.001); food-noise change was reported by 6,180 patients.",
+      "Neither study has a comparison group. Novo lists its own limitations: variable timing and completeness of routine telehealth data, self-reported data bias, selection bias from the persistence requirement, and limited generalizability.",
+      "Both studies were run in partnership with Ro, and Novo issued the release. They are cited as conference abstracts.",
+    ],
+    notEstablished: [
+      "Scores fell in people who stayed on treatment. With no control group and a persistence requirement, the release cannot separate the drug's effect from expectation, weight loss itself, or who chose to keep answering.",
+      "Food noise is, in the release's words, an emerging research area, and its clinical relevance remains to be clarified. A lower score is a self-report, not a measured change in appetite biology.",
+      "A skeptic should not read the design as showing no effect: the change is large relative to the starting score and moves in the same direction in both cohorts. It is an association, in either direction.",
+      "These are branded semaglutide products (injection and tablet) dispensed through a telehealth platform. Nothing here applies to compounded or research-use semaglutide.",
+    ],
+    wouldChange:
+      "Peer-reviewed publication with the persistence and dropout counts, a randomized trial with food noise as a pre-specified endpoint, or independent replication outside a sponsor partnership.",
+    openQuestion:
+      "If people who like the effect are the ones who keep taking the drug and keep answering the survey, is the score measuring the drug or the people who stayed?",
+    compounds: ["semaglutide"],
+    sources: [
+      {
+        grade: "primary",
+        kind: "Company press release",
+        label: "Novo's Wegovy was associated with a reduction in food noise according to real-world studies at ObesityWeek 2026 (Novo Nordisk, 2026-11-14)",
+        href: "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=920563",
       },
     ],
   },
